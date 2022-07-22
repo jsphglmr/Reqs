@@ -69,8 +69,12 @@ class AnnotationViewController: UIViewController {
     }
     
     private func configureViews() {
-        view.backgroundColor = UIColor(white: 0, alpha: 0.8)
-
+        //add blur to entire view
+        let blurEffect = UIBlurEffect(style: .systemMaterial)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.bounds
+        
+        view.addSubview(blurEffectView)
         view.addSubview(businessImage)
         view.addSubview(businessName)
         view.addSubview(addButton)

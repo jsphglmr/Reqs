@@ -61,6 +61,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         //switch to different VCs
 //        var selectedVC: String
 //        switch selectedVC {
@@ -69,5 +70,6 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 //        default:
 //            <#code#>
 //        }
+        
     }
 }
