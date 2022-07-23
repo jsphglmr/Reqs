@@ -70,7 +70,7 @@ class AnnotationViewController: UIViewController {
     
     private func configureViews() {
         //add blur to entire view
-        let blurEffect = UIBlurEffect(style: .systemMaterial)
+        let blurEffect = UIBlurEffect(style: .regular)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = view.bounds
         
