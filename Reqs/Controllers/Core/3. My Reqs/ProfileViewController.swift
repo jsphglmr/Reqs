@@ -99,7 +99,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         navigationController?.pushViewController(reqsVC, animated: true)
     }
 
-//MARK:  Data / Ream
+//MARK:  Data persistance / Realm
     func save(profile: ProfileModel) {
         do {
             try realm.write({
