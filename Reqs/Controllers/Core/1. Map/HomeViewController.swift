@@ -24,6 +24,8 @@ class HomeViewController: UIViewController {
     private let locationButton = UIButton(type: .system)
     private let mapView: MKMapView = {
         let map = MKMapView()
+        map.showsUserLocation = true
+        map.userTrackingMode = .follow
         return map
     }()
     
@@ -31,22 +33,34 @@ class HomeViewController: UIViewController {
         let location = CLLocationManager()
         return location
     }()
+    
+    private lazy var centerButton: UIButton = {
+        let button = UIButton(type: .system)
+        let image = UIImage(systemName: "location.fill.viewfinder")
+        button.setImage(image, for: .normal)
+        button.tintColor = .label
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(reCenterButtonPressed), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var searchButton: UIButton = {
+        let button = UIButton(type: .system)
+        let image = UIImage(systemName: "magnifyingglass.circle.fill")
+        button.setImage(image, for: .normal)
+        button.tintColor = .label
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         locationManager.delegate = self
         
-        setMapConstraints()
-        setupReCenterLocationButton()
+        setupViews()
         checkIfLocationServicesIsEnabled()
-        configureNavigationBar()
-    }
-    
-    private func configureNavigationBar() {
-        navigationController?.navigationBar.prefersLargeTitles = false
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonPressed))
-        navigationItem.rightBarButtonItem?.tintColor = .label
     }
     
     @objc private func searchButtonPressed() {
@@ -58,7 +72,6 @@ class HomeViewController: UIViewController {
                 self.getYelpResults(term: searchText, location: self.currentUserLocation)
                 self.refreshRegionForPins(locations: [self.currentUserLocation])
             }
-            
         }
         ac.addAction(search)
         ac.addAction(cancel)
@@ -79,26 +92,26 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func setMapConstraints() {
+    func setupViews() {
         view.addSubview(mapView)
+        view.addSubview(centerButton)
+        view.addSubview(searchButton)
         
+        setupConstraints()
+    }
+    
+    func setupConstraints() {
         mapView.translatesAutoresizingMaskIntoConstraints = false
         mapView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         mapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         mapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         
-        mapView.showsUserLocation = true
-        mapView.userTrackingMode = .follow
-    }
-    
-    func setupReCenterLocationButton() {
-        locationButton.frame = CGRect(x: 335, y: 120, width: 50, height: 50)
-        let image = UIImage(systemName: "location.fill.viewfinder")
-        locationButton.tintColor = .label
-        locationButton.setImage(image, for: .normal)
-        locationButton.addTarget(self, action: #selector(reCenterButtonPressed), for: .touchUpInside)
-        view.addSubview(locationButton)
+        centerButton.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 175).isActive = true
+        centerButton.centerXAnchor.constraint(equalTo: view.trailingAnchor, constant: -50).isActive = true
+        
+        searchButton.centerYAnchor.constraint(equalTo: centerButton.centerYAnchor, constant: -75).isActive = true
+        searchButton.centerXAnchor.constraint(equalTo: centerButton.centerXAnchor).isActive = true
     }
     
     @objc func reCenterButtonPressed() {
