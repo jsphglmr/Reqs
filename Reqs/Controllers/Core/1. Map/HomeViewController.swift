@@ -4,14 +4,12 @@
 //
 //  Created by Joseph Gilmore on 4/24/22.
 //
-// TODO: add map annotations based on data returned from search results (YELP API / SEARCH BUTTON)
-// TODO: clear old results when new search is done
-// TODO: set up calloutAccessaryViews to either pull up information or add to list
 
 import UIKit
 import MapKit
 import RealmSwift
 import CoreLocation
+//MARK: - Home VC
 
 class HomeViewController: UIViewController {
     
@@ -117,6 +115,16 @@ class HomeViewController: UIViewController {
         }
     }
     
+    func checkIfLocationServicesIsEnabled() {
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            checkLocationAuthorization()
+        } else {
+            //add new alert action to open settings app
+            locationPermissionDenied()
+        }
+    }
+    
     func refreshRegionForPins (locations: [CLLocation]) {
         if let location = locations.last {
             locationManager.stopUpdatingLocation()
@@ -126,16 +134,7 @@ class HomeViewController: UIViewController {
             mapView.setRegion(region, animated: true)
         }
     }
-    
-    func checkIfLocationServicesIsEnabled() {
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            checkLocationAuthorization()
-        } else {
-            //show alert letting user know they have to turn location on
-        }
-    }
-    
+
     func addPins() {
         defer {
             refreshMap()
@@ -165,9 +164,16 @@ class HomeViewController: UIViewController {
             self.mapView.mapType = .standard
         }
     }
+    
+    func locationPermissionDenied() {
+        //add functionality to open settings > privacy
+        let ac = UIAlertController(title: "Location Services not enabled", message: "Please enable Location Services in the Settings app to enable this functionality", preferredStyle: .alert)
+        let cont = UIAlertAction(title: "Continue", style: .cancel)
+        ac.addAction(cont)
+    }
 }
 
-//MARK: - MKMapViewDelegate
+//MARK: - Map Delegate
 extension HomeViewController: MKMapViewDelegate, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -189,9 +195,9 @@ extension HomeViewController: MKMapViewDelegate, CLLocationManagerDelegate {
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
         case .restricted:
-            print("location restricted") // add popup error -jojo
+            locationPermissionDenied()
         case .denied:
-            print("you have denied this app permissions") // add popup error -jojo
+            locationPermissionDenied()
         case .authorizedAlways, .authorizedWhenInUse:
             locationManager.requestLocation()
         default:
