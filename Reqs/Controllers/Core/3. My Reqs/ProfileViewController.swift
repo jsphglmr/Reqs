@@ -40,11 +40,8 @@ class ProfileViewController: UIViewController {
     }
     
     private func setupNavigation() {
-        let width = view.frame.width
-        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: width, height: 44))
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton))
 
-        view.addSubview(navBar)
         navigationItem.rightBarButtonItem = addButton
         navigationItem.title = "Reqs List"
         navigationController?.navigationBar.prefersLargeTitles = true
