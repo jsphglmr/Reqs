@@ -22,8 +22,11 @@ class HomeViewController: UIViewController {
     
     var currentUserLocation = CLLocation()
     private let locationButton = UIButton(type: .system)
+    
+//MARK: - Views & Buttons
     private let mapView: MKMapView = {
         let map = MKMapView()
+        map.translatesAutoresizingMaskIntoConstraints = false
         map.showsUserLocation = true
         map.userTrackingMode = .follow
         return map
@@ -87,7 +90,6 @@ class HomeViewController: UIViewController {
             case let .success(yelpData):
                 
                 self.searchData = yelpData.businesses
-                print(yelpData)
             }
         }
     }
@@ -101,17 +103,26 @@ class HomeViewController: UIViewController {
     }
     
     func setupConstraints() {
-        mapView.translatesAutoresizingMaskIntoConstraints = false
-        mapView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-        mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        mapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        mapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        let mapConstraints = [
+            mapView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            mapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            mapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+        ]
         
-        centerButton.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 175).isActive = true
-        centerButton.centerXAnchor.constraint(equalTo: view.trailingAnchor, constant: -50).isActive = true
+        let centerButtonConstraints = [
+            centerButton.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 175),
+            centerButton.centerXAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
+        ]
         
-        searchButton.centerYAnchor.constraint(equalTo: centerButton.centerYAnchor, constant: -75).isActive = true
-        searchButton.centerXAnchor.constraint(equalTo: centerButton.centerXAnchor).isActive = true
+        let searchButtonConstraints = [
+            searchButton.centerYAnchor.constraint(equalTo: centerButton.centerYAnchor, constant: -75),
+            searchButton.centerXAnchor.constraint(equalTo: centerButton.centerXAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(mapConstraints)
+        NSLayoutConstraint.activate(centerButtonConstraints)
+        NSLayoutConstraint.activate(searchButtonConstraints)
     }
     
     @objc func reCenterButtonPressed() {
