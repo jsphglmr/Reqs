@@ -17,6 +17,16 @@ class NotificationsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureView()
+
+    }
+    
+    func configureView() {
+        navigationItem.title = "Notifications"
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationBar.barTintColor = .systemBackground
+        navigationItem.rightBarButtonItem?.tintColor = .label
+        navigationController?.navigationBar.isTranslucent = false
     }
     
 }

@@ -17,7 +17,7 @@ class SettingsViewController: UIViewController {
         return table
     }()
     
-    private let settings = [ "Notifications", "Location Settings", "Privacy", "Help", "About"]
+    private let settings = [ "Notifications", "Location", "Privacy", "Help", "About"]
 
     override func viewDidLoad() {
         super.viewDidLoad()

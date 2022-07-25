@@ -9,7 +9,15 @@ import UIKit
 
 class LocationSettingsViewController: UIViewController {
     override func viewDidLoad() {
-        
+        configureView()
+
+    }
+    func configureView() {
+        navigationItem.title = "Location"
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationBar.barTintColor = .systemBackground
+        navigationItem.rightBarButtonItem?.tintColor = .label
+        navigationController?.navigationBar.isTranslucent = false
     }
 }
 

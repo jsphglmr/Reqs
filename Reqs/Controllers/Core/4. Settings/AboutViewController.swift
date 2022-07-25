@@ -9,7 +9,15 @@ import UIKit
 
 class AboutViewController: UIViewController {
     override func viewDidLoad() {
-        
+        configureView()
+    }
+    
+    func configureView() {
+        navigationItem.title = "About"
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationBar.barTintColor = .systemBackground
+        navigationItem.rightBarButtonItem?.tintColor = .label
+        navigationController?.navigationBar.isTranslucent = false
     }
 }
 

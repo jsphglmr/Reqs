@@ -9,7 +9,16 @@ import UIKit
 
 class PrivacyViewController: UIViewController {
     override func viewDidLoad() {
-        
+        configureView()
+
+    }
+    
+    func configureView() {
+        navigationItem.title = "Privacy"
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationBar.barTintColor = .systemBackground
+        navigationItem.rightBarButtonItem?.tintColor = .label
+        navigationController?.navigationBar.isTranslucent = false
     }
 }
 
