@@ -61,25 +61,22 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //switch to different VCs
-
-
         switch indexPath.row {
         case 0:
-            let nVC = NotificationsViewController()
-            self.navigationController?.pushViewController(nVC, animated: true)
+            let notificationVC = NotificationsViewController()
+            self.navigationController?.pushViewController(notificationVC, animated: true)
         case 1:
-            let lVC = LocationSettingsViewController()
-            self.navigationController?.pushViewController(lVC, animated: true)
+            let locationVC = LocationSettingsViewController()
+            self.navigationController?.pushViewController(locationVC, animated: true)
         case 2:
-            let pVC = PrivacyViewController()
-            self.navigationController?.pushViewController(pVC, animated: true)
+            let privacyVC = PrivacyViewController()
+            self.navigationController?.pushViewController(privacyVC, animated: true)
         case 3:
-            let hVC = HelpViewController()
-            self.navigationController?.pushViewController(hVC, animated: true)
+            let helpVC = HelpViewController()
+            self.navigationController?.pushViewController(helpVC, animated: true)
         case 4:
-            let aVC = AboutViewController()
-            self.navigationController?.pushViewController(aVC, animated: true)
+            let aboutVC = AboutViewController()
+            self.navigationController?.pushViewController(aboutVC, animated: true)
         default:
             break
         }
