@@ -57,11 +57,11 @@ class HomeViewController: UIViewController {
         return button
     }()
 
+//MARK: - Core
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         locationManager.delegate = self
-        
         setupViews()
         checkIfLocationServicesIsEnabled()
     }
@@ -82,16 +82,8 @@ class HomeViewController: UIViewController {
         present(ac, animated: true)
     }
     
-    func getYelpResults(term: String, location: CLLocation) {
-        jsonManager.fetchYelpResults(term: term, location: location) { result in
-            switch result {
-            case let .failure(error):
-                print(error)
-            case let .success(yelpData):
-                
-                self.searchData = yelpData.businesses
-            }
-        }
+    @objc func reCenterButtonPressed() {
+        locationManager.requestLocation()
     }
     
     func setupViews() {
@@ -125,10 +117,6 @@ class HomeViewController: UIViewController {
         NSLayoutConstraint.activate(searchButtonConstraints)
     }
     
-    @objc func reCenterButtonPressed() {
-        locationManager.requestLocation()
-    }
-    
     func centerMapOnUserLocation (locations: [CLLocation]) {
         if let location = locations.last {
             locationManager.stopUpdatingLocation()
@@ -136,16 +124,6 @@ class HomeViewController: UIViewController {
             let lon = location.coordinate.longitude
             let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: lon), latitudinalMeters: 500, longitudinalMeters: 500)
             mapView.setRegion(region, animated: true)
-        }
-    }
-    
-    func checkIfLocationServicesIsEnabled() {
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            checkLocationAuthorization()
-        } else {
-            //add new alert action to open settings app
-            locationPermissionDenied()
         }
     }
     
@@ -194,6 +172,29 @@ class HomeViewController: UIViewController {
         let ac = UIAlertController(title: "Location Services not enabled", message: "Please enable Location Services in the Settings app to enable this functionality", preferredStyle: .alert)
         let cont = UIAlertAction(title: "Continue", style: .cancel)
         ac.addAction(cont)
+    }
+    
+    func checkIfLocationServicesIsEnabled() {
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            checkLocationAuthorization()
+        } else {
+            //add new alert action to open settings app
+            locationPermissionDenied()
+        }
+    }
+    
+//MARK: - JSON / Data
+    func getYelpResults(term: String, location: CLLocation) {
+        jsonManager.fetchYelpResults(term: term, location: location) { result in
+            switch result {
+            case let .failure(error):
+                print(error)
+            case let .success(yelpData):
+                
+                self.searchData = yelpData.businesses
+            }
+        }
     }
 }
 
