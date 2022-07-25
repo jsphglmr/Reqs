@@ -35,10 +35,6 @@ class SettingsViewController: UIViewController {
     }
     
     private func setupNavigation() {
-        let width = view.frame.width
-        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: width, height: 44))
-
-        view.addSubview(navBar)
         navigationItem.title = "Settings"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.barTintColor = .systemBackground
