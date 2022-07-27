@@ -103,8 +103,8 @@ class HomeViewController: UIViewController {
         ]
         
         let centerButtonConstraints = [
-            centerButton.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 175),
-            centerButton.centerXAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
+            centerButton.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 250),
+            centerButton.centerXAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)
         ]
         
         let searchButtonConstraints = [
