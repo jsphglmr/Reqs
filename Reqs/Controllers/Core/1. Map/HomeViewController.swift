@@ -39,7 +39,8 @@ class HomeViewController: UIViewController {
     
     private lazy var centerButton: UIButton = {
         let button = UIButton(type: .system)
-        let image = UIImage(systemName: "location.fill.viewfinder")
+        let buttonConfig = UIImage.SymbolConfiguration(pointSize: 40, weight: .bold, scale: .large)
+        let image = UIImage(systemName: "location.fill.viewfinder", withConfiguration: buttonConfig)
         button.setImage(image, for: .normal)
         button.tintColor = .label
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -49,7 +50,8 @@ class HomeViewController: UIViewController {
     
     private lazy var searchButton: UIButton = {
         let button = UIButton(type: .system)
-        let image = UIImage(systemName: "magnifyingglass.circle.fill")
+        let buttonConfig = UIImage.SymbolConfiguration(pointSize: 40, weight: .bold, scale: .large)
+        let image = UIImage(systemName: "magnifyingglass.circle.fill", withConfiguration: buttonConfig)
         button.setImage(image, for: .normal)
         button.tintColor = .label
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -95,6 +97,8 @@ class HomeViewController: UIViewController {
     }
     
     func setupConstraints() {
+        let buttonSize = CGFloat(40)
+        
         let mapConstraints = [
             mapView.topAnchor.constraint(equalTo: self.view.topAnchor),
             mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -105,15 +109,15 @@ class HomeViewController: UIViewController {
         let centerButtonConstraints = [
             centerButton.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 250),
             centerButton.centerXAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            centerButton.widthAnchor.constraint(equalToConstant: 100),
-            centerButton.heightAnchor.constraint(equalToConstant: 100)
+            centerButton.widthAnchor.constraint(equalToConstant: buttonSize),
+            centerButton.heightAnchor.constraint(equalToConstant: buttonSize)
         ]
         
         let searchButtonConstraints = [
             searchButton.centerYAnchor.constraint(equalTo: centerButton.centerYAnchor, constant: -75),
             searchButton.centerXAnchor.constraint(equalTo: centerButton.centerXAnchor),
-            searchButton.widthAnchor.constraint(equalToConstant: 100),
-            searchButton.heightAnchor.constraint(equalToConstant: 100)
+            searchButton.widthAnchor.constraint(equalToConstant: buttonSize),
+            searchButton.heightAnchor.constraint(equalToConstant: buttonSize)
         ]
         
         NSLayoutConstraint.activate(mapConstraints)
