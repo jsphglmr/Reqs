@@ -44,6 +44,27 @@ class AnnotationViewController: UIViewController {
         return label
     }()
     
+    private lazy var businessPrice: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = yelpBusiness.price!
+        label.font = .systemFont(ofSize: 20, weight: .light)
+        label.adjustsFontSizeToFitWidth = true
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private lazy var businessRating: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = String(yelpBusiness.rating!)
+        label.font = .systemFont(ofSize: 20, weight: .light)
+        label.adjustsFontSizeToFitWidth = true
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    
     private lazy var addButton: UIButton = {
         let button = UIButton(type: .system)
         let image = UIImage(systemName: "folder.fill.badge.plus")
@@ -64,6 +85,15 @@ class AnnotationViewController: UIViewController {
         return button
     }()
     
+    private lazy var businessInfo: UITextView = {
+        let text = UITextView()
+        text.text = "More Info:\n\nAddress: \(yelpBusiness.location!.address1!), \(yelpBusiness.location!.city), \(yelpBusiness.location!.state)\nPhone Number:  \(yelpBusiness.phone!)"
+        text.font = .systemFont(ofSize: 16, weight: .bold)
+        text.translatesAutoresizingMaskIntoConstraints = false
+        text.backgroundColor = .systemBackground
+        return text
+    }()
+    
     override func viewDidLoad() {
         print(yelpBusiness)
         configureViews()
@@ -80,18 +110,22 @@ class AnnotationViewController: UIViewController {
         view.addSubview(businessName)
         view.addSubview(addButton)
         view.addSubview(linkButton)
+        view.addSubview(businessInfo)
+        view.addSubview(businessPrice)
+        view.addSubview(businessRating)
         
         configureConstraints()
     }
     
     private func configureConstraints() {
         let buttonSize = CGFloat(75)
+        let safeSize = CGFloat(view.frame.width - 50)
         
         let businessImageConstraints = [
             businessImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
             businessImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            businessImage.heightAnchor.constraint(equalToConstant: 300),
-            businessImage.widthAnchor.constraint(equalToConstant: 300)
+            businessImage.heightAnchor.constraint(equalToConstant: safeSize),
+            businessImage.widthAnchor.constraint(equalToConstant: safeSize)
         ]
         
         let businessNameConstraints = [
@@ -100,24 +134,45 @@ class AnnotationViewController: UIViewController {
         ]
         
         let addButtonConstraints = [
-            addButton.bottomAnchor.constraint(equalTo: businessImage.topAnchor, constant: 5),
+            addButton.bottomAnchor.constraint(equalTo: businessImage.topAnchor, constant: 15),
             addButton.centerXAnchor.constraint(equalTo: businessImage.trailingAnchor, constant: -20),
             addButton.heightAnchor.constraint(equalToConstant: buttonSize),
             addButton.widthAnchor.constraint(equalToConstant: buttonSize)
-            
         ]
         
         let linkButtonConstraints = [
-            linkButton.bottomAnchor.constraint(equalTo: businessImage.topAnchor, constant: 5),
+            linkButton.bottomAnchor.constraint(equalTo: businessImage.topAnchor, constant: 15),
             linkButton.centerXAnchor.constraint(equalTo: businessImage.leadingAnchor, constant: 20),
             linkButton.heightAnchor.constraint(equalToConstant: buttonSize),
             linkButton.widthAnchor.constraint(equalToConstant: buttonSize)
+        ]
+        
+        let businessInfoConstraints = [
+            businessInfo.topAnchor.constraint(equalTo: businessName.bottomAnchor, constant: 25),
+            businessInfo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            businessInfo.heightAnchor.constraint(equalToConstant: safeSize),
+            businessInfo.widthAnchor.constraint(equalToConstant: safeSize)
+        ]
+        
+        let businessPriceConstraints = [
+            businessPrice.topAnchor.constraint(equalTo: businessImage.bottomAnchor, constant: 10),
+            businessPrice.centerXAnchor.constraint(equalTo: businessName.trailingAnchor, constant: 45),
+            businessPrice.centerYAnchor.constraint(equalTo: businessName.centerYAnchor)
+        ]
+        
+        let businessRatingConstraints = [
+            businessRating.topAnchor.constraint(equalTo: businessImage.bottomAnchor, constant: 10),
+            businessRating.centerXAnchor.constraint(equalTo: businessName.leadingAnchor, constant: -45),
+            businessRating.centerYAnchor.constraint(equalTo: businessName.centerYAnchor)
         ]
         
         NSLayoutConstraint.activate(businessImageConstraints)
         NSLayoutConstraint.activate(businessNameConstraints)
         NSLayoutConstraint.activate(addButtonConstraints)
         NSLayoutConstraint.activate(linkButtonConstraints)
+        NSLayoutConstraint.activate(businessInfoConstraints)
+        NSLayoutConstraint.activate(businessPriceConstraints)
+        NSLayoutConstraint.activate(businessRatingConstraints)
     }
     
     @objc private func addButtonPressed() {
