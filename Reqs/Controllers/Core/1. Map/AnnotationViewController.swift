@@ -90,6 +90,8 @@ class AnnotationViewController: UIViewController {
         text.text = "More Info:\n\nAddress: \(yelpBusiness.location!.address1!), \(yelpBusiness.location!.city), \(yelpBusiness.location!.state)\nPhone Number:  \(yelpBusiness.phone!)"
         text.font = .systemFont(ofSize: 16, weight: .bold)
         text.translatesAutoresizingMaskIntoConstraints = false
+        text.layer.cornerRadius = 10
+        text.isEditable = false
         text.backgroundColor = .systemBackground
         return text
     }()
@@ -150,7 +152,7 @@ class AnnotationViewController: UIViewController {
         let businessInfoConstraints = [
             businessInfo.topAnchor.constraint(equalTo: businessName.bottomAnchor, constant: 25),
             businessInfo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            businessInfo.heightAnchor.constraint(equalToConstant: safeSize),
+            businessInfo.heightAnchor.constraint(equalToConstant: safeSize - 30),
             businessInfo.widthAnchor.constraint(equalToConstant: safeSize)
         ]
         
