@@ -65,6 +65,7 @@ class AnnotationViewController: UIViewController {
     }()
     
     override func viewDidLoad() {
+        print(yelpBusiness)
         configureViews()
     }
     
@@ -84,8 +85,10 @@ class AnnotationViewController: UIViewController {
     }
     
     private func configureConstraints() {
+        let buttonSize = CGFloat(75)
+        
         let businessImageConstraints = [
-            businessImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 35),
+            businessImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
             businessImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             businessImage.heightAnchor.constraint(equalToConstant: 300),
             businessImage.widthAnchor.constraint(equalToConstant: 300)
@@ -97,13 +100,18 @@ class AnnotationViewController: UIViewController {
         ]
         
         let addButtonConstraints = [
-            addButton.bottomAnchor.constraint(equalTo: businessImage.topAnchor, constant: -5),
-            addButton.centerXAnchor.constraint(equalTo: businessImage.trailingAnchor, constant: -10)
+            addButton.bottomAnchor.constraint(equalTo: businessImage.topAnchor, constant: 5),
+            addButton.centerXAnchor.constraint(equalTo: businessImage.trailingAnchor, constant: -20),
+            addButton.heightAnchor.constraint(equalToConstant: buttonSize),
+            addButton.widthAnchor.constraint(equalToConstant: buttonSize)
+            
         ]
         
         let linkButtonConstraints = [
-            linkButton.bottomAnchor.constraint(equalTo: businessImage.topAnchor, constant: -5),
-            linkButton.centerXAnchor.constraint(equalTo: businessImage.leadingAnchor, constant: 10)
+            linkButton.bottomAnchor.constraint(equalTo: businessImage.topAnchor, constant: 5),
+            linkButton.centerXAnchor.constraint(equalTo: businessImage.leadingAnchor, constant: 20),
+            linkButton.heightAnchor.constraint(equalToConstant: buttonSize),
+            linkButton.widthAnchor.constraint(equalToConstant: buttonSize)
         ]
         
         NSLayoutConstraint.activate(businessImageConstraints)

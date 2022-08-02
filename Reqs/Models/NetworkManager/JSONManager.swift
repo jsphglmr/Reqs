@@ -10,7 +10,7 @@ import CoreLocation
 
 struct JSONManager {
     
-    let constants = Constants()
+    let constants = Constant()
     
     //MARK: - Perform Request / Parse JSON
     func performRequest<T:Decodable>(with urlString: String, completion: @escaping (Result<T, Error>) -> ()) {

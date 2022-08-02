@@ -104,12 +104,16 @@ class HomeViewController: UIViewController {
         
         let centerButtonConstraints = [
             centerButton.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 250),
-            centerButton.centerXAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)
+            centerButton.centerXAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            centerButton.widthAnchor.constraint(equalToConstant: 100),
+            centerButton.heightAnchor.constraint(equalToConstant: 100)
         ]
         
         let searchButtonConstraints = [
             searchButton.centerYAnchor.constraint(equalTo: centerButton.centerYAnchor, constant: -75),
-            searchButton.centerXAnchor.constraint(equalTo: centerButton.centerXAnchor)
+            searchButton.centerXAnchor.constraint(equalTo: centerButton.centerXAnchor),
+            searchButton.widthAnchor.constraint(equalToConstant: 100),
+            searchButton.heightAnchor.constraint(equalToConstant: 100)
         ]
         
         NSLayoutConstraint.activate(mapConstraints)

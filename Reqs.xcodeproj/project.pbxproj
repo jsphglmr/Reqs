@@ -17,6 +17,7 @@
 		C74F04F428163C0400F844CE /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F04F328163C0400F844CE /* ExploreViewController.swift */; };
 		C74F04F628163CB500F844CE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F04F528163CB500F844CE /* SettingsViewController.swift */; };
 		C74F04FD28164A9300F844CE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F04FC28164A9300F844CE /* ProfileViewController.swift */; };
+		C78573D62899C92C000BB99C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78573D52899C92C000BB99C /* Constant.swift */; };
 		C7DDA7CF284FBEC1005D67D1 /* DiscoverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA7CE284FBEC1005D67D1 /* DiscoverCollectionViewCell.swift */; };
 		C7DDA7D228513A31005D67D1 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = C7DDA7D128513A31005D67D1 /* Realm */; };
 		C7DDA7D428513A31005D67D1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C7DDA7D328513A31005D67D1 /* RealmSwift */; };
@@ -25,7 +26,6 @@
 		C7DDA7DC28516125005D67D1 /* ReqsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA7DB28516125005D67D1 /* ReqsViewController.swift */; };
 		C7DDA7DF28529BD4005D67D1 /* YelpResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA7DE28529BD4005D67D1 /* YelpResult.swift */; };
 		C7DDA7E22852B743005D67D1 /* JSONManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA7E12852B743005D67D1 /* JSONManager.swift */; };
-		C7DDA7E62852D29B005D67D1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA7E52852D29B005D67D1 /* Constants.swift */; };
 		C7DDA86928639399005D67D1 /* YelpResultPins.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA86828639399005D67D1 /* YelpResultPins.swift */; };
 		C7DDA86D2873CCC8005D67D1 /* AnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA86C2873CCC8005D67D1 /* AnnotationViewController.swift */; };
 		C7DDA872288378DA005D67D1 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C7DDA871288378DA005D67D1 /* Kingfisher */; };
@@ -49,13 +49,13 @@
 		C74F04F328163C0400F844CE /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		C74F04F528163CB500F844CE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C74F04FC28164A9300F844CE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C78573D52899C92C000BB99C /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		C7DDA7CE284FBEC1005D67D1 /* DiscoverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionViewCell.swift; sourceTree = "<group>"; };
 		C7DDA7D728513D93005D67D1 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		C7DDA7D928513FA6005D67D1 /* ReqsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqsModel.swift; sourceTree = "<group>"; };
 		C7DDA7DB28516125005D67D1 /* ReqsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqsViewController.swift; sourceTree = "<group>"; };
 		C7DDA7DE28529BD4005D67D1 /* YelpResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpResult.swift; sourceTree = "<group>"; };
 		C7DDA7E12852B743005D67D1 /* JSONManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONManager.swift; sourceTree = "<group>"; };
-		C7DDA7E52852D29B005D67D1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C7DDA86828639399005D67D1 /* YelpResultPins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpResultPins.swift; sourceTree = "<group>"; };
 		C7DDA86C2873CCC8005D67D1 /* AnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationViewController.swift; sourceTree = "<group>"; };
 		C7DDA87328890303005D67D1 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
@@ -100,7 +100,6 @@
 			children = (
 				C74F04D72814EAF900F844CE /* AppDelegate.swift */,
 				C74F04D92814EAF900F844CE /* SceneDelegate.swift */,
-				C7DDA7E52852D29B005D67D1 /* Constants.swift */,
 				C74F04F92816446500F844CE /* Views */,
 				C7DDA7D528513D66005D67D1 /* Models */,
 				C74F04EF28163B9100F844CE /* Controllers */,
@@ -151,6 +150,7 @@
 		C7DDA7D528513D66005D67D1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C78573D52899C92C000BB99C /* Constant.swift */,
 				C7DDA7E02852B71C005D67D1 /* NetworkManager */,
 				C7DDA7DD28529A7D005D67D1 /* Business Models */,
 				C7DDA7D628513D70005D67D1 /* ProfileModels */,
@@ -319,9 +319,9 @@
 				C7DDA7DF28529BD4005D67D1 /* YelpResult.swift in Sources */,
 				C7DDA86928639399005D67D1 /* YelpResultPins.swift in Sources */,
 				C74F04F228163BC900F844CE /* HomeViewController.swift in Sources */,
-				C7DDA7E62852D29B005D67D1 /* Constants.swift in Sources */,
 				C7DDA7DC28516125005D67D1 /* ReqsViewController.swift in Sources */,
 				C74F04F628163CB500F844CE /* SettingsViewController.swift in Sources */,
+				C78573D62899C92C000BB99C /* Constant.swift in Sources */,
 				C7DDA87828890320005D67D1 /* PriacyViewController.swift in Sources */,
 				C7DDA87A2889032A005D67D1 /* HelpViewController.swift in Sources */,
 			);
