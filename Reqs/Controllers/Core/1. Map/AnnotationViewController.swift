@@ -7,11 +7,19 @@
 
 import UIKit
 import MapKit
+import RealmSwift
 import Kingfisher
 
 class AnnotationViewController: UIViewController {
         
     let homeVC = HomeViewController()
+    
+    lazy var realm: Realm = {
+        return try! Realm()
+    }()
+    
+    var reqsList: Results<ReqsModel>?
+    
     let yelpBusiness: Business
     init(business: Business) {
         self.yelpBusiness = business
@@ -215,5 +223,38 @@ class AnnotationViewController: UIViewController {
     
     @objc private func addButtonPressed() {
         //this code will allow you to select which folder you want to save your pin to
+        
+        let newReq = ReqsModel()
+        
+        newReq.dateCreated = Date.now
+        newReq.name = yelpBusiness.name
+        newReq.url = yelpBusiness.url
+        newReq.imageUrl = yelpBusiness.imageUrl
+        newReq.rating = yelpBusiness.rating
+        newReq.price = yelpBusiness.price
+        newReq.phone = yelpBusiness.phone
+        newReq.city = yelpBusiness.location?.city ?? ""
+        newReq.country = yelpBusiness.location?.country ?? ""
+        newReq.state = yelpBusiness.location?.state ?? ""
+        newReq.address1 = yelpBusiness.location?.address1
+        newReq.address2 = yelpBusiness.location?.address2
+        newReq.address3 = yelpBusiness.location?.address3
+        newReq.zipCode = yelpBusiness.location?.zipCode
+        newReq.latitude = yelpBusiness.coordinates.latitude
+        newReq.longitude = yelpBusiness.coordinates.longitude
+        self.save(profile: newReq)
+    }
+    
+//MARK: - Realm
+    func save(profile: ReqsModel) {
+        do {
+            try realm.write({
+                realm.add(profile)
+            })
+        } catch {
+            //TODO: Popup stating save failed
+            print("error saving : \(error)")
+        }
+        //TODO: Popup stating save was successful
     }
 }
