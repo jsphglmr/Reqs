@@ -202,7 +202,7 @@ class AnnotationViewController: UIViewController {
         let placemark = MKPlacemark(coordinate: coordinate)
         let mapItem = MKMapItem(placemark: placemark)
         let launchOptions = [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDefault]
-        self.title = title
+        title = yelpBusiness.name
         mapItem.name = title
         mapItem.openInMaps(launchOptions: launchOptions)
     }
