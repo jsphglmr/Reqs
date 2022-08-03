@@ -10,7 +10,10 @@ import RealmSwift
 
 class ReqsViewController: UIViewController {
     
-    let realm = try! Realm()
+    lazy var realm: Realm = {
+        return try! Realm()
+    }()
+
     var reqItems: Results<ReqsModel>?
     var selectedReq: ProfileModel? {
         didSet{
@@ -36,7 +39,10 @@ class ReqsViewController: UIViewController {
     }
     
     func loadReqs() {
-
+        reqItems = realm.objects(ReqsModel.self)
+        view.addSubview(reqsTableView)
+        reqsTableView.frame = view.bounds
+        reqsTableView.reloadData()
     }
 }
 //MARK: - Tableview Delegate & Datasource
@@ -48,6 +54,8 @@ extension ReqsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.selectionStyle = .none
+        let selectedProfile = reqItems?[indexPath.row]
+        cell.textLabel?.text = selectedProfile?.name
         return cell
     }
 }
