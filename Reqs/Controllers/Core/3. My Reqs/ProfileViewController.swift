@@ -13,7 +13,10 @@ import RealmSwift
 //MARK: - UIViewController
 class ProfileViewController: UIViewController {
     
-    let realm = try! Realm()
+    lazy var realm: Realm = {
+        return try! Realm()
+    }()
+    
     var profileList: Results<ProfileModel>?
     
     private let profileTableView: UITableView = {
@@ -98,6 +101,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
 //MARK:  Data persistance / Realm
     func save(profile: ProfileModel) {
+        
         do {
             try realm.write({
                 realm.add(profile)
