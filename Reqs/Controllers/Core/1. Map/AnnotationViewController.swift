@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import MapKit
 import Kingfisher
 
 class AnnotationViewController: UIViewController {
         
+    let homeVC = HomeViewController()
     let yelpBusiness: Business
     init(business: Business) {
         self.yelpBusiness = business
@@ -64,17 +66,6 @@ class AnnotationViewController: UIViewController {
         return label
     }()
     
-    
-    private lazy var addButton: UIButton = {
-        let button = UIButton(type: .system)
-        let image = UIImage(systemName: "folder.fill.badge.plus")
-        button.setImage(image, for: .normal)
-        button.tintColor = .label
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
-        return button
-    }()
-    
     private lazy var linkButton: UIButton = {
         let button = UIButton(type: .system)
         let image = UIImage(systemName: "safari.fill")
@@ -82,6 +73,26 @@ class AnnotationViewController: UIViewController {
         button.tintColor = .label
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(linkButtonPressed), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var directionsButton: UIButton = {
+        let button = UIButton(type: .system)
+        let image = UIImage(systemName: "map.fill")
+        button.setImage(image, for: .normal)
+        button.tintColor = .label
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(mapButtonPressed), for: .touchUpInside)
+        return button
+    }()
+
+    private lazy var addButton: UIButton = {
+        let button = UIButton(type: .system)
+        let image = UIImage(systemName: "folder.fill.badge.plus")
+        button.setImage(image, for: .normal)
+        button.tintColor = .label
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
         return button
     }()
     
@@ -115,6 +126,7 @@ class AnnotationViewController: UIViewController {
         view.addSubview(businessInfo)
         view.addSubview(businessPrice)
         view.addSubview(businessRating)
+        view.addSubview(directionsButton)
         
         configureConstraints()
     }
@@ -135,18 +147,25 @@ class AnnotationViewController: UIViewController {
             businessName.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ]
         
+        let linkButtonConstraints = [
+            directionsButton.bottomAnchor.constraint(equalTo: businessImage.topAnchor, constant: 15),
+            directionsButton.centerXAnchor.constraint(equalTo: businessImage.centerXAnchor, constant: 20),
+            directionsButton.heightAnchor.constraint(equalToConstant: buttonSize),
+            directionsButton.widthAnchor.constraint(equalToConstant: buttonSize)
+        ]
+        
+        let directionsButtonConstraints = [
+            linkButton.bottomAnchor.constraint(equalTo: businessImage.topAnchor, constant: 15),
+            linkButton.centerXAnchor.constraint(equalTo: businessImage.leadingAnchor, constant: 20),
+            linkButton.heightAnchor.constraint(equalToConstant: buttonSize),
+            linkButton.widthAnchor.constraint(equalToConstant: buttonSize)
+        ]
+        
         let addButtonConstraints = [
             addButton.bottomAnchor.constraint(equalTo: businessImage.topAnchor, constant: 15),
             addButton.centerXAnchor.constraint(equalTo: businessImage.trailingAnchor, constant: -20),
             addButton.heightAnchor.constraint(equalToConstant: buttonSize),
             addButton.widthAnchor.constraint(equalToConstant: buttonSize)
-        ]
-        
-        let linkButtonConstraints = [
-            linkButton.bottomAnchor.constraint(equalTo: businessImage.topAnchor, constant: 15),
-            linkButton.centerXAnchor.constraint(equalTo: businessImage.leadingAnchor, constant: 20),
-            linkButton.heightAnchor.constraint(equalToConstant: buttonSize),
-            linkButton.widthAnchor.constraint(equalToConstant: buttonSize)
         ]
         
         let businessInfoConstraints = [
@@ -170,20 +189,31 @@ class AnnotationViewController: UIViewController {
         
         NSLayoutConstraint.activate(businessImageConstraints)
         NSLayoutConstraint.activate(businessNameConstraints)
-        NSLayoutConstraint.activate(addButtonConstraints)
         NSLayoutConstraint.activate(linkButtonConstraints)
+        NSLayoutConstraint.activate(directionsButtonConstraints)
+        NSLayoutConstraint.activate(addButtonConstraints)
         NSLayoutConstraint.activate(businessInfoConstraints)
         NSLayoutConstraint.activate(businessPriceConstraints)
         NSLayoutConstraint.activate(businessRatingConstraints)
     }
     
-    @objc private func addButtonPressed() {
-        //this code will allow you to select which folder you want to save your pin to 
+    @objc private func mapButtonPressed() {
+        let coordinate = CLLocationCoordinate2D(latitude: yelpBusiness.coordinates.latitude, longitude: yelpBusiness.coordinates.longitude)
+        let placemark = MKPlacemark(coordinate: coordinate)
+        let mapItem = MKMapItem(placemark: placemark)
+        let launchOptions = [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDefault]
+        self.title = title
+        mapItem.name = title
+        mapItem.openInMaps(launchOptions: launchOptions)
     }
     
     @objc private func linkButtonPressed() {
         if let url = URL(string: yelpBusiness.url) {
             UIApplication.shared.open(url)
         }
+    }
+    
+    @objc private func addButtonPressed() {
+        //this code will allow you to select which folder you want to save your pin to
     }
 }
