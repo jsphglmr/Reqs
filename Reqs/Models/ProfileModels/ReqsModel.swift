@@ -9,9 +9,6 @@ import Foundation
 import RealmSwift
 
 class ReqsModel: Object {
-    
-    @Persisted var dateCreated: Date?
-    
     @Persisted var name: String
     @Persisted var url: String
     @Persisted var imageUrl: String
@@ -27,12 +24,12 @@ class ReqsModel: Object {
     @Persisted var address3: String?
     @Persisted var zipCode: String?
     
-    
     @Persisted var latitude: Double
     @Persisted var longitude: Double
     
     @Persisted var alias: String?
     
-    
+    @Persisted var dateCreated: Date?
+
     @Persisted(originProperty: "items") var parentCategory: LinkingObjects<ProfileModel>
 }
