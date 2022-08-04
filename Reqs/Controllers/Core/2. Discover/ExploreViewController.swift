@@ -12,7 +12,9 @@
 
 import UIKit
 import RealmSwift
+import Kingfisher
 import CoreLocation
+
 
 class ExploreViewController: UIViewController {
     

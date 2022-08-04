@@ -247,14 +247,18 @@ class AnnotationViewController: UIViewController {
     
 //MARK: - Realm
     func save(profile: ReqsModel) {
+        let acSuccess = UIAlertController(title: "Added!", message: nil, preferredStyle: .alert)
+        let acFail = UIAlertController(title: "Error Saving Req", message: nil, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Continue", style: .default)
+        acSuccess.addAction(action)
         do {
             try realm.write({
                 realm.add(profile)
             })
+            present(acSuccess, animated: true)
         } catch {
-            //TODO: Popup stating save failed
             print("error saving : \(error)")
+            present(acFail, animated: true)
         }
-        //TODO: Popup stating save was successful
     }
 }
