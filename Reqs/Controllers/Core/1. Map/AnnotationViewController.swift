@@ -57,7 +57,7 @@ class AnnotationViewController: UIViewController {
     private lazy var businessPrice: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = yelpBusiness.price!
+        label.text = yelpBusiness.price ?? "$"
         label.font = .systemFont(ofSize: 20, weight: .light)
         label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
@@ -74,7 +74,7 @@ class AnnotationViewController: UIViewController {
         return label
     }()
     
-    private lazy var linkButton: UIButton = {
+    private lazy var safariButton: UIButton = {
         let button = UIButton(type: .system)
         let image = UIImage(systemName: "safari.fill")
         button.setImage(image, for: .normal)
@@ -130,7 +130,7 @@ class AnnotationViewController: UIViewController {
         view.addSubview(businessImage)
         view.addSubview(businessName)
         view.addSubview(addButton)
-        view.addSubview(linkButton)
+        view.addSubview(safariButton)
         view.addSubview(businessInfo)
         view.addSubview(businessPrice)
         view.addSubview(businessRating)
@@ -155,18 +155,18 @@ class AnnotationViewController: UIViewController {
             businessName.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ]
         
-        let linkButtonConstraints = [
+        let directionsButtonConstraints = [
             directionsButton.bottomAnchor.constraint(equalTo: businessImage.topAnchor, constant: 15),
-            directionsButton.centerXAnchor.constraint(equalTo: businessImage.centerXAnchor, constant: 20),
+            directionsButton.centerXAnchor.constraint(equalTo: businessImage.centerXAnchor),
             directionsButton.heightAnchor.constraint(equalToConstant: buttonSize),
             directionsButton.widthAnchor.constraint(equalToConstant: buttonSize)
         ]
         
-        let directionsButtonConstraints = [
-            linkButton.bottomAnchor.constraint(equalTo: businessImage.topAnchor, constant: 15),
-            linkButton.centerXAnchor.constraint(equalTo: businessImage.leadingAnchor, constant: 20),
-            linkButton.heightAnchor.constraint(equalToConstant: buttonSize),
-            linkButton.widthAnchor.constraint(equalToConstant: buttonSize)
+        let safariButtonConstraints = [
+            safariButton.bottomAnchor.constraint(equalTo: businessImage.topAnchor, constant: 15),
+            safariButton.centerXAnchor.constraint(equalTo: businessImage.leadingAnchor, constant: 20),
+            safariButton.heightAnchor.constraint(equalToConstant: buttonSize),
+            safariButton.widthAnchor.constraint(equalToConstant: buttonSize)
         ]
         
         let addButtonConstraints = [
@@ -197,7 +197,7 @@ class AnnotationViewController: UIViewController {
         
         NSLayoutConstraint.activate(businessImageConstraints)
         NSLayoutConstraint.activate(businessNameConstraints)
-        NSLayoutConstraint.activate(linkButtonConstraints)
+        NSLayoutConstraint.activate(safariButtonConstraints)
         NSLayoutConstraint.activate(directionsButtonConstraints)
         NSLayoutConstraint.activate(addButtonConstraints)
         NSLayoutConstraint.activate(businessInfoConstraints)
@@ -262,3 +262,4 @@ class AnnotationViewController: UIViewController {
         }
     }
 }
+
