@@ -16,14 +16,13 @@
 		C74F04F228163BC900F844CE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F04F128163BC900F844CE /* HomeViewController.swift */; };
 		C74F04F428163C0400F844CE /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F04F328163C0400F844CE /* ExploreViewController.swift */; };
 		C74F04F628163CB500F844CE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F04F528163CB500F844CE /* SettingsViewController.swift */; };
-		C74F04FD28164A9300F844CE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F04FC28164A9300F844CE /* ProfileViewController.swift */; };
 		C78573D62899C92C000BB99C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78573D52899C92C000BB99C /* Constant.swift */; };
+		C78573D8289CBEF3000BB99C /* ReqsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78573D7289CBEF3000BB99C /* ReqsViewController.swift */; };
 		C7DDA7CF284FBEC1005D67D1 /* DiscoverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA7CE284FBEC1005D67D1 /* DiscoverCollectionViewCell.swift */; };
 		C7DDA7D228513A31005D67D1 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = C7DDA7D128513A31005D67D1 /* Realm */; };
 		C7DDA7D428513A31005D67D1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C7DDA7D328513A31005D67D1 /* RealmSwift */; };
 		C7DDA7D828513D93005D67D1 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA7D728513D93005D67D1 /* ProfileModel.swift */; };
 		C7DDA7DA28513FA6005D67D1 /* ReqsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA7D928513FA6005D67D1 /* ReqsModel.swift */; };
-		C7DDA7DC28516125005D67D1 /* ReqsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA7DB28516125005D67D1 /* ReqsViewController.swift */; };
 		C7DDA7DF28529BD4005D67D1 /* YelpResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA7DE28529BD4005D67D1 /* YelpResult.swift */; };
 		C7DDA7E22852B743005D67D1 /* JSONManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA7E12852B743005D67D1 /* JSONManager.swift */; };
 		C7DDA86928639399005D67D1 /* YelpResultPins.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA86828639399005D67D1 /* YelpResultPins.swift */; };
@@ -31,7 +30,7 @@
 		C7DDA872288378DA005D67D1 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C7DDA871288378DA005D67D1 /* Kingfisher */; };
 		C7DDA87428890303005D67D1 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA87328890303005D67D1 /* NotificationsViewController.swift */; };
 		C7DDA87628890312005D67D1 /* LocationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA87528890312005D67D1 /* LocationSettingsViewController.swift */; };
-		C7DDA87828890320005D67D1 /* PriacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA87728890320005D67D1 /* PriacyViewController.swift */; };
+		C7DDA87828890320005D67D1 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA87728890320005D67D1 /* PrivacyViewController.swift */; };
 		C7DDA87A2889032A005D67D1 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA8792889032A005D67D1 /* HelpViewController.swift */; };
 		C7DDA87C28890334005D67D1 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA87B28890334005D67D1 /* AboutViewController.swift */; };
 /* End PBXBuildFile section */
@@ -48,19 +47,18 @@
 		C74F04F128163BC900F844CE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C74F04F328163C0400F844CE /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		C74F04F528163CB500F844CE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		C74F04FC28164A9300F844CE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C78573D52899C92C000BB99C /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		C78573D7289CBEF3000BB99C /* ReqsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqsViewController.swift; sourceTree = "<group>"; };
 		C7DDA7CE284FBEC1005D67D1 /* DiscoverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionViewCell.swift; sourceTree = "<group>"; };
 		C7DDA7D728513D93005D67D1 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		C7DDA7D928513FA6005D67D1 /* ReqsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqsModel.swift; sourceTree = "<group>"; };
-		C7DDA7DB28516125005D67D1 /* ReqsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqsViewController.swift; sourceTree = "<group>"; };
 		C7DDA7DE28529BD4005D67D1 /* YelpResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpResult.swift; sourceTree = "<group>"; };
 		C7DDA7E12852B743005D67D1 /* JSONManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONManager.swift; sourceTree = "<group>"; };
 		C7DDA86828639399005D67D1 /* YelpResultPins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpResultPins.swift; sourceTree = "<group>"; };
 		C7DDA86C2873CCC8005D67D1 /* AnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationViewController.swift; sourceTree = "<group>"; };
 		C7DDA87328890303005D67D1 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		C7DDA87528890312005D67D1 /* LocationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSettingsViewController.swift; sourceTree = "<group>"; };
-		C7DDA87728890320005D67D1 /* PriacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriacyViewController.swift; sourceTree = "<group>"; };
+		C7DDA87728890320005D67D1 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		C7DDA8792889032A005D67D1 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		C7DDA87B28890334005D67D1 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -204,8 +202,7 @@
 		C7DDA7E92852D550005D67D1 /* 3. My Reqs */ = {
 			isa = PBXGroup;
 			children = (
-				C74F04FC28164A9300F844CE /* ProfileViewController.swift */,
-				C7DDA7DB28516125005D67D1 /* ReqsViewController.swift */,
+				C78573D7289CBEF3000BB99C /* ReqsViewController.swift */,
 			);
 			path = "3. My Reqs";
 			sourceTree = "<group>";
@@ -216,7 +213,7 @@
 				C74F04F528163CB500F844CE /* SettingsViewController.swift */,
 				C7DDA87328890303005D67D1 /* NotificationsViewController.swift */,
 				C7DDA87528890312005D67D1 /* LocationSettingsViewController.swift */,
-				C7DDA87728890320005D67D1 /* PriacyViewController.swift */,
+				C7DDA87728890320005D67D1 /* PrivacyViewController.swift */,
 				C7DDA8792889032A005D67D1 /* HelpViewController.swift */,
 				C7DDA87B28890334005D67D1 /* AboutViewController.swift */,
 			);
@@ -311,18 +308,17 @@
 				C7DDA7E22852B743005D67D1 /* JSONManager.swift in Sources */,
 				C74F04D82814EAF900F844CE /* AppDelegate.swift in Sources */,
 				C7DDA7CF284FBEC1005D67D1 /* DiscoverCollectionViewCell.swift in Sources */,
+				C78573D8289CBEF3000BB99C /* ReqsViewController.swift in Sources */,
 				C74F04F428163C0400F844CE /* ExploreViewController.swift in Sources */,
 				C7DDA87628890312005D67D1 /* LocationSettingsViewController.swift in Sources */,
 				C74F04DA2814EAF900F844CE /* SceneDelegate.swift in Sources */,
 				C7DDA87428890303005D67D1 /* NotificationsViewController.swift in Sources */,
-				C74F04FD28164A9300F844CE /* ProfileViewController.swift in Sources */,
 				C7DDA7DF28529BD4005D67D1 /* YelpResult.swift in Sources */,
 				C7DDA86928639399005D67D1 /* YelpResultPins.swift in Sources */,
 				C74F04F228163BC900F844CE /* HomeViewController.swift in Sources */,
-				C7DDA7DC28516125005D67D1 /* ReqsViewController.swift in Sources */,
 				C74F04F628163CB500F844CE /* SettingsViewController.swift in Sources */,
 				C78573D62899C92C000BB99C /* Constant.swift in Sources */,
-				C7DDA87828890320005D67D1 /* PriacyViewController.swift in Sources */,
+				C7DDA87828890320005D67D1 /* PrivacyViewController.swift in Sources */,
 				C7DDA87A2889032A005D67D1 /* HelpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

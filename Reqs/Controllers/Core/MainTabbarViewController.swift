@@ -14,7 +14,7 @@ class MainTabbarViewController: UITabBarController {
         
         let vc1 = UINavigationController(rootViewController: HomeViewController())
         let vc2 = UINavigationController(rootViewController: ExploreViewController())
-        let vc3 = UINavigationController(rootViewController: ProfileViewController())
+        let vc3 = UINavigationController(rootViewController: ReqsViewController())
         let vc4 = UINavigationController(rootViewController: SettingsViewController())
         
         vc1.tabBarItem.image = UIImage(systemName: "mappin.circle")
