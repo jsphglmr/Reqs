@@ -45,6 +45,10 @@ class ReqsViewController: UIViewController {
         profileTableView.reloadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        profileTableView.reloadData()
+    }
+    
     private func setupNavigation() {
         navigationItem.title = "Reqs List"
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -81,11 +85,10 @@ extension ReqsViewController: UITableViewDelegate, UITableViewDataSource {
     
     //delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let currentReq
-//        convertReqModelToBusinessModel(reqsList)
-//
-//        let annotationVC = AnnotationViewController(business: selectedBusiness)
-//        navigationController?.pushViewController(annotationVC, animated: true)
+        guard let currentRow = reqsList?[indexPath.row] else { return }
+        
+        let annotationVC = AnnotationViewController(business: convertReqModelToBusinessModel(currentRow))
+        navigationController?.present(annotationVC, animated: true)
     }
 
 // TODO: Add Delete from Realm CRUD op
