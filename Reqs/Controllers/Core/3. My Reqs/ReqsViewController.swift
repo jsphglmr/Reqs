@@ -20,7 +20,6 @@ class ReqsViewController: UIViewController {
             profileTableView.reloadData()
         }
     }
-    var business: Business?
     
     private let profileTableView: UITableView = {
         let tableView = UITableView()
@@ -53,6 +52,16 @@ class ReqsViewController: UIViewController {
         navigationItem.rightBarButtonItem?.tintColor = .label
         navigationController?.navigationBar.isTranslucent = false
     }
+    
+    func convertReqModelToBusinessModel(_ reqModel: ReqsModel) -> Business {
+
+        let location = Business.Location(city: reqModel.city, country: reqModel.country, state: reqModel.state, address1: reqModel.address1, address2: reqModel.address2, address3: reqModel.address3, zipCode: reqModel.zipCode)
+        let coordinates = Business.Coordinates(latitude: reqModel.latitude, longitude: reqModel.longitude)
+        let business = Business(name: reqModel.name, url: reqModel.url, imageUrl: reqModel.imageUrl, location: location, coordinates: coordinates, categories: nil, rating: reqModel.rating, price: reqModel.price, phone: reqModel.phone)
+        
+        return business
+    
+    }
 }
 
 //MARK: - Tableview Delegate & Datasource
@@ -66,12 +75,16 @@ extension ReqsViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let selectedProfile = reqsList?[indexPath.row]
         cell.textLabel?.text = selectedProfile?.name.capitalized
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
     //delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let annotationVC = AnnotationViewController(business: indexPath.row)
+//        let currentReq
+//        convertReqModelToBusinessModel(reqsList)
+//
+//        let annotationVC = AnnotationViewController(business: selectedBusiness)
 //        navigationController?.pushViewController(annotationVC, animated: true)
     }
 

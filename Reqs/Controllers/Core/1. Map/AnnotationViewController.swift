@@ -21,10 +21,12 @@ class AnnotationViewController: UIViewController {
     var reqsList: Results<ReqsModel>?
     
     let yelpBusiness: Business
+    
     init(business: Business) {
         self.yelpBusiness = business
         super.init(nibName: nil, bundle: nil)
     }
+    
     required init?(coder: NSCoder) {
         return nil
     }
