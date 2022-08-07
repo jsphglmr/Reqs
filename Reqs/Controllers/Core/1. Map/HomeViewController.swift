@@ -24,7 +24,11 @@ class HomeViewController: UIViewController {
         return try! Realm()
     }()
     
-    var reqsList: Results<ReqsModel>?
+    var reqsList: Results<ReqsModel>? {
+        didSet {
+            pinMyReqsPressed()
+        }
+    }
     
     var currentUserLocation = CLLocation()
     
@@ -115,10 +119,13 @@ class HomeViewController: UIViewController {
                 self.mapView.removeAnnotations(self.mapView.annotations)
             }
             
+            var pinTag: Int = 0
+            
             for reqs in data {
                 
                 let coordinate = CLLocationCoordinate2D(latitude: reqs.latitude, longitude: reqs.longitude)
-                let pin = YelpResultPins(title: reqs.name, address: reqs.address1, url: reqs.url, coordinate: coordinate, tag: nil)
+                let pin = YelpResultPins(title: reqs.name, address: reqs.address1, url: reqs.url, coordinate: coordinate, tag: pinTag)
+                pinTag -= 1
 
                 mapView.addAnnotation(pin)
             }
@@ -315,7 +322,7 @@ extension HomeViewController: MKMapViewDelegate, CLLocationManagerDelegate {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         if let pin = view.annotation as? YelpResultPins {
-            let annotationVC = AnnotationViewController(business: searchData![pin.tag!])
+            let annotationVC = AnnotationViewController(business: searchData![pin.tag])
             self.navigationController?.present(annotationVC, animated: true)
         }
     }
