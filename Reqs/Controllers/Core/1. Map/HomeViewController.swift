@@ -19,15 +19,14 @@ class HomeViewController: UIViewController {
             addPins()
         }
     }
-    
-    var reqsList: Results<ReqsModel>?
-    
+        
     lazy var realm: Realm = {
         return try! Realm()
     }()
     
+    var reqsList: Results<ReqsModel>?
+    
     var currentUserLocation = CLLocation()
-    private let locationButton = UIButton(type: .system)
     
 //MARK: - Views & Buttons
     private let mapView: MKMapView = {
@@ -145,6 +144,12 @@ class HomeViewController: UIViewController {
             mapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ]
         
+        let searchButtonConstraints = [
+            searchButton.centerYAnchor.constraint(equalTo: centerButton.centerYAnchor, constant: -75),
+            searchButton.centerXAnchor.constraint(equalTo: centerButton.centerXAnchor),
+            searchButton.widthAnchor.constraint(equalToConstant: buttonSize),
+            searchButton.heightAnchor.constraint(equalToConstant: buttonSize)
+        ]
         let centerButtonConstraints = [
             centerButton.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 250),
             centerButton.centerXAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
@@ -152,16 +157,9 @@ class HomeViewController: UIViewController {
             centerButton.heightAnchor.constraint(equalToConstant: buttonSize)
         ]
         
-        let searchButtonConstraints = [
-            searchButton.centerYAnchor.constraint(equalTo: centerButton.centerYAnchor, constant: -75),
-            searchButton.centerXAnchor.constraint(equalTo: centerButton.centerXAnchor),
-            searchButton.widthAnchor.constraint(equalToConstant: buttonSize),
-            searchButton.heightAnchor.constraint(equalToConstant: buttonSize)
-        ]
-        
         let pinMyReqsButtonConstraints = [
-            pinMyReqsButton.centerYAnchor.constraint(equalTo: searchButton.centerYAnchor, constant: -75),
-            pinMyReqsButton.centerXAnchor.constraint(equalTo: searchButton.centerXAnchor),
+            pinMyReqsButton.centerYAnchor.constraint(equalTo: centerButton.centerYAnchor, constant: 75),
+            pinMyReqsButton.centerXAnchor.constraint(equalTo: centerButton.centerXAnchor),
             pinMyReqsButton.widthAnchor.constraint(equalToConstant: buttonSize),
             pinMyReqsButton.heightAnchor.constraint(equalToConstant: buttonSize)
         ]
