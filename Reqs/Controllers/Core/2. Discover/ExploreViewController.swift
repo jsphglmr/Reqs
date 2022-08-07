@@ -51,7 +51,7 @@ class ExploreViewController: UIViewController {
     private func configureNavigationBar() {
         view.backgroundColor = .white
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "Reqs near you"
+        navigationItem.title = "Discover"
 
     }
     
