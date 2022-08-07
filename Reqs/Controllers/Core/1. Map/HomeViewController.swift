@@ -20,6 +20,12 @@ class HomeViewController: UIViewController {
         }
     }
     
+    var reqsList: Results<ReqsModel>?
+    
+    lazy var realm: Realm = {
+        return try! Realm()
+    }()
+    
     var currentUserLocation = CLLocation()
     private let locationButton = UIButton(type: .system)
     
@@ -37,6 +43,17 @@ class HomeViewController: UIViewController {
         return location
     }()
     
+    private lazy var searchButton: UIButton = {
+        let button = UIButton(type: .system)
+        let buttonConfig = UIImage.SymbolConfiguration(pointSize: 40, weight: .bold, scale: .large)
+        let image = UIImage(systemName: "magnifyingglass.circle.fill", withConfiguration: buttonConfig)
+        button.setImage(image, for: .normal)
+        button.tintColor = .label
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
+        return button
+    }()
+    
     private lazy var centerButton: UIButton = {
         let button = UIButton(type: .system)
         let buttonConfig = UIImage.SymbolConfiguration(pointSize: 40, weight: .bold, scale: .large)
@@ -48,14 +65,14 @@ class HomeViewController: UIViewController {
         return button
     }()
     
-    private lazy var searchButton: UIButton = {
+    private lazy var pinMyReqsButton: UIButton = {
         let button = UIButton(type: .system)
         let buttonConfig = UIImage.SymbolConfiguration(pointSize: 40, weight: .bold, scale: .large)
-        let image = UIImage(systemName: "magnifyingglass.circle.fill", withConfiguration: buttonConfig)
+        let image = UIImage(systemName: "star.fill", withConfiguration: buttonConfig)
         button.setImage(image, for: .normal)
         button.tintColor = .label
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(pinMyReqsPressed), for: .touchUpInside)
         return button
     }()
 
@@ -65,6 +82,7 @@ class HomeViewController: UIViewController {
         mapView.delegate = self
         locationManager.delegate = self
         setupViews()
+        loadReqs()
         checkIfLocationServicesIsEnabled()
     }
     
@@ -88,10 +106,31 @@ class HomeViewController: UIViewController {
         locationManager.requestLocation()
     }
     
+    @objc func pinMyReqsPressed() {
+        defer {
+            refreshMap()
+        }
+        
+        if let data = reqsList {
+            DispatchQueue.main.async {
+                self.mapView.removeAnnotations(self.mapView.annotations)
+            }
+            
+            for reqs in data {
+                
+                let coordinate = CLLocationCoordinate2D(latitude: reqs.latitude, longitude: reqs.longitude)
+                let pin = YelpResultPins(title: reqs.name, address: reqs.address1, url: reqs.url, coordinate: coordinate, tag: nil)
+
+                mapView.addAnnotation(pin)
+            }
+        }
+    }
+    
     func setupViews() {
         view.addSubview(mapView)
         view.addSubview(centerButton)
         view.addSubview(searchButton)
+        view.addSubview(pinMyReqsButton)
         
         setupConstraints()
     }
@@ -120,9 +159,17 @@ class HomeViewController: UIViewController {
             searchButton.heightAnchor.constraint(equalToConstant: buttonSize)
         ]
         
+        let pinMyReqsButtonConstraints = [
+            pinMyReqsButton.centerYAnchor.constraint(equalTo: searchButton.centerYAnchor, constant: -75),
+            pinMyReqsButton.centerXAnchor.constraint(equalTo: searchButton.centerXAnchor),
+            pinMyReqsButton.widthAnchor.constraint(equalToConstant: buttonSize),
+            pinMyReqsButton.heightAnchor.constraint(equalToConstant: buttonSize)
+        ]
+        
         NSLayoutConstraint.activate(mapConstraints)
         NSLayoutConstraint.activate(centerButtonConstraints)
         NSLayoutConstraint.activate(searchButtonConstraints)
+        NSLayoutConstraint.activate(pinMyReqsButtonConstraints)
     }
     
     func centerMapOnUserLocation (locations: [CLLocation]) {
@@ -165,6 +212,10 @@ class HomeViewController: UIViewController {
                 mapView.addAnnotation(pin)
             }
         }
+    }
+    
+    private func loadReqs() {
+        reqsList = realm.objects(ReqsModel.self)
     }
    
     //workaround to refresh annotations on map view
@@ -266,7 +317,7 @@ extension HomeViewController: MKMapViewDelegate, CLLocationManagerDelegate {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         if let pin = view.annotation as? YelpResultPins {
-            let annotationVC = AnnotationViewController(business: searchData![pin.tag])
+            let annotationVC = AnnotationViewController(business: searchData![pin.tag!])
             self.navigationController?.present(annotationVC, animated: true)
         }
     }
