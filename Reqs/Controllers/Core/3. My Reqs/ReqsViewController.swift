@@ -94,14 +94,28 @@ extension ReqsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        .delete
+    }
 
-// TODO: Add Delete from Realm CRUD op
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//            //TODO: Remove from Realm
-//        }
-//    }
-
-
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            //Remove from Realm
+            if let reqForDeletion = self.reqsList?[indexPath.row] {
+                do {
+                    try self.realm.write({
+                        self.realm.delete(reqForDeletion)
+                        tableView.reloadData()
+                    })
+                } catch {
+                    print("error deleting from realm \(error)")
+                }
+            }
+            tableView.endUpdates()
+        }
+    }
 }
