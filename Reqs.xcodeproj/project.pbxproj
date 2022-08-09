@@ -18,6 +18,7 @@
 		C74F04F628163CB500F844CE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F04F528163CB500F844CE /* SettingsViewController.swift */; };
 		C78573D62899C92C000BB99C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78573D52899C92C000BB99C /* Constant.swift */; };
 		C78573D8289CBEF3000BB99C /* ReqsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78573D7289CBEF3000BB99C /* ReqsViewController.swift */; };
+		C7DB168F28A18A60001A66FD /* MyReqsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB168E28A18A60001A66FD /* MyReqsTableViewCell.swift */; };
 		C7DDA7CF284FBEC1005D67D1 /* DiscoverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA7CE284FBEC1005D67D1 /* DiscoverCollectionViewCell.swift */; };
 		C7DDA7D228513A31005D67D1 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = C7DDA7D128513A31005D67D1 /* Realm */; };
 		C7DDA7D428513A31005D67D1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C7DDA7D328513A31005D67D1 /* RealmSwift */; };
@@ -49,6 +50,7 @@
 		C74F04F528163CB500F844CE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C78573D52899C92C000BB99C /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		C78573D7289CBEF3000BB99C /* ReqsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqsViewController.swift; sourceTree = "<group>"; };
+		C7DB168E28A18A60001A66FD /* MyReqsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReqsTableViewCell.swift; sourceTree = "<group>"; };
 		C7DDA7CE284FBEC1005D67D1 /* DiscoverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionViewCell.swift; sourceTree = "<group>"; };
 		C7DDA7D728513D93005D67D1 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		C7DDA7D928513FA6005D67D1 /* ReqsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqsModel.swift; sourceTree = "<group>"; };
@@ -111,8 +113,8 @@
 		C74F04EF28163B9100F844CE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C7DDA7CD284FBE8F005D67D1 /* Cells */,
 				C74F04F028163BAB00F844CE /* Core */,
+				C7DDA7CD284FBE8F005D67D1 /* Cells */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				C7DDA7CE284FBEC1005D67D1 /* DiscoverCollectionViewCell.swift */,
+				C7DB168E28A18A60001A66FD /* MyReqsTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				C7DDA7DA28513FA6005D67D1 /* ReqsModel.swift in Sources */,
 				C7DDA7D828513D93005D67D1 /* ProfileModel.swift in Sources */,
 				C74F04DC2814EAF900F844CE /* MainTabbarViewController.swift in Sources */,
+				C7DB168F28A18A60001A66FD /* MyReqsTableViewCell.swift in Sources */,
 				C7DDA87C28890334005D67D1 /* AboutViewController.swift in Sources */,
 				C7DDA86D2873CCC8005D67D1 /* AnnotationViewController.swift in Sources */,
 				C7DDA7E22852B743005D67D1 /* JSONManager.swift in Sources */,

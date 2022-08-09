@@ -23,10 +23,9 @@ class ReqsViewController: UIViewController {
     
     private let profileTableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(MyReqsTableViewCell.self, forCellReuseIdentifier: MyReqsTableViewCell.identifier)
         return tableView
     }()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +63,6 @@ class ReqsViewController: UIViewController {
         let business = Business(name: reqModel.name, url: reqModel.url, imageUrl: reqModel.imageUrl, location: location, coordinates: coordinates, categories: nil, rating: reqModel.rating, price: reqModel.price, phone: reqModel.phone)
         
         return business
-    
     }
 }
 
@@ -76,11 +74,14 @@ extension ReqsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let selectedProfile = reqsList?[indexPath.row]
-        cell.textLabel?.text = selectedProfile?.name.capitalized
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MyReqsTableViewCell.identifier, for: indexPath) as? MyReqsTableViewCell else { return UITableViewCell() }
         cell.accessoryType = .disclosureIndicator
-        return cell
+        if let selectedProfile = reqsList?[indexPath.row] {
+            cell.set(req: selectedProfile)
+            return cell
+        } else {
+            return cell
+        }
     }
     
     //delegate
@@ -89,6 +90,10 @@ extension ReqsViewController: UITableViewDelegate, UITableViewDataSource {
         
         let annotationVC = AnnotationViewController(business: convertReqModelToBusinessModel(currentRow))
         navigationController?.present(annotationVC, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
 
 // TODO: Add Delete from Realm CRUD op
