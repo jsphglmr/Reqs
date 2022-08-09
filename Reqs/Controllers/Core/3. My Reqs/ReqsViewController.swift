@@ -79,9 +79,8 @@ extension ReqsViewController: UITableViewDelegate, UITableViewDataSource {
         if let selectedProfile = reqsList?[indexPath.row] {
             cell.set(req: selectedProfile)
             return cell
-        } else {
-            return cell
         }
+        return cell
     }
     
     //delegate

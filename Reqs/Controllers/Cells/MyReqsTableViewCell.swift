@@ -10,7 +10,6 @@ import UIKit
 import Kingfisher
 
 class MyReqsTableViewCell: UITableViewCell {
-    
     static let identifier = "MyReqsTableViewCell"
     
     private let iconImageView: UIImageView = {
