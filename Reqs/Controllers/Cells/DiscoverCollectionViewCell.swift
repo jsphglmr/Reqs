@@ -17,33 +17,49 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
+    private let label: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12, weight: .regular)
+        label.textColor = .label
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontSizeToFitWidth = true
+        label.backgroundColor = .systemBackground
+        label.textAlignment = .center
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(imageView)
-        
-//        pull images by name and assigns them randomly to imageView.image
-//        replace with images from api -jojo
-        let images = [
-            UIImage(named: "testimage1"),
-            UIImage(named: "testimage2"),
-            UIImage(named: "testimage3"),
-            UIImage(named: "testimage4"),
-            UIImage(named: "testimage5"),
-            UIImage(named: "testimage6"),
-        ].compactMap({ $0 }) // remove any nil images
-        imageView.image = images.randomElement()
+        contentView.addSubview(label)
     }
     
     required init(coder: NSCoder) {
         fatalError()
     }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        imageView.frame = contentView.bounds
-    }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-//        imageView.image = nil
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        imageView.frame = contentView.bounds
+        
+        let labelConstraints = [
+            label.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -20),
+            label.widthAnchor.constraint(equalTo: imageView.widthAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(labelConstraints)
+    }
+    
+    func set(discoverCell: Business) {
+        DispatchQueue.main.async {
+            let url = URL(string: discoverCell.imageUrl)
+            self.imageView.kf.setImage(with: url)
+            self.label.text = discoverCell.name
+        }
     }
 }

@@ -15,14 +15,13 @@ import RealmSwift
 import Kingfisher
 import CoreLocation
 
-
 class ExploreViewController: UIViewController {
     
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
     let homeVC = HomeViewController()
     let jsonManager = JSONManager()
-    var searchData: YelpResult? {
+    var searchData: [Business]? {
         didSet {
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
@@ -62,7 +61,7 @@ class ExploreViewController: UIViewController {
             case let .failure(error):
                 print(error)
             case let .success(yelpData):
-                self.searchData = yelpData
+                self.searchData = yelpData.businesses
                 print(yelpData)
                 print(yelpData.total)
             }
@@ -73,13 +72,24 @@ class ExploreViewController: UIViewController {
 //MARK: - UICollectionViewDelegate
 extension ExploreViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscoverCollectionViewCell.identifier, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscoverCollectionViewCell.identifier, for: indexPath) as? DiscoverCollectionViewCell
+        else {
+            return UICollectionViewCell()
+        }
+        if let selectedCell = searchData?[indexPath.row] {
+            cell.set(discoverCell: selectedCell)
+            return cell
+        }
         return cell
     }
     
-    //set up touch functionality -jojo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        
+        guard let currentCell = searchData?[indexPath.row] else { return }
+        
+        let annotationVC = AnnotationViewController(business: currentCell)
+        navigationController?.present(annotationVC, animated: true)
         print("selected section:\(indexPath.section), row:\(indexPath.row)")
     }
 }
@@ -94,7 +104,7 @@ extension ExploreViewController: UICollectionViewDelegateFlowLayout { // allows 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 3
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -104,7 +114,7 @@ extension ExploreViewController: UICollectionViewDelegateFlowLayout { // allows 
 //MARK: - UICollectionViewDataSource
 extension ExploreViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return searchData?.total ?? 15
+        return searchData?.count ?? 18
     }
 }
 
