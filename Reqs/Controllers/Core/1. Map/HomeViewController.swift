@@ -101,21 +101,20 @@ class HomeViewController: UIViewController {
         defer {
             refreshMap()
         }
-        
+        var pins: [YelpResultPins] = []
         if let data = reqsList {
             DispatchQueue.main.async {
                 self.mapView.removeAnnotations(self.mapView.annotations)
             }
-            
-            
             for reqs in data {
                 
                 let coordinate = CLLocationCoordinate2D(latitude: reqs.latitude, longitude: reqs.longitude)
                 let pin = YelpResultPins(title: reqs.name, address: reqs.address1, url: reqs.url, coordinate: coordinate, tag: nil)
                 
-                DispatchQueue.main.async {
-                    self.mapView.addAnnotation(pin)
-                }
+                pins.append(pin)
+            }
+            DispatchQueue.main.async {
+                self.mapView.addAnnotations(pins)
             }
         }
         self.refreshRegionForPins(locations: [self.currentUserLocation])
@@ -200,22 +199,20 @@ class HomeViewController: UIViewController {
         defer {
             refreshMap()
         }
-        
+        var pins: [YelpResultPins] = []
         if let data = searchData {
             DispatchQueue.main.async {
                 self.mapView.removeAnnotations(self.mapView.annotations)
             }
-            
             var pinTag: Int = 0
-            
             for business in data {
                 let coordinate = CLLocationCoordinate2D(latitude: business.coordinates.latitude, longitude: business.coordinates.longitude)
                 let pin = YelpResultPins(title: business.name, address: business.location?.address1, url: business.url, coordinate: coordinate, tag: pinTag)
+                pins.append(pin)
                 pinTag += 1
-                
-                DispatchQueue.main.async {
-                    self.mapView.addAnnotation(pin)
-                }
+            }
+            DispatchQueue.main.async {
+                self.mapView.addAnnotations(pins)
             }
         }
     }
