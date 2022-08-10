@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
     let jsonManager = JSONManager()
     var searchData: [Business]? {
         didSet {
+            guard let data = searchData, data.count > 0 else { return }
             addPins()
         }
     }
@@ -101,17 +102,21 @@ class HomeViewController: UIViewController {
         defer {
             refreshMap()
         }
+        
+        searchData = []
         var pins: [YelpResultPins] = []
         if let data = reqsList {
             DispatchQueue.main.async {
                 self.mapView.removeAnnotations(self.mapView.annotations)
             }
+            var pinTag: Int = 0
             for reqs in data {
                 
                 let coordinate = CLLocationCoordinate2D(latitude: reqs.latitude, longitude: reqs.longitude)
-                let pin = YelpResultPins(title: reqs.name, address: reqs.address1, url: reqs.url, coordinate: coordinate, tag: nil)
+                let pin = YelpResultPins(title: reqs.name, address: reqs.address1, url: reqs.url, coordinate: coordinate, tag: pinTag)
                 
                 pins.append(pin)
+                pinTag += 1
             }
             DispatchQueue.main.async {
                 self.mapView.addAnnotations(pins)
@@ -319,10 +324,15 @@ extension HomeViewController: MKMapViewDelegate, CLLocationManagerDelegate {
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        
-        if let pin = view.annotation as? YelpResultPins {
-            let annotationVC = AnnotationViewController(business: searchData![pin.tag!])
-            self.navigationController?.present(annotationVC, animated: true)
+        if let pin = view.annotation as? YelpResultPins, let safeTag = pin.tag {
+            if let safeData = searchData, safeData.count > 0 {
+                let annotationVC = AnnotationViewController(business: safeData[safeTag])
+                self.navigationController?.present(annotationVC, animated: true)
+            } else {
+                guard let reqs = reqsList else { return }
+                let annotationVC = AnnotationViewController(business: ReqsViewController.convertReqModelToBusinessModel(reqs[safeTag]))
+                self.navigationController?.present(annotationVC, animated: true)
+            }
         }
     }
 }
