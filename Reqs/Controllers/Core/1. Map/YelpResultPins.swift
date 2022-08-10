@@ -13,9 +13,9 @@ class YelpResultPins: NSObject, MKAnnotation {
     let locationName: String?
     let url: String?
     var coordinate: CLLocationCoordinate2D
-    var tag: Int
+    var tag: Int?
     
-    init(title: String?, address: String?, url: String?, coordinate: CLLocationCoordinate2D, tag: Int) {
+    init(title: String?, address: String?, url: String?, coordinate: CLLocationCoordinate2D, tag: Int?) {
         self.title = title
         self.locationName = address
         self.coordinate = coordinate

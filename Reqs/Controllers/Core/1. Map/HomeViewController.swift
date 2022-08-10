@@ -9,7 +9,6 @@ import UIKit
 import MapKit
 import RealmSwift
 import CoreLocation
-//MARK: - Home VC
 
 class HomeViewController: UIViewController {
     
@@ -19,20 +18,16 @@ class HomeViewController: UIViewController {
             addPins()
         }
     }
-        
+    
     lazy var realm: Realm = {
         return try! Realm()
     }()
     
-    var reqsList: Results<ReqsModel>? {
-        didSet {
-            pinMyReqsPressed()
-        }
-    }
+    var reqsList: Results<ReqsModel>?
     
     var currentUserLocation = CLLocation()
     
-//MARK: - Views & Buttons
+    //MARK: - Views & Buttons
     private let mapView: MKMapView = {
         let map = MKMapView()
         map.translatesAutoresizingMaskIntoConstraints = false
@@ -78,17 +73,10 @@ class HomeViewController: UIViewController {
         button.addTarget(self, action: #selector(pinMyReqsPressed), for: .touchUpInside)
         return button
     }()
-
-//MARK: - Core
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        mapView.delegate = self
-        locationManager.delegate = self
-        setupViews()
-        loadReqs()
-        checkIfLocationServicesIsEnabled()
-    }
     
+    
+    
+    //MARK: - Selector Methods
     @objc private func searchButtonPressed() {
         let ac = UIAlertController(title: "Search", message: "What are you looking for?", preferredStyle: .alert)
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)
@@ -119,17 +107,28 @@ class HomeViewController: UIViewController {
                 self.mapView.removeAnnotations(self.mapView.annotations)
             }
             
-            var pinTag: Int = 0
             
             for reqs in data {
                 
                 let coordinate = CLLocationCoordinate2D(latitude: reqs.latitude, longitude: reqs.longitude)
-                let pin = YelpResultPins(title: reqs.name, address: reqs.address1, url: reqs.url, coordinate: coordinate, tag: pinTag)
-                pinTag -= 1
-
-                mapView.addAnnotation(pin)
+                let pin = YelpResultPins(title: reqs.name, address: reqs.address1, url: reqs.url, coordinate: coordinate, tag: nil)
+                
+                DispatchQueue.main.async {
+                    self.mapView.addAnnotation(pin)
+                }
             }
         }
+        self.refreshRegionForPins(locations: [self.currentUserLocation])
+    }
+    
+    //MARK: - View
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        mapView.delegate = self
+        locationManager.delegate = self
+        setupViews()
+        loadReqs()
+        checkIfLocationServicesIsEnabled()
     }
     
     func setupViews() {
@@ -196,7 +195,7 @@ class HomeViewController: UIViewController {
             mapView.setRegion(region, animated: true)
         }
     }
-
+    
     func addPins() {
         defer {
             refreshMap()
@@ -214,15 +213,17 @@ class HomeViewController: UIViewController {
                 let pin = YelpResultPins(title: business.name, address: business.location?.address1, url: business.url, coordinate: coordinate, tag: pinTag)
                 pinTag += 1
                 
-                mapView.addAnnotation(pin)
+                DispatchQueue.main.async {
+                    self.mapView.addAnnotation(pin)
+                }
             }
         }
     }
     
-    private func loadReqs() {
+    func loadReqs() {
         reqsList = realm.objects(ReqsModel.self)
     }
-   
+    
     //workaround to refresh annotations on map view
     func refreshMap() {
         DispatchQueue.main.async {
@@ -231,6 +232,7 @@ class HomeViewController: UIViewController {
         }
     }
     
+//MARK: - Location
     func locationPermissionDenied() {
         //add functionality to open settings > privacy
         let ac = UIAlertController(title: "Location Services not enabled", message: "Please enable Location Services in the Settings app to enable this functionality", preferredStyle: .alert)
@@ -248,7 +250,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-//MARK: - JSON / Data
+    //MARK: - JSON / Data
     func getYelpResults(term: String, location: CLLocation) {
         jsonManager.fetchYelpResults(term: term, location: location) { result in
             switch result {
@@ -297,7 +299,7 @@ extension HomeViewController: MKMapViewDelegate, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("location error \(error.localizedDescription)")
     }
-
+    
     //adds the annotationview for each pin on the map
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let annotation = annotation as? YelpResultPins else {
@@ -322,7 +324,7 @@ extension HomeViewController: MKMapViewDelegate, CLLocationManagerDelegate {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         if let pin = view.annotation as? YelpResultPins {
-            let annotationVC = AnnotationViewController(business: searchData![pin.tag])
+            let annotationVC = AnnotationViewController(business: searchData![pin.tag!])
             self.navigationController?.present(annotationVC, animated: true)
         }
     }
