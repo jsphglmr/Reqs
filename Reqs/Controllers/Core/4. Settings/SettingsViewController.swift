@@ -6,7 +6,6 @@
 //
 // MARK: - Add Table View
 
-
 import UIKit
 
 class SettingsViewController: UIViewController {
@@ -17,6 +16,12 @@ class SettingsViewController: UIViewController {
         return table
     }()
     
+    private let infoView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .red
+        return view
+    }()
+    
     private let settings = [ "Notifications", "Location", "Privacy", "Help", "About"]
 
     override func viewDidLoad() {
@@ -25,12 +30,16 @@ class SettingsViewController: UIViewController {
         settingsTableView.delegate = self
         settingsTableView.dataSource = self
         view.addSubview(settingsTableView)
-        tableViewConfig()
+        settingsTableView.tableFooterView = infoView
+
+        viewConstraints()
         setupNavigation()
     }
     
-    private func tableViewConfig() {
+    private func viewConstraints() {
         settingsTableView.frame = view.bounds
+
+
         settingsTableView.reloadData()
     }
     

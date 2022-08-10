@@ -62,8 +62,7 @@ class ExploreViewController: UIViewController {
                 print(error)
             case let .success(yelpData):
                 self.searchData = yelpData.businesses
-                print(yelpData)
-                print(yelpData.total)
+                print("total results: ", yelpData.total)
             }
         }
     }
@@ -104,7 +103,7 @@ extension ExploreViewController: UICollectionViewDelegateFlowLayout { // allows 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
