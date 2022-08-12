@@ -11,8 +11,10 @@ import UIKit
 class SettingsViewController: UIViewController {
         
     private let settingsTableView: UITableView = {
-        let table = UITableView()
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        let table = UITableView(frame: .zero, style: .grouped)
+        table.register(SettingsTableViewCell.self, forCellReuseIdentifier: SettingsTableViewCell.identifier)
+        table.register(SwitchTableViewCell.self, forCellReuseIdentifier: SwitchTableViewCell.identifier)
+
         return table
     }()
     
@@ -22,7 +24,7 @@ class SettingsViewController: UIViewController {
         return view
     }()
     
-    private let settings = [ "Notifications", "Location", "Privacy", "Help", "About"]
+    private var models = [Section]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +33,43 @@ class SettingsViewController: UIViewController {
         settingsTableView.dataSource = self
         view.addSubview(settingsTableView)
         settingsTableView.tableFooterView = infoView
-
+        configure()
         viewConstraints()
         setupNavigation()
     }
     
+    private func configure() {
+        models.append(Section(title: "General", options: [
+            .switchCell(model: SettingsSwitchOption(title: "Use Dark Mode", icon: UIImage(systemName: "display"), iconBackgroundColor: .systemGray, isOn: true, handler: {
+                
+            })),
+            .staticCell(model: SettingsOption(title: "Notifications", icon: UIImage(systemName: "bell"), iconBackgroundColor: .systemPink, handler: {
+                
+            })),
+            .staticCell(model: SettingsOption(title: "Location", icon: UIImage(systemName: "location"), iconBackgroundColor: .systemBlue, handler: {
+                
+            })),
+            .staticCell(model: SettingsOption(title: "Privacy", icon: UIImage(systemName: "hand.raised"), iconBackgroundColor: .systemOrange, handler: {
+                
+            })),
+        ]))
+        
+        models.append(Section(title: "Information", options: [
+            .staticCell(model: SettingsOption(title: "Report Issue", icon: UIImage(systemName: "questionmark"), iconBackgroundColor: .systemRed, handler: {
+                if let url = URL(string: "https://github.com/jsphglmr/Reqs/issues") {
+                    UIApplication.shared.open(url)
+                }
+            })),
+            .staticCell(model: SettingsOption(title: "View on Github", icon: UIImage(systemName: "person"), iconBackgroundColor: .systemGreen, handler: {
+                if let url = URL(string: "https://github.com/jsphglmr/Reqs/") {
+                    UIApplication.shared.open(url)
+                }
+            }))
+        ]))
+    }
+    
     private func viewConstraints() {
         settingsTableView.frame = view.bounds
-
 
         settingsTableView.reloadData()
     }
@@ -54,36 +85,75 @@ class SettingsViewController: UIViewController {
 }
 //MARK: - Tableview Delegate & Datasource
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let section = models[section]
+        return section.title
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return models.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        settings.count
+        return models[section].options.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = settings[indexPath.row]
-        cell.selectionStyle = .none
-        return cell
+        let model = models[indexPath.section].options[indexPath.row]
+
+        switch model.self {
+        case .staticCell(let model):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.identifier, for: indexPath) as? SettingsTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.configure(with: model)
+            return cell
+        case .switchCell(let model):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SwitchTableViewCell.identifier, for: indexPath) as? SwitchTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.configure(with: model)
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            let notificationVC = NotificationsViewController()
-            self.navigationController?.pushViewController(notificationVC, animated: true)
-        case 1:
-            let locationVC = LocationSettingsViewController()
-            self.navigationController?.pushViewController(locationVC, animated: true)
-        case 2:
-            let privacyVC = PrivacyViewController()
-            self.navigationController?.pushViewController(privacyVC, animated: true)
-        case 3:
-            let helpVC = HelpViewController()
-            self.navigationController?.pushViewController(helpVC, animated: true)
-        case 4:
-            let aboutVC = AboutViewController()
-            self.navigationController?.pushViewController(aboutVC, animated: true)
-        default:
-            break
+        tableView.deselectRow(at: indexPath, animated: true)
+        let type = models[indexPath.section].options[indexPath.row]
+        switch type.self {
+        case .staticCell(let model):
+            model.handler()
+        case .switchCell(let model):
+            model.handler()
         }
     }
 }
+
+//MARK: - Enums and Structs
+enum SettingsOptionType {
+    case staticCell(model: SettingsOption)
+    case switchCell(model: SettingsSwitchOption)
+}
+
+struct SettingsOption {
+    let title: String
+    let icon: UIImage?
+    let iconBackgroundColor: UIColor
+    let handler: (() -> Void)
+}
+
+struct SettingsSwitchOption {
+    let title: String
+    let icon: UIImage?
+    let iconBackgroundColor: UIColor
+    var isOn: Bool
+    let handler: (() -> Void)
+}
+
+struct Section {
+    let title: String
+    let options: [SettingsOptionType]
+}
+
+

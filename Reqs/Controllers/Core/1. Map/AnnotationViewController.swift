@@ -83,7 +83,7 @@ class AnnotationViewController: UIViewController {
         } else {
             label.text = nil
         }
-        label.font = .systemFont(ofSize: 16, weight: .ultraLight)
+        label.font = .systemFont(ofSize: 14, weight: .regular)
         label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
         return label
@@ -93,7 +93,7 @@ class AnnotationViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = String("\(yelpBusiness.rating!) / 5")
-        label.font = .systemFont(ofSize: 16, weight: .ultraLight)
+        label.font = .systemFont(ofSize: 14, weight: .regular)
         label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
         return label
