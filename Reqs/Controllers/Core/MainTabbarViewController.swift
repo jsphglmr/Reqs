@@ -12,6 +12,10 @@ class MainTabbarViewController: UITabBarController {
     override func viewDidLoad() {
         view.backgroundColor = .systemBackground
         
+        let blurEffect = UIBlurEffect(style: .regular)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.bounds
+        
         let vc1 = UINavigationController(rootViewController: HomeViewController())
         let vc2 = UINavigationController(rootViewController: ExploreViewController())
         let vc3 = UINavigationController(rootViewController: ReqsViewController())

@@ -11,26 +11,21 @@ import RealmSwift
 import Kingfisher
 
 class AnnotationViewController: UIViewController {
-        
+    //MARK: - inits & references
     let homeVC = HomeViewController()
-    
     lazy var realm: Realm = {
         return try! Realm()
     }()
-    
     var reqsList: Results<ReqsModel>?
-    
     let yelpBusiness: Business
-    
     init(business: Business) {
         self.yelpBusiness = business
         super.init(nibName: nil, bundle: nil)
     }
-    
     required init?(coder: NSCoder) {
         return nil
     }
-    
+    //MARK: - UI components - buttons, labels
     private lazy var businessImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -38,29 +33,57 @@ class AnnotationViewController: UIViewController {
         imageView.layer.cornerRadius = 10
         imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true
-        
         let url = URL(string: yelpBusiness.imageUrl)
         imageView.kf.setImage(with: url)
-        
         imageView.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
         return imageView
+    }()
+    private lazy var stackView: UIStackView = {
+      let stackView = UIStackView()
+      stackView.translatesAutoresizingMaskIntoConstraints = false
+      stackView.axis = .horizontal
+      stackView.alignment = .center
+      stackView.distribution = .fill
+      stackView.spacing = 10
+      return stackView
     }()
     
     private lazy var businessName: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = yelpBusiness.name
-        label.font = .systemFont(ofSize: 24, weight: .black)
+        label.font = .systemFont(ofSize: 32, weight: .black)
         label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private lazy var businessNameSubtitle: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        if let city = yelpBusiness.location?.city, let state = yelpBusiness.location?.state {
+            label.text = String("\(city), \(state)")
+        } else {
+            label.text = nil
+            
+        }
+        label.font = .systemFont(ofSize: 22, weight: .light)
+        label.adjustsFontSizeToFitWidth = true
+        label.numberOfLines = 0
+        label.textAlignment = .center
         return label
     }()
     
     private lazy var businessPrice: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = yelpBusiness.price ?? "$"
-        label.font = .systemFont(ofSize: 20, weight: .light)
+        if let price = yelpBusiness.price {
+            label.text = "Price: \(price)"
+        } else {
+            label.text = nil
+        }
+        label.font = .systemFont(ofSize: 16, weight: .ultraLight)
         label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
         return label
@@ -69,55 +92,136 @@ class AnnotationViewController: UIViewController {
     private lazy var businessRating: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = String(yelpBusiness.rating!)
-        label.font = .systemFont(ofSize: 20, weight: .light)
+        label.text = String("\(yelpBusiness.rating!) / 5")
+        label.font = .systemFont(ofSize: 16, weight: .ultraLight)
         label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
         return label
     }()
     
     private lazy var safariButton: UIButton = {
-        let button = UIButton(type: .system)
-        let image = UIImage(systemName: "safari.fill")
-        button.setImage(image, for: .normal)
+        var config = UIButton.Configuration.filled()
+        config.buttonSize = .large
+        config.cornerStyle = .medium
+        config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
+          var outgoing = incoming
+          outgoing.font = UIFont.preferredFont(forTextStyle: .headline)
+          return outgoing
+        }
+        config.image = UIImage(systemName: "safari.fill")
+        config.imagePadding = 5
+        config.imagePlacement = .top
+        config.title = "Safari"
+        config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(scale: .medium)
+        let button = UIButton(type: .system, primaryAction: UIAction(handler: { _ in
+            if let url = URL(string: self.yelpBusiness.url) {
+                UIApplication.shared.open(url)
+            }
+        }))
         button.tintColor = .label
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(linkButtonPressed), for: .touchUpInside)
+        button.configuration = config
         return button
     }()
     
     private lazy var directionsButton: UIButton = {
-        let button = UIButton(type: .system)
-        let image = UIImage(systemName: "map.fill")
-        button.setImage(image, for: .normal)
+        var config = UIButton.Configuration.filled()
+        config.buttonSize = .large
+        config.cornerStyle = .medium
+        config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
+          var outgoing = incoming
+          outgoing.font = UIFont.preferredFont(forTextStyle: .headline)
+          return outgoing
+        }
+        config.image = UIImage(systemName: "map.fill")
+        config.imagePadding = 5
+        config.imagePlacement = .top
+        config.title = "Maps"
+        config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(scale: .medium)
+        let button = UIButton(type: .system, primaryAction: UIAction(handler: { _ in
+            let coordinate = CLLocationCoordinate2D(latitude: self.yelpBusiness.coordinates.latitude, longitude: self.yelpBusiness.coordinates.longitude)
+            let placemark = MKPlacemark(coordinate: coordinate)
+            let mapItem = MKMapItem(placemark: placemark)
+            let launchOptions = [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDefault]
+            self.title = self.yelpBusiness.name
+            mapItem.name = self.title
+            mapItem.openInMaps(launchOptions: launchOptions)
+        }))
         button.tintColor = .label
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(mapButtonPressed), for: .touchUpInside)
+        button.configuration = config
         return button
     }()
 
-    private lazy var addButton: UIButton = {
-        let button = UIButton(type: .system)
-        let image = UIImage(systemName: "folder.fill.badge.plus")
-        button.setImage(image, for: .normal)
+    private lazy var saveButton: UIButton = {
+        var config = UIButton.Configuration.filled()
+        config.buttonSize = .large
+        config.cornerStyle = .medium
+        config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
+          var outgoing = incoming
+          outgoing.font = UIFont.preferredFont(forTextStyle: .headline)
+          return outgoing
+        }
+        config.image = UIImage(systemName: "folder.fill.badge.plus")
+        config.imagePadding = 5
+        config.imagePlacement = .top
+        config.title = "Save to My Reqs"
+        config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(scale: .medium)
+        let button = UIButton(type: .custom, primaryAction: UIAction(handler: { _ in
+            let newReq = ReqsModel()
+            newReq.dateCreated = Date.now
+            newReq.name = self.yelpBusiness.name
+            newReq.url = self.yelpBusiness.url
+            newReq.imageUrl = self.yelpBusiness.imageUrl
+            newReq.rating = self.yelpBusiness.rating
+            newReq.price = self.yelpBusiness.price
+            newReq.phone = self.yelpBusiness.phone
+            newReq.city = self.yelpBusiness.location?.city ?? ""
+            newReq.country = self.yelpBusiness.location?.country ?? ""
+            newReq.state = self.yelpBusiness.location?.state ?? ""
+            newReq.address1 = self.yelpBusiness.location?.address1
+            newReq.address2 = self.yelpBusiness.location?.address2
+            newReq.address3 = self.yelpBusiness.location?.address3
+            newReq.zipCode = self.yelpBusiness.location?.zipCode
+            newReq.latitude = self.yelpBusiness.coordinates.latitude
+            newReq.longitude = self.yelpBusiness.coordinates.longitude
+            self.save(profile: newReq)
+        }))
         button.tintColor = .label
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
+        button.configuration = config
         return button
     }()
     
-    private lazy var businessInfo: UITextView = {
-        let text = UITextView()
-        text.text = "More Info:\n\nAddress: \(yelpBusiness.location!.address1!), \(yelpBusiness.location!.city), \(yelpBusiness.location!.state)\nPhone Number:  \(yelpBusiness.phone!)"
-        text.font = .systemFont(ofSize: 16, weight: .bold)
-        text.translatesAutoresizingMaskIntoConstraints = false
-        text.layer.cornerRadius = 10
-        text.isEditable = false
-        text.backgroundColor = .systemBackground
-        return text
+    private lazy var callButton: UIButton = {
+
+        var config = UIButton.Configuration.filled()
+        config.buttonSize = .large
+        config.cornerStyle = .medium
+        config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
+          var outgoing = incoming
+          outgoing.font = UIFont.preferredFont(forTextStyle: .headline)
+          return outgoing
+        }
+        config.image = UIImage(systemName: "phone.fill")
+        config.imagePadding = 5
+        config.imagePlacement = .top
+        config.title = "Call"
+        config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(scale: .medium)
+        let button = UIButton(type: .system, primaryAction: UIAction(handler: { _ in
+            //add code to call phone number
+        }))
+        button.tintColor = .label
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.configuration = config
+        return button
     }()
     
+    //MARK: - View configuration
     override func viewDidLoad() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(systemItem: .close, primaryAction: UIAction { _ in
+          self.dismiss(animated: true)
+        })
         print(yelpBusiness)
         configureViews()
     }
@@ -131,19 +235,27 @@ class AnnotationViewController: UIViewController {
         view.addSubview(blurEffectView)
         view.addSubview(businessImage)
         view.addSubview(businessName)
-        view.addSubview(addButton)
-        view.addSubview(safariButton)
-        view.addSubview(businessInfo)
+        view.addSubview(businessNameSubtitle)
         view.addSubview(businessPrice)
         view.addSubview(businessRating)
-        view.addSubview(directionsButton)
+        view.addSubview(saveButton)
+
+        view.addSubview(stackView)
+        stackView.addArrangedSubview(callButton)
+        stackView.addArrangedSubview(safariButton)
+        stackView.addArrangedSubview(directionsButton)
         
         configureConstraints()
     }
     
     private func configureConstraints() {
-        let buttonSize = CGFloat(75)
         let safeSize = CGFloat(view.frame.width - 50)
+        
+        let stackViewConstraints = [
+            stackView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
+            stackView.centerYAnchor.constraint(equalTo: businessName.bottomAnchor, constant: 85)
+        ]
         
         let businessImageConstraints = [
             businessImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
@@ -154,99 +266,39 @@ class AnnotationViewController: UIViewController {
         
         let businessNameConstraints = [
             businessName.topAnchor.constraint(equalTo: businessImage.bottomAnchor, constant: 10),
-            businessName.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            businessName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ]
         
-        let directionsButtonConstraints = [
-            directionsButton.bottomAnchor.constraint(equalTo: businessImage.topAnchor, constant: 15),
-            directionsButton.centerXAnchor.constraint(equalTo: businessImage.centerXAnchor),
-            directionsButton.heightAnchor.constraint(equalToConstant: buttonSize),
-            directionsButton.widthAnchor.constraint(equalToConstant: buttonSize)
+        let businessNameSubtitleConstraints = [
+            businessNameSubtitle.topAnchor.constraint(equalTo: businessName.bottomAnchor, constant: 5),
+            businessNameSubtitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ]
+
         
-        let safariButtonConstraints = [
-            safariButton.bottomAnchor.constraint(equalTo: businessImage.topAnchor, constant: 15),
-            safariButton.centerXAnchor.constraint(equalTo: businessImage.leadingAnchor, constant: 20),
-            safariButton.heightAnchor.constraint(equalToConstant: buttonSize),
-            safariButton.widthAnchor.constraint(equalToConstant: buttonSize)
+        let saveButtonConstraints = [
+            saveButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ]
-        
-        let addButtonConstraints = [
-            addButton.bottomAnchor.constraint(equalTo: businessImage.topAnchor, constant: 15),
-            addButton.centerXAnchor.constraint(equalTo: businessImage.trailingAnchor, constant: -20),
-            addButton.heightAnchor.constraint(equalToConstant: buttonSize),
-            addButton.widthAnchor.constraint(equalToConstant: buttonSize)
-        ]
-        
-        let businessInfoConstraints = [
-            businessInfo.topAnchor.constraint(equalTo: businessName.bottomAnchor, constant: 25),
-            businessInfo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            businessInfo.heightAnchor.constraint(equalToConstant: safeSize - 30),
-            businessInfo.widthAnchor.constraint(equalToConstant: safeSize)
-        ]
-        
+
         let businessPriceConstraints = [
-            businessPrice.topAnchor.constraint(equalTo: businessImage.bottomAnchor, constant: 10),
-            businessPrice.centerXAnchor.constraint(equalTo: businessName.trailingAnchor, constant: 45),
-            businessPrice.centerYAnchor.constraint(equalTo: businessName.centerYAnchor)
+            businessPrice.bottomAnchor.constraint(equalTo: businessImage.topAnchor),
+            businessPrice.leadingAnchor.constraint(equalTo: businessImage.leadingAnchor, constant: 20)
         ]
         
         let businessRatingConstraints = [
-            businessRating.topAnchor.constraint(equalTo: businessImage.bottomAnchor, constant: 10),
-            businessRating.centerXAnchor.constraint(equalTo: businessName.leadingAnchor, constant: -45),
-            businessRating.centerYAnchor.constraint(equalTo: businessName.centerYAnchor)
+            businessRating.bottomAnchor.constraint(equalTo: businessImage.topAnchor),
+            businessRating.trailingAnchor.constraint(equalTo: businessImage.trailingAnchor, constant: -20),
         ]
         
+        NSLayoutConstraint.activate(stackViewConstraints)
         NSLayoutConstraint.activate(businessImageConstraints)
         NSLayoutConstraint.activate(businessNameConstraints)
-        NSLayoutConstraint.activate(safariButtonConstraints)
-        NSLayoutConstraint.activate(directionsButtonConstraints)
-        NSLayoutConstraint.activate(addButtonConstraints)
-        NSLayoutConstraint.activate(businessInfoConstraints)
+        NSLayoutConstraint.activate(businessNameSubtitleConstraints)
+        NSLayoutConstraint.activate(saveButtonConstraints)
         NSLayoutConstraint.activate(businessPriceConstraints)
         NSLayoutConstraint.activate(businessRatingConstraints)
     }
-    
-    @objc private func mapButtonPressed() {
-        let coordinate = CLLocationCoordinate2D(latitude: yelpBusiness.coordinates.latitude, longitude: yelpBusiness.coordinates.longitude)
-        let placemark = MKPlacemark(coordinate: coordinate)
-        let mapItem = MKMapItem(placemark: placemark)
-        let launchOptions = [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDefault]
-        title = yelpBusiness.name
-        mapItem.name = title
-        mapItem.openInMaps(launchOptions: launchOptions)
-    }
-    
-    @objc private func linkButtonPressed() {
-        if let url = URL(string: yelpBusiness.url) {
-            UIApplication.shared.open(url)
-        }
-    }
-    
-    @objc private func addButtonPressed() {
-        //this code will allow you to select which folder you want to save your pin to
-        
-        let newReq = ReqsModel()
-        
-        newReq.dateCreated = Date.now
-        newReq.name = yelpBusiness.name
-        newReq.url = yelpBusiness.url
-        newReq.imageUrl = yelpBusiness.imageUrl
-        newReq.rating = yelpBusiness.rating
-        newReq.price = yelpBusiness.price
-        newReq.phone = yelpBusiness.phone
-        newReq.city = yelpBusiness.location?.city ?? ""
-        newReq.country = yelpBusiness.location?.country ?? ""
-        newReq.state = yelpBusiness.location?.state ?? ""
-        newReq.address1 = yelpBusiness.location?.address1
-        newReq.address2 = yelpBusiness.location?.address2
-        newReq.address3 = yelpBusiness.location?.address3
-        newReq.zipCode = yelpBusiness.location?.zipCode
-        newReq.latitude = yelpBusiness.coordinates.latitude
-        newReq.longitude = yelpBusiness.coordinates.longitude
-        self.save(profile: newReq)
-    }
-    
+
 //MARK: - Realm
     func save(profile: ReqsModel) {
         let acSuccess = UIAlertController(title: "Added!", message: nil, preferredStyle: .alert)

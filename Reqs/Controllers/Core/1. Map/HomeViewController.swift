@@ -99,9 +99,6 @@ class HomeViewController: UIViewController {
     }
     
     @objc func pinMyReqsPressed() {
-        defer {
-            refreshMap()
-        }
         
         searchData = []
         var pins: [YelpResultPins] = []
@@ -195,15 +192,12 @@ class HomeViewController: UIViewController {
             locationManager.stopUpdatingLocation()
             let lat = location.coordinate.latitude
             let lon = location.coordinate.longitude
-            let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: lon), latitudinalMeters: 2000, longitudinalMeters: 2000)
+            let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: lon), latitudinalMeters: 2500, longitudinalMeters: 2500)
             mapView.setRegion(region, animated: true)
         }
     }
     
     func addPins() {
-        defer {
-            refreshMap()
-        }
         var pins: [YelpResultPins] = []
         if let data = searchData {
             DispatchQueue.main.async {
@@ -225,15 +219,7 @@ class HomeViewController: UIViewController {
     func loadReqs() {
         reqsList = realm.objects(ReqsModel.self)
     }
-    
-    //workaround to refresh annotations on map view
-    func refreshMap() {
-        DispatchQueue.main.async {
-            self.mapView.mapType = .mutedStandard
-            self.mapView.mapType = .standard
-        }
-    }
-    
+
 //MARK: - Location
     func locationPermissionDenied() {
         //add functionality to open settings > privacy
