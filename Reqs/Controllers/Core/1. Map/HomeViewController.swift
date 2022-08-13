@@ -224,8 +224,13 @@ class HomeViewController: UIViewController {
     func locationPermissionDenied() {
         //add functionality to open settings > privacy
         let ac = UIAlertController(title: "Location Services not enabled", message: "Please enable Location Services in the Settings app to enable this functionality", preferredStyle: .alert)
-        let cont = UIAlertAction(title: "Continue", style: .cancel)
+        let cont = UIAlertAction(title: "Cancel", style: .cancel)
+        let settings = UIAlertAction(title: "Settings", style: .default) { _ in
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
+        }
         ac.addAction(cont)
+        ac.addAction(settings)
+        present(ac, animated: true)
     }
     
     func checkIfLocationServicesIsEnabled() {
