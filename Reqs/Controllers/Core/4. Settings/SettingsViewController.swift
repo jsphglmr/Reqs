@@ -9,6 +9,9 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    
+    private var models = [Section]()
+    let defaults = UserDefaults.standard
         
     private let settingsTableView: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
@@ -23,8 +26,6 @@ class SettingsViewController: UIViewController {
         view.backgroundColor = .red
         return view
     }()
-    
-    private var models = [Section]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,17 +41,23 @@ class SettingsViewController: UIViewController {
     
     private func configure() {
         models.append(Section(title: "General", options: [
-            .switchCell(model: SettingsSwitchOption(title: "Use Dark Mode", icon: UIImage(systemName: "display"), iconBackgroundColor: .systemGray, isOn: true, handler: {
+            .switchCell(model: SettingsSwitchOption(title: "Always Use Dark Mode", icon: UIImage(systemName: "display"), iconBackgroundColor: .systemGray, isOn: true, handler: {
+                //darkmode code
                 
             })),
             .staticCell(model: SettingsOption(title: "Notifications", icon: UIImage(systemName: "bell"), iconBackgroundColor: .systemPink, handler: {
-                
-            })),
-            .staticCell(model: SettingsOption(title: "Location", icon: UIImage(systemName: "location"), iconBackgroundColor: .systemBlue, handler: {
+                //notifications code
                 
             })),
             .staticCell(model: SettingsOption(title: "Privacy", icon: UIImage(systemName: "hand.raised"), iconBackgroundColor: .systemOrange, handler: {
-                
+                let ac = UIAlertController(title: "View privacy settings in Settings App", message: nil, preferredStyle: .alert)
+                let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+                let settings = UIAlertAction(title: "Settings", style: .default) { _ in
+                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
+                }
+                ac.addAction(cancel)
+                ac.addAction(settings)
+                self.present(ac, animated: true)
             })),
         ]))
         
@@ -81,8 +88,8 @@ class SettingsViewController: UIViewController {
         navigationItem.rightBarButtonItem?.tintColor = .label
         navigationController?.navigationBar.isTranslucent = false
     }
-    
 }
+
 //MARK: - Tableview Delegate & Datasource
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -155,5 +162,3 @@ struct Section {
     let title: String
     let options: [SettingsOptionType]
 }
-
-
