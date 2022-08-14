@@ -209,7 +209,9 @@ class AnnotationViewController: UIViewController {
         config.title = "Call"
         config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(scale: .medium)
         let button = UIButton(type: .system, primaryAction: UIAction(handler: { _ in
-            //add code to call phone number
+            guard let number = self.yelpBusiness.phone else { return }
+            guard var url = URL(string: "telprompt:\(number)") else { return }
+            UIApplication.shared.open(url)
         }))
         button.tintColor = .label
         button.translatesAutoresizingMaskIntoConstraints = false

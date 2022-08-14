@@ -117,10 +117,11 @@
 			isa = PBXGroup;
 			children = (
 				C74F04DB2814EAF900F844CE /* MainTabbarViewController.swift */,
-				C7DDA7E72852D52F005D67D1 /* 1. Map */,
-				C7DDA7E82852D537005D67D1 /* 2. Discover */,
-				C7DDA7E92852D550005D67D1 /* 3. My Reqs */,
-				C7DDA7EA2852D56B005D67D1 /* 4. Settings */,
+				C7DDA7E72852D52F005D67D1 /* Map */,
+				C7DDA7E82852D537005D67D1 /* Discover */,
+				C7DDA7E92852D550005D67D1 /* My Reqs */,
+				C7DDA7EA2852D56B005D67D1 /* Settings */,
+				C77DD93328A96B9700CE9150 /* Annotation */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -131,6 +132,15 @@
 				C74F04DD2814EAF900F844CE /* Main.storyboard */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		C77DD93328A96B9700CE9150 /* Annotation */ = {
+			isa = PBXGroup;
+			children = (
+				C7DDA86C2873CCC8005D67D1 /* AnnotationViewController.swift */,
+				C7DDA86828639399005D67D1 /* YelpResultPins.swift */,
+			);
+			path = Annotation;
 			sourceTree = "<group>";
 		};
 		C7DDA7CD284FBE8F005D67D1 /* Cells */ = {
@@ -180,38 +190,36 @@
 			path = NetworkManager;
 			sourceTree = "<group>";
 		};
-		C7DDA7E72852D52F005D67D1 /* 1. Map */ = {
+		C7DDA7E72852D52F005D67D1 /* Map */ = {
 			isa = PBXGroup;
 			children = (
 				C74F04F128163BC900F844CE /* HomeViewController.swift */,
-				C7DDA86C2873CCC8005D67D1 /* AnnotationViewController.swift */,
-				C7DDA86828639399005D67D1 /* YelpResultPins.swift */,
 			);
-			path = "1. Map";
+			path = Map;
 			sourceTree = "<group>";
 		};
-		C7DDA7E82852D537005D67D1 /* 2. Discover */ = {
+		C7DDA7E82852D537005D67D1 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
 				C74F04F328163C0400F844CE /* ExploreViewController.swift */,
 			);
-			path = "2. Discover";
+			path = Discover;
 			sourceTree = "<group>";
 		};
-		C7DDA7E92852D550005D67D1 /* 3. My Reqs */ = {
+		C7DDA7E92852D550005D67D1 /* My Reqs */ = {
 			isa = PBXGroup;
 			children = (
 				C78573D7289CBEF3000BB99C /* ReqsViewController.swift */,
 			);
-			path = "3. My Reqs";
+			path = "My Reqs";
 			sourceTree = "<group>";
 		};
-		C7DDA7EA2852D56B005D67D1 /* 4. Settings */ = {
+		C7DDA7EA2852D56B005D67D1 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				C74F04F528163CB500F844CE /* SettingsViewController.swift */,
 			);
-			path = "4. Settings";
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
