@@ -62,7 +62,6 @@ class ExploreViewController: UIViewController {
                 print(error)
             case let .success(yelpData):
                 self.searchData = yelpData.businesses
-                print("total results: ", yelpData.total)
             }
         }
     }
@@ -113,7 +112,8 @@ extension ExploreViewController: UICollectionViewDelegateFlowLayout { // allows 
 //MARK: - UICollectionViewDataSource
 extension ExploreViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return searchData?.count ?? 18
+        //always static due to yelp api return
+        return 18
     }
 }
 
