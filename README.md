@@ -5,7 +5,9 @@ Recommendation app to search for, organize, and save the places you love.
 
 * UIKit
 * Programmatic UI
-* Generic networking
+* MapKit
+* API calls and JSON parsing (using generic networking)
+* Data persistance using UserDefaults and Realm
 * Fully dark mode compatible
 
 ### TODOs:
