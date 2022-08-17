@@ -10,11 +10,23 @@ Recommendation app to search for, organize, and save the places you love.
 * Data persistance using UserDefaults and Realm
 * Fully dark mode compatible
 
+
+### Building the app
+
+To run the app, you must do two things:
+- Obtain an API key from Yelp. This can be done here: https://www.yelp.com/developers/
+- Create a new file with the following code:
+
+```swift
+struct Constant {
+    let apiKey = "<your key here>"
+}
+```
+
 ### TODOs:
 * [ ] Implement UserDefaults for settings
-* [ ] Complete annotation screen with relevant information when pins are selected on map
+* [ ] Build onboarding screen
 
 #### Future concepts:
-* Build onboarding screen
 * Use FireBase to create user accounts
 * Create 'share' function to share personalized lists with friends
