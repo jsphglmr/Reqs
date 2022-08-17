@@ -16,7 +16,6 @@
 		C74F04D82814EAF900F844CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F04D72814EAF900F844CE /* AppDelegate.swift */; };
 		C74F04DA2814EAF900F844CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F04D92814EAF900F844CE /* SceneDelegate.swift */; };
 		C74F04DC2814EAF900F844CE /* MainTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F04DB2814EAF900F844CE /* MainTabbarViewController.swift */; };
-		C74F04DF2814EAF900F844CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C74F04DD2814EAF900F844CE /* Main.storyboard */; };
 		C74F04E12814EAFA00F844CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C74F04E02814EAFA00F844CE /* Assets.xcassets */; };
 		C74F04E42814EAFA00F844CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C74F04E22814EAFA00F844CE /* LaunchScreen.storyboard */; };
 		C74F04F228163BC900F844CE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F04F128163BC900F844CE /* HomeViewController.swift */; };
@@ -65,7 +64,6 @@
 		C74F04D72814EAF900F844CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C74F04D92814EAF900F844CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C74F04DB2814EAF900F844CE /* MainTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarViewController.swift; sourceTree = "<group>"; };
-		C74F04DE2814EAF900F844CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C74F04E02814EAFA00F844CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C74F04E32814EAFA00F844CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C74F04E52814EAFA00F844CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -183,7 +181,6 @@
 		C74F04F92816446500F844CE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C74F04DD2814EAF900F844CE /* Main.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -387,7 +384,6 @@
 			files = (
 				C74F04E42814EAFA00F844CE /* LaunchScreen.storyboard in Resources */,
 				C74F04E12814EAFA00F844CE /* Assets.xcassets in Resources */,
-				C74F04DF2814EAF900F844CE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,14 +442,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C74F04DD2814EAF900F844CE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C74F04DE2814EAF900F844CE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C74F04E22814EAFA00F844CE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -708,8 +696,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = exactVersion;
+				version = 10.28.5;
 			};
 		};
 		C7DDA870288378DA005D67D1 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
