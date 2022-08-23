@@ -10,34 +10,108 @@ import UIKit
 class OnboardingViewController: UIPageViewController {
     
     var pages = [UIViewController]()
-    let pageControl = UIPageControl()
     let initialPage = 0
     
-}
-
-extension OnboardingViewController {
+    private lazy var pageControl: UIPageControl = {
+        let pageControl = UIPageControl()
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        pageControl.currentPageIndicatorTintColor = .label
+        pageControl.pageIndicatorTintColor = .systemBackground
+        pageControl.numberOfPages = pages.count
+        pageControl.currentPage = initialPage
+        pageControl.addTarget(self, action: #selector(pageControlTapped), for: .valueChanged)
+        return pageControl
+    }()
     
-    func configure() {
+    private lazy var closeOnboardingButton: UIButton = {
+        let button = UIButton(type: .close)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(.label, for: .normal)
+        button.addTarget(self, action: #selector(closeOnboardingTapped), for: .primaryActionTriggered)
+        return button
+    }()
+    
+    private lazy var continueButton: UIButton = {
+        var config = UIButton.Configuration.filled()
+        config.buttonSize = .large
+        config.cornerStyle = .medium
+        config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
+            var outgoing = incoming
+            outgoing.font = UIFont.preferredFont(forTextStyle: .headline)
+            return outgoing
+        }
+        config.image = UIImage(systemName: "arrow.turn.down.right")
+        config.imagePadding = 8
+        config.imagePlacement = .trailing
+        config.title = "Continue"
+        config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(scale: .medium)
+        let button = UIButton(type: .system)
+        button.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
+        button.tintColor = .label
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.configuration = config
+        return button
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         dataSource = self
         delegate = self
-        
-        pageControl.addAction(UIAction(handler: { _ in
-            
-        }), for: .valueChanged)
-        
-        let page1 = OnboardingPage1()
-        let page2 = OnboardingPage2()
-        let page3 = OnboardingPage3()
+        configure()
+        setupViews()
+    }
+    
+    func configure() {
+        let page1 = OnboardingPage(imageName: "testimage1", titleText: "Welcome to Reqs!", subtitleText: "", backgroundColor: .systemGray2)
+        let page2 = OnboardingPage(imageName: "testimage2", titleText: "Revisit your favorite places", subtitleText: "", backgroundColor: .systemGray4)
+        let page3 = OnboardingLocation(backgroundColor: .systemGray6)
+        //        let page4 = OnboardingLogin()
         
         pages.append(page1)
         pages.append(page2)
         pages.append(page3)
+        //        pages.append(page4)
+        
         
         setViewControllers([pages[initialPage]], direction: .forward, animated: true, completion: nil)
-        setupView()
     }
     
-    func setupView() {
+    func setupViews() {
+        view.addSubview(pageControl)
+        view.addSubview(continueButton)
+        view.addSubview(closeOnboardingButton)
+        
+        let pageControlConstraints = [
+            pageControl.widthAnchor.constraint(equalTo: view.widthAnchor),
+            pageControl.heightAnchor.constraint(equalToConstant: 20),
+            pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            pageControl.bottomAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.bottomAnchor, multiplier: 2)
+        ]
+        
+        let continueButtonConstraints = [
+            continueButton.bottomAnchor.constraint(equalTo: pageControl.topAnchor, constant: -30),
+            continueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ]
+        
+        let closeOnboardingButtonConstraints = [
+            closeOnboardingButton.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 2),
+            closeOnboardingButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10)
+        ]
+        
+        NSLayoutConstraint.activate(pageControlConstraints)
+        NSLayoutConstraint.activate(continueButtonConstraints)
+        NSLayoutConstraint.activate(closeOnboardingButtonConstraints)
+    }
+    
+    @objc func closeOnboardingTapped() {
+        
+    }
+    
+    @objc func continueButtonTapped() {
+        
+    }
+    
+    @objc func pageControlTapped() {
         
     }
 }
@@ -66,5 +140,10 @@ extension OnboardingViewController: UIPageViewControllerDataSource {
 //MARK: - Delegates
 
 extension OnboardingViewController: UIPageViewControllerDelegate {
-    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        guard let viewControllers = pageViewController.viewControllers else { return }
+        guard let currentIndex = pages.firstIndex(of: viewControllers[0]) else { return }
+        
+        pageControl.currentPage = currentIndex
+    }
 }
