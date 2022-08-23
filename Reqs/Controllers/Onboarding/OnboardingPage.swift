@@ -7,45 +7,72 @@
 
 import UIKit
 
-class OnboardingPage1: UIViewController {
+class OnboardingPage: UIViewController {
     
-    private lazy var businessRating: UILabel = {
-        let label = UILabel()
+    let imageView = UIImageView()
+    let titleLabel = UILabel()
+    let subtitleLabel = UILabel()
+    var setBackgroundColor = UIColor()
+    
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.distribution = .fill
+        stackView.spacing = 10
+        return stackView
+    }()
+    
+    private lazy var mainTitle: UILabel = {
+        let label = titleLabel
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = String("\(yelpBusiness.rating!) / 5")
-        label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.font = .systemFont(ofSize: 24, weight: .semibold)
         label.adjustsFontSizeToFitWidth = true
-        label.numberOfLines = 0
+        label.numberOfLines = 2
         return label
     }()
     
-    private lazy var safariButton: UIButton = {
-        var config = UIButton.Configuration.filled()
-        config.buttonSize = .large
-        config.cornerStyle = .medium
-        config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
-          var outgoing = incoming
-          outgoing.font = UIFont.preferredFont(forTextStyle: .headline)
-          return outgoing
-        }
-        config.image = UIImage(systemName: "safari.fill")
-        config.imagePadding = 5
-        config.imagePlacement = .top
-        config.title = "Safari"
-        config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(scale: .medium)
-        let button = UIButton()
-        button.tintColor = .label
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.configuration = config
-        return button
+    private lazy var mainSubtitle: UILabel = {
+        let label = subtitleLabel
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 18, weight: .regular)
+        label.adjustsFontSizeToFitWidth = true
+        label.numberOfLines = 2
+        return label
     }()
 
-
+    init(imageName: String, titleText: String, subtitleText: String, backgroundColor: UIColor) {
+        super.init(nibName: nil, bundle: nil)
+        imageView.image = UIImage(named: imageName)
+        mainTitle.text = titleText
+        mainSubtitle.text = subtitleText
+        setBackgroundColor = backgroundColor
+        
+        layout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-//    init(<#parameters#>) {
-//        <#statements#>
-//    }
+    
+    func layout() {
+        view.addSubview(stackView)
+        stackView.addArrangedSubview(mainTitle)
+        stackView.addArrangedSubview(mainSubtitle)
+        
+        view.backgroundColor = setBackgroundColor
+        
+        let stackViewConstraints = [
+            stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -150),
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(stackViewConstraints)
+    }
 }
