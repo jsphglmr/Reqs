@@ -13,6 +13,7 @@
 		C725BA4228AC2DED00DA4D32 /* MockReqsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7375F2A28AC28E200F123F4 /* MockReqsViewController.swift */; };
 		C725BA4428AC2F1E00DA4D32 /* MockJSONManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C725BA4328AC2F1E00DA4D32 /* MockJSONManager.swift */; };
 		C725BA4628AC346D00DA4D32 /* testresponse.json in Resources */ = {isa = PBXBuildFile; fileRef = C725BA4528AC346D00DA4D32 /* testresponse.json */; };
+		C73ACED728B46FB6007633E2 /* OnboardingLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73ACED628B46FB6007633E2 /* OnboardingLocation.swift */; };
 		C74F04D82814EAF900F844CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F04D72814EAF900F844CE /* AppDelegate.swift */; };
 		C74F04DA2814EAF900F844CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F04D92814EAF900F844CE /* SceneDelegate.swift */; };
 		C74F04DC2814EAF900F844CE /* MainTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F04DB2814EAF900F844CE /* MainTabbarViewController.swift */; };
@@ -22,9 +23,8 @@
 		C74F04F428163C0400F844CE /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F04F328163C0400F844CE /* ExploreViewController.swift */; };
 		C74F04F628163CB500F844CE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F04F528163CB500F844CE /* SettingsViewController.swift */; };
 		C765A54D28AAA9E100FE72F0 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C765A54C28AAA9E100FE72F0 /* OnboardingViewController.swift */; };
-		C765A54F28AAABEA00FE72F0 /* OnboardingPage1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C765A54E28AAABEA00FE72F0 /* OnboardingPage1.swift */; };
-		C765A55128AAABF800FE72F0 /* OnboardingPage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C765A55028AAABF800FE72F0 /* OnboardingPage2.swift */; };
-		C765A55328AAAC0000FE72F0 /* OnboardingPage3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C765A55228AAAC0000FE72F0 /* OnboardingPage3.swift */; };
+		C765A54F28AAABEA00FE72F0 /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C765A54E28AAABEA00FE72F0 /* OnboardingPage.swift */; };
+		C765A55328AAAC0000FE72F0 /* OnboardingLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C765A55228AAAC0000FE72F0 /* OnboardingLogin.swift */; };
 		C78573D62899C92C000BB99C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78573D52899C92C000BB99C /* Constant.swift */; };
 		C78573D8289CBEF3000BB99C /* ReqsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78573D7289CBEF3000BB99C /* ReqsViewController.swift */; };
 		C7DB168F28A18A60001A66FD /* MyReqsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB168E28A18A60001A66FD /* MyReqsTableViewCell.swift */; };
@@ -60,6 +60,7 @@
 		C7375F2828AC276400F123F4 /* MockHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHomeViewController.swift; sourceTree = "<group>"; };
 		C7375F2A28AC28E200F123F4 /* MockReqsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockReqsViewController.swift; sourceTree = "<group>"; };
 		C7375F2C28AC292300F123F4 /* ReqsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqsViewControllerTests.swift; sourceTree = "<group>"; };
+		C73ACED628B46FB6007633E2 /* OnboardingLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingLocation.swift; sourceTree = "<group>"; };
 		C74F04D42814EAF900F844CE /* Reqs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reqs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C74F04D72814EAF900F844CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C74F04D92814EAF900F844CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,9 +72,8 @@
 		C74F04F328163C0400F844CE /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		C74F04F528163CB500F844CE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C765A54C28AAA9E100FE72F0 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
-		C765A54E28AAABEA00FE72F0 /* OnboardingPage1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage1.swift; sourceTree = "<group>"; };
-		C765A55028AAABF800FE72F0 /* OnboardingPage2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage2.swift; sourceTree = "<group>"; };
-		C765A55228AAAC0000FE72F0 /* OnboardingPage3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage3.swift; sourceTree = "<group>"; };
+		C765A54E28AAABEA00FE72F0 /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
+		C765A55228AAAC0000FE72F0 /* OnboardingLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingLogin.swift; sourceTree = "<group>"; };
 		C78573D52899C92C000BB99C /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		C78573D7289CBEF3000BB99C /* ReqsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqsViewController.swift; sourceTree = "<group>"; };
 		C7DB168E28A18A60001A66FD /* MyReqsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReqsTableViewCell.swift; sourceTree = "<group>"; };
@@ -160,7 +160,6 @@
 			children = (
 				C77DD93428AA7F1F00CE9150 /* Onboarding */,
 				C74F04F028163BAB00F844CE /* Core */,
-				C7DDA7CD284FBE8F005D67D1 /* Cells */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -181,6 +180,7 @@
 		C74F04F92816446500F844CE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C7DDA7CD284FBE8F005D67D1 /* Cells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -198,9 +198,9 @@
 			isa = PBXGroup;
 			children = (
 				C765A54C28AAA9E100FE72F0 /* OnboardingViewController.swift */,
-				C765A54E28AAABEA00FE72F0 /* OnboardingPage1.swift */,
-				C765A55028AAABF800FE72F0 /* OnboardingPage2.swift */,
-				C765A55228AAAC0000FE72F0 /* OnboardingPage3.swift */,
+				C765A54E28AAABEA00FE72F0 /* OnboardingPage.swift */,
+				C73ACED628B46FB6007633E2 /* OnboardingLocation.swift */,
+				C765A55228AAAC0000FE72F0 /* OnboardingLogin.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -410,22 +410,22 @@
 				C7DDA7D828513D93005D67D1 /* ProfileModel.swift in Sources */,
 				C74F04DC2814EAF900F844CE /* MainTabbarViewController.swift in Sources */,
 				C7DB168F28A18A60001A66FD /* MyReqsTableViewCell.swift in Sources */,
-				C765A55128AAABF800FE72F0 /* OnboardingPage2.swift in Sources */,
 				C765A54D28AAA9E100FE72F0 /* OnboardingViewController.swift in Sources */,
-				C765A54F28AAABEA00FE72F0 /* OnboardingPage1.swift in Sources */,
+				C765A54F28AAABEA00FE72F0 /* OnboardingPage.swift in Sources */,
 				C7DDA86D2873CCC8005D67D1 /* AnnotationViewController.swift in Sources */,
 				C7DB170B28A6C248001A66FD /* SettingsTableViewCell.swift in Sources */,
 				C7DDA7E22852B743005D67D1 /* JSONManager.swift in Sources */,
 				C74F04D82814EAF900F844CE /* AppDelegate.swift in Sources */,
 				C7DDA7CF284FBEC1005D67D1 /* DiscoverCollectionViewCell.swift in Sources */,
 				C78573D8289CBEF3000BB99C /* ReqsViewController.swift in Sources */,
-				C765A55328AAAC0000FE72F0 /* OnboardingPage3.swift in Sources */,
+				C765A55328AAAC0000FE72F0 /* OnboardingLogin.swift in Sources */,
 				C74F04F428163C0400F844CE /* ExploreViewController.swift in Sources */,
 				C74F04DA2814EAF900F844CE /* SceneDelegate.swift in Sources */,
 				C7DDA7DF28529BD4005D67D1 /* YelpResult.swift in Sources */,
 				C7DDA86928639399005D67D1 /* YelpResultPins.swift in Sources */,
 				C74F04F228163BC900F844CE /* HomeViewController.swift in Sources */,
 				C74F04F628163CB500F844CE /* SettingsViewController.swift in Sources */,
+				C73ACED728B46FB6007633E2 /* OnboardingLocation.swift in Sources */,
 				C78573D62899C92C000BB99C /* Constant.swift in Sources */,
 				C7DB170D28A6CDE7001A66FD /* SwitchTableViewCell.swift in Sources */,
 			);

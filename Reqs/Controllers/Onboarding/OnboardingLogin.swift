@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OnboardingPage3: UIViewController {
+class OnboardingLogin: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

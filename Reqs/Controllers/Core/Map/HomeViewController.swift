@@ -19,13 +19,10 @@ class HomeViewController: UIViewController {
             addPins()
         }
     }
-    
     lazy var realm: Realm = {
         return try! Realm()
     }()
-    
     var reqsList: Results<ReqsModel>?
-    
     var currentUserLocation = CLLocation()
     
     //MARK: - Views & Buttons

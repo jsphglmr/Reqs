@@ -49,7 +49,7 @@ class ReqsViewController: UIViewController {
     }
     
     private func setupNavigation() {
-        navigationItem.title = "Reqs List"
+        navigationItem.title = "My Reqs"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.barTintColor = .systemBackground
         navigationItem.rightBarButtonItem?.tintColor = .label
