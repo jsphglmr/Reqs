@@ -17,20 +17,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         //MARK: Used to get rid of Storyboards
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-        
-        let launchedBefore = UserDefaults.standard.bool(forKey: "hasLaunched")
-        var vc = UIViewController()
-        if launchedBefore {
-            vc = MainTabbarViewController()
-        } else {
-            vc = OnboardingViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-            UserDefaults.standard.set(true, forKey: "hasLaunched")
-        }
 
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = vc
+        window?.rootViewController = MainTabbarViewController()
         window?.makeKeyAndVisible()
     }
 }

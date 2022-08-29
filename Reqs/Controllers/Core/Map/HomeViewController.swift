@@ -127,6 +127,7 @@ class HomeViewController: UIViewController {
         setupViews()
         loadReqs()
         checkIfLocationServicesIsEnabled()
+        presentOnboarding()
     }
     
     func setupViews() {
@@ -172,6 +173,17 @@ class HomeViewController: UIViewController {
         NSLayoutConstraint.activate(centerButtonConstraints)
         NSLayoutConstraint.activate(searchButtonConstraints)
         NSLayoutConstraint.activate(pinMyReqsButtonConstraints)
+    }
+    
+    func presentOnboarding() {
+        let launchedBefore = UserDefaults.standard.bool(forKey: "hasLaunched")
+        
+        if launchedBefore {
+            return
+        } else {
+            present(OnboardingViewController(transitionStyle: .scroll, navigationOrientation: .horizontal), animated: true)
+            UserDefaults.standard.set(true, forKey: "hasLaunched")
+        }
     }
     
     func centerMapOnUserLocation (locations: [CLLocation]) {

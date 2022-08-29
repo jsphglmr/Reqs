@@ -27,7 +27,7 @@ class OnboardingViewController: UIPageViewController {
         let button = UIButton(type: .close)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.label, for: .normal)
-        button.addTarget(self, action: #selector(closeOnboardingTapped), for: .primaryActionTriggered)
+        button.addTarget(self, action: #selector(closeOnboardingTapped), for: .touchUpInside)
         return button
     }()
     
@@ -104,7 +104,7 @@ class OnboardingViewController: UIPageViewController {
     }
     
     @objc func closeOnboardingTapped() {
-        
+        self.dismiss(animated: true)
     }
     
     @objc func continueButtonTapped() {
