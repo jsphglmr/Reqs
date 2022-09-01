@@ -23,20 +23,17 @@ class HomeViewController: UIViewController {
         return try! Realm()
     }()
     var reqsList: Results<ReqsModel>?
-    var currentUserLocation = CLLocation()
+    
+    let locationManager = LocationManager()
     
     //MARK: - Views & Buttons
     private let mapView: MKMapView = {
+        
         let map = MKMapView()
         map.translatesAutoresizingMaskIntoConstraints = false
         map.showsUserLocation = true
         map.userTrackingMode = .follow
         return map
-    }()
-    
-    private var locationManager: CLLocationManager = {
-        let location = CLLocationManager()
-        return location
     }()
     
     private lazy var searchButton: UIButton = {
@@ -72,8 +69,6 @@ class HomeViewController: UIViewController {
         return button
     }()
     
-    
-    
     //MARK: - Selector Methods
     @objc private func searchButtonPressed() {
         let ac = UIAlertController(title: "Search", message: "What are you looking for?", preferredStyle: .alert)
@@ -81,8 +76,8 @@ class HomeViewController: UIViewController {
         let search = UIAlertAction(title: "Search", style: .default) { _ in
             if let text = ac.textFields?.first?.text {
                 let searchText = text.replacingOccurrences(of: " ", with: "%20")
-                self.getYelpResults(term: searchText, location: self.currentUserLocation)
-                self.refreshRegionForPins(locations: [self.currentUserLocation])
+                self.getYelpResults(term: searchText, location: LocationManager.currentUserLocation)
+                self.refreshRegionForPins(locations: [LocationManager.currentUserLocation])
             }
         }
         ac.addAction(search)
@@ -92,7 +87,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc func reCenterButtonPressed() {
-        locationManager.requestLocation()
+        centerMapOnUserLocation(locations: [LocationManager.currentUserLocation])
     }
     
     @objc func pinMyReqsPressed() {
@@ -116,18 +111,17 @@ class HomeViewController: UIViewController {
                 self.mapView.addAnnotations(pins)
             }
         }
-        self.refreshRegionForPins(locations: [self.currentUserLocation])
+        self.refreshRegionForPins(locations: [LocationManager.currentUserLocation])
     }
     
     //MARK: - View
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        locationManager.delegate = self
         setupViews()
         loadReqs()
-        checkIfLocationServicesIsEnabled()
         presentOnboarding()
+        locationManager.checkIfLocationServicesIsEnabled()
     }
     
     func setupViews() {
@@ -228,29 +222,6 @@ class HomeViewController: UIViewController {
     func loadReqs() {
         reqsList = realm.objects(ReqsModel.self)
     }
-
-//MARK: - Location
-    func locationPermissionDenied() {
-        //add functionality to open settings > privacy
-        let ac = UIAlertController(title: "Location Services not enabled", message: "Please enable Location Services in the Settings app to enable this functionality", preferredStyle: .alert)
-        let cont = UIAlertAction(title: "Cancel", style: .cancel)
-        let settings = UIAlertAction(title: "Settings", style: .default) { _ in
-            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
-        }
-        ac.addAction(cont)
-        ac.addAction(settings)
-        present(ac, animated: true)
-    }
-    
-    func checkIfLocationServicesIsEnabled() {
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            checkLocationAuthorization()
-        } else {
-            //add new alert action to open settings app
-            locationPermissionDenied()
-        }
-    }
     
     //MARK: - JSON / Data
     func getYelpResults(term: String, location: CLLocation) {
@@ -267,41 +238,8 @@ class HomeViewController: UIViewController {
 }
 
 //MARK: - Map Delegate
-extension HomeViewController: MKMapViewDelegate, CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        centerMapOnUserLocation(locations: locations)
-        
-        if let userLocation = locations.last {
-            currentUserLocation = userLocation
-        } else {
-            print("present error ; saving user location")
-        }
-    }
-    
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        checkLocationAuthorization()
-    }
-    
-    func checkLocationAuthorization() {
-        switch locationManager.authorizationStatus {
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-        case .restricted:
-            locationPermissionDenied()
-        case .denied:
-            locationPermissionDenied()
-        case .authorizedAlways, .authorizedWhenInUse:
-            locationManager.requestLocation()
-        default:
-            break
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("location error \(error.localizedDescription)")
-    }
-    
+extension HomeViewController: MKMapViewDelegate {
+
     //adds the annotationview for each pin on the map
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let annotation = annotation as? YelpResultPins else {

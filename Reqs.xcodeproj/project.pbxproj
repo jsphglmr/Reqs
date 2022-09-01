@@ -27,6 +27,7 @@
 		C765A55328AAAC0000FE72F0 /* OnboardingLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C765A55228AAAC0000FE72F0 /* OnboardingLogin.swift */; };
 		C78573D62899C92C000BB99C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78573D52899C92C000BB99C /* Constant.swift */; };
 		C78573D8289CBEF3000BB99C /* ReqsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78573D7289CBEF3000BB99C /* ReqsViewController.swift */; };
+		C797669D28C130C1007A436B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C797669C28C130C1007A436B /* LocationManager.swift */; };
 		C7DB168F28A18A60001A66FD /* MyReqsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB168E28A18A60001A66FD /* MyReqsTableViewCell.swift */; };
 		C7DB170B28A6C248001A66FD /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB170A28A6C248001A66FD /* SettingsTableViewCell.swift */; };
 		C7DB170D28A6CDE7001A66FD /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB170C28A6CDE7001A66FD /* SwitchTableViewCell.swift */; };
@@ -76,6 +77,7 @@
 		C765A55228AAAC0000FE72F0 /* OnboardingLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingLogin.swift; sourceTree = "<group>"; };
 		C78573D52899C92C000BB99C /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		C78573D7289CBEF3000BB99C /* ReqsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqsViewController.swift; sourceTree = "<group>"; };
+		C797669C28C130C1007A436B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		C7DB168E28A18A60001A66FD /* MyReqsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReqsTableViewCell.swift; sourceTree = "<group>"; };
 		C7DB170A28A6C248001A66FD /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		C7DB170C28A6CDE7001A66FD /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				C74F04F92816446500F844CE /* Views */,
 				C7DDA7D528513D66005D67D1 /* Models */,
 				C74F04EF28163B9100F844CE /* Controllers */,
+				C797669928C12EA2007A436B /* Services */,
 				C74F04E02814EAFA00F844CE /* Assets.xcassets */,
 				C74F04E22814EAFA00F844CE /* LaunchScreen.storyboard */,
 				C74F04E52814EAFA00F844CE /* Info.plist */,
@@ -205,6 +208,23 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		C797669928C12EA2007A436B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C797669A28C12F90007A436B /* Location Manager */,
+				C7DDA7E02852B71C005D67D1 /* Network Manager */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C797669A28C12F90007A436B /* Location Manager */ = {
+			isa = PBXGroup;
+			children = (
+				C797669C28C130C1007A436B /* LocationManager.swift */,
+			);
+			path = "Location Manager";
+			sourceTree = "<group>";
+		};
 		C7DDA7CD284FBE8F005D67D1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,7 +240,6 @@
 			isa = PBXGroup;
 			children = (
 				C78573D52899C92C000BB99C /* Constant.swift */,
-				C7DDA7E02852B71C005D67D1 /* NetworkManager */,
 				C7DDA7DD28529A7D005D67D1 /* Business Models */,
 				C7DDA7D628513D70005D67D1 /* ProfileModels */,
 			);
@@ -244,12 +263,12 @@
 			path = "Business Models";
 			sourceTree = "<group>";
 		};
-		C7DDA7E02852B71C005D67D1 /* NetworkManager */ = {
+		C7DDA7E02852B71C005D67D1 /* Network Manager */ = {
 			isa = PBXGroup;
 			children = (
 				C7DDA7E12852B743005D67D1 /* JSONManager.swift */,
 			);
-			path = NetworkManager;
+			path = "Network Manager";
 			sourceTree = "<group>";
 		};
 		C7DDA7E72852D52F005D67D1 /* Map */ = {
@@ -413,6 +432,7 @@
 				C765A54D28AAA9E100FE72F0 /* OnboardingViewController.swift in Sources */,
 				C765A54F28AAABEA00FE72F0 /* OnboardingPage.swift in Sources */,
 				C7DDA86D2873CCC8005D67D1 /* AnnotationViewController.swift in Sources */,
+				C797669D28C130C1007A436B /* LocationManager.swift in Sources */,
 				C7DB170B28A6C248001A66FD /* SettingsTableViewCell.swift in Sources */,
 				C7DDA7E22852B743005D67D1 /* JSONManager.swift in Sources */,
 				C74F04D82814EAF900F844CE /* AppDelegate.swift in Sources */,

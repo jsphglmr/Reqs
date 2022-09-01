@@ -55,7 +55,7 @@ class ExploreViewController: UIViewController {
     }
     
     func getYelpResults() {
-        let location = CLLocation(latitude: homeVC.currentUserLocation.coordinate.latitude, longitude: homeVC.currentUserLocation.coordinate.longitude)
+        let location = CLLocation(latitude: LocationManager.currentUserLocation.coordinate.latitude, longitude: LocationManager.currentUserLocation.coordinate.longitude)
         jsonManager.fetchHotResults(location: location) { result in
             switch result {
             case let .failure(error):
