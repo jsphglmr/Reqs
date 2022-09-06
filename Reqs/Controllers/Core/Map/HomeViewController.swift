@@ -121,7 +121,6 @@ class HomeViewController: UIViewController {
         setupViews()
         loadReqs()
         presentOnboarding()
-        locationManager.checkIfLocationServicesIsEnabled()
     }
     
     func setupViews() {
