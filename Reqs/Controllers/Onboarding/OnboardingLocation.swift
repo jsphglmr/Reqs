@@ -28,7 +28,7 @@ class OnboardingLocation: UIViewController {
         config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(scale: .medium)
         let button = UIButton(type: .system)
         button.addTarget(self, action: #selector(locationButtonTapped), for: .touchUpInside)
-        button.tintColor = .label
+        button.tintColor = .systemGray
         button.titleLabel?.textColor = .systemBackground
         button.translatesAutoresizingMaskIntoConstraints = false
         button.configuration = config

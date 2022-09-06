@@ -47,7 +47,7 @@ class OnboardingViewController: UIPageViewController {
         config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(scale: .medium)
         let button = UIButton(type: .system)
         button.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
-        button.tintColor = .label
+        button.tintColor = .systemGray
         button.translatesAutoresizingMaskIntoConstraints = false
         button.configuration = config
         return button
