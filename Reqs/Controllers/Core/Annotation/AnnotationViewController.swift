@@ -118,7 +118,7 @@ class AnnotationViewController: UIViewController {
                 UIApplication.shared.open(url)
             }
         }))
-        button.tintColor = .label
+        button.tintColor = .systemGray
         button.translatesAutoresizingMaskIntoConstraints = false
         button.configuration = config
         return button
@@ -147,7 +147,7 @@ class AnnotationViewController: UIViewController {
             mapItem.name = self.title
             mapItem.openInMaps(launchOptions: launchOptions)
         }))
-        button.tintColor = .label
+        button.tintColor = .systemGray
         button.translatesAutoresizingMaskIntoConstraints = false
         button.configuration = config
         return button
@@ -187,7 +187,7 @@ class AnnotationViewController: UIViewController {
             newReq.longitude = self.yelpBusiness.coordinates.longitude
             self.save(profile: newReq)
         }))
-        button.tintColor = .label
+        button.tintColor = .systemGray
         button.translatesAutoresizingMaskIntoConstraints = false
         button.configuration = config
         return button
@@ -213,7 +213,7 @@ class AnnotationViewController: UIViewController {
             guard var url = URL(string: "telprompt:\(number)") else { return }
             UIApplication.shared.open(url)
         }))
-        button.tintColor = .label
+        button.tintColor = .systemGray
         button.translatesAutoresizingMaskIntoConstraints = false
         button.configuration = config
         return button
