@@ -43,7 +43,7 @@ class SettingsViewController: UIViewController {
         models.append(Section(title: "General", options: [
             .switchCell(model: SettingsSwitchOption(title: "Always Use Dark Mode", icon: UIImage(systemName: "display"), iconBackgroundColor: .systemGray, isOn: true, handler: {
                 //darkmode code
-                
+                DarkModeModel.shared.toggleDarkLightMode()
             })),
             .staticCell(model: SettingsOption(title: "Notifications", icon: UIImage(systemName: "bell"), iconBackgroundColor: .systemPink, handler: {
                 //notifications code
@@ -62,6 +62,9 @@ class SettingsViewController: UIViewController {
         ]))
         
         models.append(Section(title: "Information", options: [
+            .staticCell(model: SettingsOption(title: "Tutorial", icon: UIImage(systemName: "book"), iconBackgroundColor: .systemMint, handler: {
+                self.present(OnboardingViewController(transitionStyle: .scroll, navigationOrientation: .horizontal), animated: true)
+            })),
             .staticCell(model: SettingsOption(title: "Report Issue", icon: UIImage(systemName: "questionmark"), iconBackgroundColor: .systemRed, handler: {
                 if let url = URL(string: "https://github.com/jsphglmr/Reqs/issues") {
                     UIApplication.shared.open(url)
