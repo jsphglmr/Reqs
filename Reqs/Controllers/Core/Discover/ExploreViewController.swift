@@ -39,7 +39,6 @@ class ExploreViewController: UIViewController {
         DispatchQueue.main.async {
             self.getYelpResults()
         }
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidLayoutSubviews() {
@@ -51,7 +50,6 @@ class ExploreViewController: UIViewController {
         view.backgroundColor = .white
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Discover"
-
     }
     
     func getYelpResults() {

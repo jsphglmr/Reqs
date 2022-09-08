@@ -63,8 +63,8 @@ class OnboardingViewController: UIPageViewController {
     
     func configure() {
         let page1 = OnboardingPage(imageName: "testimage1", titleText: "Welcome to Reqs!", subtitleText: "", backgroundColor: .systemGray2)
-        let page2 = OnboardingPage(imageName: "testimage2", titleText: "Revisit your favorite places", subtitleText: "", backgroundColor: .systemGray4)
-        let page3 = OnboardingLocation(backgroundColor: .systemGray6)
+        let page2 = OnboardingLocation(backgroundColor: .systemGray6)
+        let page3 = OnboardingPage(imageName: "testimage2", titleText: "Revisit your favorite places", subtitleText: "", backgroundColor: .systemGray4)
         //        let page4 = OnboardingLogin()
         
         pages.append(page1)
@@ -108,12 +108,26 @@ class OnboardingViewController: UIPageViewController {
     }
     
     @objc func continueButtonTapped() {
-        
+        if pageControl.currentPage == 2 {
+            pageControl.currentPage = 0
+            goToNextPage()
+        } else {
+            pageControl.currentPage += 1
+            goToNextPage()
+        }
     }
     
     @objc func pageControlTapped() {
         
     }
+    
+    func goToNextPage(animated: Bool = true, completion: ((Bool) -> Void)? = nil) {
+        guard let currentPage = viewControllers?[0] else { return }
+        guard let nextPage = dataSource?.pageViewController(self, viewControllerAfter: currentPage) else { return }
+        
+        setViewControllers([nextPage], direction: .forward, animated: animated, completion: completion)
+    }
+    
 }
 
 //MARK: - Datasources
