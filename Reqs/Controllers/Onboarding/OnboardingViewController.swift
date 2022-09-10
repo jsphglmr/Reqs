@@ -31,7 +31,7 @@ class OnboardingViewController: UIPageViewController {
         return button
     }()
     
-    private lazy var continueButton: UIButton = {
+    fileprivate lazy var continueButton: UIButton = {
         var config = UIButton.Configuration.filled()
         config.buttonSize = .large
         config.cornerStyle = .medium
@@ -109,7 +109,10 @@ class OnboardingViewController: UIPageViewController {
     
     @objc func continueButtonTapped() {
         if pageControl.currentPage == 2 {
-            pageControl.currentPage = 0
+            self.dismiss(animated: true)
+        } else if pageControl.currentPage == 1 {
+            continueButton.configuration?.title = "Go to Reqs!"
+            pageControl.currentPage += 1
             goToNextPage()
         } else {
             pageControl.currentPage += 1

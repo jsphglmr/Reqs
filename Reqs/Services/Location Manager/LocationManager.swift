@@ -24,7 +24,6 @@ class LocationManager: CLLocationManager, CLLocationManagerDelegate {
 
 //MARK: - Location
     func locationPermissionDenied() {
-        //add functionality to open settings > privacy
         let ac = UIAlertController(title: "Location Services not enabled", message: "Please enable Location Services in the Settings app to enable this functionality", preferredStyle: .alert)
         let cont = UIAlertAction(title: "Cancel", style: .cancel)
         let settings = UIAlertAction(title: "Settings", style: .default) { _ in
@@ -49,12 +48,16 @@ class LocationManager: CLLocationManager, CLLocationManagerDelegate {
         if let userLocation = locations.last {
             LocationManager.currentUserLocation = userLocation
         } else {
-            print("present error ; saving user location")
+            print("present error; saving user location")
         }
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        checkLocationAuthorization()
+        //only check for user location automatically when denied or restricted
+        let status = locationManager.authorizationStatus
+        if status == .denied, status == .restricted {
+            checkLocationAuthorization()
+        }
     }
     
     func checkLocationAuthorization() {

@@ -12,7 +12,7 @@ class OnboardingLocation: UIViewController {
     var setBackgroundColor = UIColor()
     let locationManager = LocationManager()
     
-    private lazy var locationButton: UIButton = {
+    fileprivate lazy var locationButton: UIButton = {
         var config = UIButton.Configuration.filled()
         config.buttonSize = .large
         config.cornerStyle = .medium
@@ -58,7 +58,13 @@ class OnboardingLocation: UIViewController {
     }
     
     @objc func locationButtonTapped() {
+        defer {
+            DispatchQueue.main.async {
+                if self.locationManager.authorizationStatus == .authorizedAlways || self.locationManager.authorizationStatus == .authorizedWhenInUse {
+                    self.locationButton.configuration?.title = "Location Enabled!"
+                }
+            }
+        }
         locationManager.checkIfLocationServicesIsEnabled()
-
     }
 }
