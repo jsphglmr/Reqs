@@ -80,7 +80,6 @@ class SettingsViewController: UIViewController {
     
     private func viewConstraints() {
         settingsTableView.frame = view.bounds
-
         settingsTableView.reloadData()
     }
     

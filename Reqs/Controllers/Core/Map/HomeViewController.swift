@@ -8,27 +8,26 @@
 import UIKit
 import MapKit
 import RealmSwift
-import CoreLocation
 
 class HomeViewController: UIViewController {
     
     let jsonManager = JSONManager()
+    var reqsList: Results<ReqsModel>?
+    let locationManager = LocationManager()
     var searchData: [Business]? {
         didSet {
             guard let data = searchData, data.count > 0 else { return }
             addPins()
         }
     }
+    
     lazy var realm: Realm = {
         return try! Realm()
     }()
-    var reqsList: Results<ReqsModel>?
-    
-    let locationManager = LocationManager()
+
     
     //MARK: - Views & Buttons
     private let mapView: MKMapView = {
-        
         let map = MKMapView()
         map.translatesAutoresizingMaskIntoConstraints = false
         map.showsUserLocation = true
@@ -91,7 +90,6 @@ class HomeViewController: UIViewController {
     }
     
     @objc func pinMyReqsPressed() {
-        
         searchData = []
         var pins: [YelpResultPins] = []
         if let data = reqsList {
@@ -100,10 +98,8 @@ class HomeViewController: UIViewController {
             }
             var pinTag: Int = 0
             for reqs in data {
-                
                 let coordinate = CLLocationCoordinate2D(latitude: reqs.latitude, longitude: reqs.longitude)
                 let pin = YelpResultPins(title: reqs.name, address: reqs.address1, url: reqs.url, coordinate: coordinate, tag: pinTag)
-                
                 pins.append(pin)
                 pinTag += 1
             }
@@ -128,20 +124,17 @@ class HomeViewController: UIViewController {
         view.addSubview(centerButton)
         view.addSubview(searchButton)
         view.addSubview(pinMyReqsButton)
-        
         setupConstraints()
     }
     
     func setupConstraints() {
         let buttonSize = CGFloat(40)
-        
         let mapConstraints = [
             mapView.topAnchor.constraint(equalTo: self.view.topAnchor),
             mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             mapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ]
-        
         let searchButtonConstraints = [
             searchButton.centerYAnchor.constraint(equalTo: centerButton.centerYAnchor, constant: -75),
             searchButton.centerXAnchor.constraint(equalTo: centerButton.centerXAnchor),
@@ -154,14 +147,12 @@ class HomeViewController: UIViewController {
             centerButton.widthAnchor.constraint(equalToConstant: buttonSize),
             centerButton.heightAnchor.constraint(equalToConstant: buttonSize)
         ]
-        
         let pinMyReqsButtonConstraints = [
             pinMyReqsButton.centerYAnchor.constraint(equalTo: centerButton.centerYAnchor, constant: 75),
             pinMyReqsButton.centerXAnchor.constraint(equalTo: centerButton.centerXAnchor),
             pinMyReqsButton.widthAnchor.constraint(equalToConstant: buttonSize),
             pinMyReqsButton.heightAnchor.constraint(equalToConstant: buttonSize)
         ]
-        
         NSLayoutConstraint.activate(mapConstraints)
         NSLayoutConstraint.activate(centerButtonConstraints)
         NSLayoutConstraint.activate(searchButtonConstraints)
@@ -170,7 +161,6 @@ class HomeViewController: UIViewController {
     
     func presentOnboarding() {
         let launchedBefore = UserDefaults.standard.bool(forKey: "hasLaunched")
-        
         if launchedBefore {
             return
         } else {
@@ -229,7 +219,6 @@ class HomeViewController: UIViewController {
             case let .failure(error):
                 print(error)
             case let .success(yelpData):
-                
                 self.searchData = yelpData.businesses
             }
         }

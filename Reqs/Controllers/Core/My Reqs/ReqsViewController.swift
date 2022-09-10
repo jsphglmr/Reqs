@@ -29,10 +29,8 @@ class ReqsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupNavigation()
         loadReqs()
-        
         profileTableView.delegate = self
         profileTableView.dataSource = self
     }
