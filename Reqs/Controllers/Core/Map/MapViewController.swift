@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 import RealmSwift
 
-class HomeViewController: UIViewController {
+class MapViewController: UIViewController {
     
     let jsonManager = JSONManager()
     var reqsList: Results<ReqsModel>?
@@ -226,7 +226,7 @@ class HomeViewController: UIViewController {
 }
 
 //MARK: - Map Delegate
-extension HomeViewController: MKMapViewDelegate {
+extension MapViewController: MKMapViewDelegate {
 
     //adds the annotationview for each pin on the map
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

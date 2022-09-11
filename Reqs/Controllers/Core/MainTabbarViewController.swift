@@ -16,7 +16,7 @@ class MainTabbarViewController: UITabBarController {
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = view.bounds
         
-        let vc1 = UINavigationController(rootViewController: HomeViewController())
+        let vc1 = UINavigationController(rootViewController: MapViewController())
         let vc2 = UINavigationController(rootViewController: ExploreViewController())
         let vc3 = UINavigationController(rootViewController: ReqsViewController())
         let vc4 = UINavigationController(rootViewController: SettingsViewController())

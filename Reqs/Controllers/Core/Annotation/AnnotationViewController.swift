@@ -12,7 +12,7 @@ import Kingfisher
 
 class AnnotationViewController: UIViewController {
     //MARK: - inits & references
-    let homeVC = HomeViewController()
+    let homeVC = MapViewController()
     lazy var realm: Realm = {
         return try! Realm()
     }()

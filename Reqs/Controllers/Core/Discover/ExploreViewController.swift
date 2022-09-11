@@ -19,7 +19,7 @@ class ExploreViewController: UIViewController {
     
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
-    let homeVC = HomeViewController()
+    let homeVC = MapViewController()
     let jsonManager = JSONManager()
     var searchData: [Business]? {
         didSet {
