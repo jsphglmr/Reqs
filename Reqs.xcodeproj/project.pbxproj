@@ -28,7 +28,6 @@
 		C78573D62899C92C000BB99C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78573D52899C92C000BB99C /* Constant.swift */; };
 		C78573D8289CBEF3000BB99C /* ReqsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78573D7289CBEF3000BB99C /* ReqsViewController.swift */; };
 		C797669D28C130C1007A436B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C797669C28C130C1007A436B /* LocationManager.swift */; };
-		C79766B328C6C124007A436B /* DarkModeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79766B228C6C124007A436B /* DarkModeModel.swift */; };
 		C7DB168F28A18A60001A66FD /* MyReqsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB168E28A18A60001A66FD /* MyReqsTableViewCell.swift */; };
 		C7DB170B28A6C248001A66FD /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB170A28A6C248001A66FD /* SettingsTableViewCell.swift */; };
 		C7DB170D28A6CDE7001A66FD /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB170C28A6CDE7001A66FD /* SwitchTableViewCell.swift */; };
@@ -79,7 +78,6 @@
 		C78573D52899C92C000BB99C /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		C78573D7289CBEF3000BB99C /* ReqsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqsViewController.swift; sourceTree = "<group>"; };
 		C797669C28C130C1007A436B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		C79766B228C6C124007A436B /* DarkModeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeModel.swift; sourceTree = "<group>"; };
 		C7DB168E28A18A60001A66FD /* MyReqsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReqsTableViewCell.swift; sourceTree = "<group>"; };
 		C7DB170A28A6C248001A66FD /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		C7DB170C28A6CDE7001A66FD /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
@@ -147,54 +145,124 @@
 		C74F04D62814EAF900F844CE /* Reqs */ = {
 			isa = PBXGroup;
 			children = (
-				C74F04D72814EAF900F844CE /* AppDelegate.swift */,
-				C74F04D92814EAF900F844CE /* SceneDelegate.swift */,
-				C74F04F92816446500F844CE /* Views */,
-				C7DDA7D528513D66005D67D1 /* Models */,
-				C74F04EF28163B9100F844CE /* Controllers */,
-				C797669928C12EA2007A436B /* Services */,
-				C74F04E02814EAFA00F844CE /* Assets.xcassets */,
-				C74F04E22814EAFA00F844CE /* LaunchScreen.storyboard */,
-				C74F04E52814EAFA00F844CE /* Info.plist */,
-			);
-			path = Reqs;
-			sourceTree = "<group>";
-		};
-		C74F04EF28163B9100F844CE /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				C77DD93428AA7F1F00CE9150 /* Onboarding */,
-				C74F04F028163BAB00F844CE /* Core */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		C74F04F028163BAB00F844CE /* Core */ = {
-			isa = PBXGroup;
-			children = (
 				C74F04DB2814EAF900F844CE /* MainTabbarViewController.swift */,
+				C77DD93428AA7F1F00CE9150 /* Onboarding */,
 				C7DDA7E72852D52F005D67D1 /* Map */,
 				C7DDA7E82852D537005D67D1 /* Discover */,
 				C7DDA7E92852D550005D67D1 /* My Reqs */,
 				C7DDA7EA2852D56B005D67D1 /* Settings */,
 				C77DD93328A96B9700CE9150 /* Annotation */,
+				C763293528CE6F7E005E8D30 /* Shared */,
+				C74F04E52814EAFA00F844CE /* Info.plist */,
 			);
-			path = Core;
+			path = Reqs;
 			sourceTree = "<group>";
 		};
-		C74F04F92816446500F844CE /* Views */ = {
+		C763292928CE6E7C005E8D30 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C7DDA7CD284FBE8F005D67D1 /* Cells */,
+				C7DDA86828639399005D67D1 /* YelpResultPins.swift */,
 			);
-			path = Views;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C763292A28CE6E81005E8D30 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C7DDA86C2873CCC8005D67D1 /* AnnotationViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C763292B28CE6E87005E8D30 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		C763292D28CE6E8F005E8D30 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C7DB170A28A6C248001A66FD /* SettingsTableViewCell.swift */,
+				C7DB170C28A6CDE7001A66FD /* SwitchTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C763292E28CE6EA4005E8D30 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		C763293028CE6F23005E8D30 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		C763293128CE6F31005E8D30 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C763293228CE6F3C005E8D30 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		C763293328CE6F4E005E8D30 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C7DDA7CE284FBEC1005D67D1 /* DiscoverCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C763293428CE6F55005E8D30 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		C763293528CE6F7E005E8D30 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				C797669928C12EA2007A436B /* Services */,
+				C7DDA7D528513D66005D67D1 /* Models */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		C763293628CE7071005E8D30 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C7DB168E28A18A60001A66FD /* MyReqsTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C763293728CECD4A005E8D30 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		C77DD93328A96B9700CE9150 /* Annotation */ = {
 			isa = PBXGroup;
 			children = (
-				C7DDA86C2873CCC8005D67D1 /* AnnotationViewController.swift */,
-				C7DDA86828639399005D67D1 /* YelpResultPins.swift */,
+				C763292928CE6E7C005E8D30 /* Model */,
+				C763292B28CE6E87005E8D30 /* View Model */,
+				C763292A28CE6E81005E8D30 /* View */,
 			);
 			path = Annotation;
 			sourceTree = "<group>";
@@ -202,6 +270,8 @@
 		C77DD93428AA7F1F00CE9150 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				C763293728CECD4A005E8D30 /* View */,
+				C763293028CE6F23005E8D30 /* View Model */,
 				C765A54C28AAA9E100FE72F0 /* OnboardingViewController.swift */,
 				C765A54E28AAABEA00FE72F0 /* OnboardingPage.swift */,
 				C73ACED628B46FB6007633E2 /* OnboardingLocation.swift */,
@@ -227,42 +297,35 @@
 			path = "Location Manager";
 			sourceTree = "<group>";
 		};
-		C7DDA7CD284FBE8F005D67D1 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				C7DDA7CE284FBEC1005D67D1 /* DiscoverCollectionViewCell.swift */,
-				C7DB168E28A18A60001A66FD /* MyReqsTableViewCell.swift */,
-				C7DB170A28A6C248001A66FD /* SettingsTableViewCell.swift */,
-				C7DB170C28A6CDE7001A66FD /* SwitchTableViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		C7DDA7D528513D66005D67D1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C7DDA7DD28529A7D005D67D1 /* Yelp Models */,
+				C7DDA7D628513D70005D67D1 /* Realm Models */,
 				C78573D52899C92C000BB99C /* Constant.swift */,
-				C7DDA7DD28529A7D005D67D1 /* Business Models */,
-				C7DDA7D628513D70005D67D1 /* ProfileModels */,
+				C74F04D72814EAF900F844CE /* AppDelegate.swift */,
+				C74F04D92814EAF900F844CE /* SceneDelegate.swift */,
+				C74F04E22814EAFA00F844CE /* LaunchScreen.storyboard */,
+				C74F04E02814EAFA00F844CE /* Assets.xcassets */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		C7DDA7D628513D70005D67D1 /* ProfileModels */ = {
+		C7DDA7D628513D70005D67D1 /* Realm Models */ = {
 			isa = PBXGroup;
 			children = (
 				C7DDA7D728513D93005D67D1 /* ProfileModel.swift */,
 				C7DDA7D928513FA6005D67D1 /* ReqsModel.swift */,
 			);
-			path = ProfileModels;
+			path = "Realm Models";
 			sourceTree = "<group>";
 		};
-		C7DDA7DD28529A7D005D67D1 /* Business Models */ = {
+		C7DDA7DD28529A7D005D67D1 /* Yelp Models */ = {
 			isa = PBXGroup;
 			children = (
 				C7DDA7DE28529BD4005D67D1 /* YelpResult.swift */,
 			);
-			path = "Business Models";
+			path = "Yelp Models";
 			sourceTree = "<group>";
 		};
 		C7DDA7E02852B71C005D67D1 /* Network Manager */ = {
@@ -276,6 +339,8 @@
 		C7DDA7E72852D52F005D67D1 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				C763293128CE6F31005E8D30 /* View */,
+				C763293228CE6F3C005E8D30 /* View Model */,
 				C74F04F128163BC900F844CE /* MapViewController.swift */,
 			);
 			path = Map;
@@ -284,6 +349,8 @@
 		C7DDA7E82852D537005D67D1 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				C763293328CE6F4E005E8D30 /* View */,
+				C763293428CE6F55005E8D30 /* View Model */,
 				C74F04F328163C0400F844CE /* ExploreViewController.swift */,
 			);
 			path = Discover;
@@ -292,6 +359,7 @@
 		C7DDA7E92852D550005D67D1 /* My Reqs */ = {
 			isa = PBXGroup;
 			children = (
+				C763293628CE7071005E8D30 /* View */,
 				C78573D7289CBEF3000BB99C /* ReqsViewController.swift */,
 			);
 			path = "My Reqs";
@@ -300,8 +368,9 @@
 		C7DDA7EA2852D56B005D67D1 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				C763292D28CE6E8F005E8D30 /* View */,
+				C763292E28CE6EA4005E8D30 /* View Model */,
 				C74F04F528163CB500F844CE /* SettingsViewController.swift */,
-				C79766B228C6C124007A436B /* DarkModeModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -434,7 +503,6 @@
 				C7DB168F28A18A60001A66FD /* MyReqsTableViewCell.swift in Sources */,
 				C765A54D28AAA9E100FE72F0 /* OnboardingViewController.swift in Sources */,
 				C765A54F28AAABEA00FE72F0 /* OnboardingPage.swift in Sources */,
-				C79766B328C6C124007A436B /* DarkModeModel.swift in Sources */,
 				C7DDA86D2873CCC8005D67D1 /* AnnotationViewController.swift in Sources */,
 				C797669D28C130C1007A436B /* LocationManager.swift in Sources */,
 				C7DB170B28A6C248001A66FD /* SettingsTableViewCell.swift in Sources */,

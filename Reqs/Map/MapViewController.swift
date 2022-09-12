@@ -162,6 +162,9 @@ class MapViewController: UIViewController {
     func presentOnboarding() {
         let launchedBefore = UserDefaults.standard.bool(forKey: "hasLaunched")
         if launchedBefore {
+            locationManager.checkIfLocationServicesIsEnabled {
+                self.centerMapOnUserLocation(locations: [LocationManager.currentUserLocation])
+            }
             return
         } else {
             present(OnboardingViewController(transitionStyle: .scroll, navigationOrientation: .horizontal), animated: true)
