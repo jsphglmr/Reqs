@@ -43,7 +43,6 @@ class SettingsViewController: UIViewController {
         models.append(Section(title: "General", options: [
             .switchCell(model: SettingsSwitchOption(title: "Always Use Dark Mode", icon: UIImage(systemName: "display"), iconBackgroundColor: .systemGray, isOn: true, handler: {
                 //darkmode code
-                DarkModeModel.shared.toggleDarkLightMode()
             })),
             .staticCell(model: SettingsOption(title: "Notifications", icon: UIImage(systemName: "bell"), iconBackgroundColor: .systemPink, handler: {
                 //notifications code
