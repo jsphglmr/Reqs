@@ -115,6 +115,7 @@ class OnboardingViewController: UIPageViewController {
             pageControl.currentPage += 1
             goToNextPage()
         } else {
+            continueButton.configuration?.title = "Continue"
             pageControl.currentPage += 1
             goToNextPage()
         }

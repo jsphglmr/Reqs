@@ -58,13 +58,10 @@ class OnboardingLocation: UIViewController {
     }
     
     @objc func locationButtonTapped() {
-        defer {
-            DispatchQueue.main.async {
-                if self.locationManager.authorizationStatus == .authorizedAlways || self.locationManager.authorizationStatus == .authorizedWhenInUse {
-                    self.locationButton.configuration?.title = "Location Enabled!"
-                }
+        locationManager.checkIfLocationServicesIsEnabled {
+            if self.locationManager.authorizationStatus == .authorizedAlways || self.locationManager.authorizationStatus == .authorizedWhenInUse {
+                self.locationButton.configuration?.title = "Location Enabled!"
             }
         }
-        locationManager.checkIfLocationServicesIsEnabled()
     }
 }

@@ -12,9 +12,8 @@ import RealmSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        //lines 18-24: local realm
-        print("realm model: \(Realm.Configuration.defaultConfiguration.fileURL!)")
-        
+        //realm configuration
+        print("realm model: \(Realm.Configuration.defaultConfiguration.fileURL!)") // local realm file url
         do {
             _ = try Realm()
         } catch {
