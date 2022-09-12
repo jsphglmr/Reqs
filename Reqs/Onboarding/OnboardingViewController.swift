@@ -65,13 +65,16 @@ class OnboardingViewController: UIPageViewController {
         let page1 = OnboardingPage(imageName: "testimage1", titleText: "Welcome to Reqs!", subtitleText: "", backgroundColor: .systemGray2)
         let page2 = OnboardingLocation(backgroundColor: .systemGray6)
         let page3 = OnboardingPage(imageName: "testimage2", titleText: "Revisit your favorite places", subtitleText: "", backgroundColor: .systemGray4)
-        //        let page4 = OnboardingLogin()
+        
+///     onboarding setup once firebase is added
+//      let page4 = OnboardingLogin()
         
         pages.append(page1)
         pages.append(page2)
         pages.append(page3)
-        //        pages.append(page4)
         
+///     onboarding setup once firebase is added
+//      pages.append(page4)
         
         setViewControllers([pages[initialPage]], direction: .forward, animated: true, completion: nil)
     }
@@ -111,18 +114,16 @@ class OnboardingViewController: UIPageViewController {
         if pageControl.currentPage == 2 {
             self.dismiss(animated: true)
         } else if pageControl.currentPage == 1 {
-            continueButton.configuration?.title = "Go to Reqs!"
             pageControl.currentPage += 1
             goToNextPage()
         } else {
-            continueButton.configuration?.title = "Continue"
             pageControl.currentPage += 1
             goToNextPage()
         }
     }
     
-    @objc func pageControlTapped() {
-        
+    @objc func pageControlTapped(_ sender: UIPageControl) {
+        setViewControllers([pages[sender.currentPage]], direction: .forward, animated: true, completion: nil)
     }
     
     func goToNextPage(animated: Bool = true, completion: ((Bool) -> Void)? = nil) {
@@ -131,7 +132,6 @@ class OnboardingViewController: UIPageViewController {
         
         setViewControllers([nextPage], direction: .forward, animated: animated, completion: completion)
     }
-    
 }
 
 //MARK: - Datasources
