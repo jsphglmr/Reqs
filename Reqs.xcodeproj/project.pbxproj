@@ -146,12 +146,12 @@
 			isa = PBXGroup;
 			children = (
 				C74F04DB2814EAF900F844CE /* MainTabbarViewController.swift */,
-				C77DD93428AA7F1F00CE9150 /* Onboarding */,
 				C7DDA7E72852D52F005D67D1 /* Map */,
 				C7DDA7E82852D537005D67D1 /* Discover */,
 				C7DDA7E92852D550005D67D1 /* My Reqs */,
 				C7DDA7EA2852D56B005D67D1 /* Settings */,
 				C77DD93328A96B9700CE9150 /* Annotation */,
+				C77DD93428AA7F1F00CE9150 /* Onboarding */,
 				C763293528CE6F7E005E8D30 /* Shared */,
 				C74F04E52814EAFA00F844CE /* Info.plist */,
 			);

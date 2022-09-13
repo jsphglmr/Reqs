@@ -86,7 +86,9 @@ class MapViewController: UIViewController {
     }
     
     @objc func reCenterButtonPressed() {
-        centerMapOnUserLocation(locations: [LocationManager.currentUserLocation])
+        locationManager.checkIfLocationServicesIsEnabled {
+            self.centerMapOnUserLocation(locations: [LocationManager.currentUserLocation])
+        }
     }
     
     @objc func pinMyReqsPressed() {
@@ -107,7 +109,9 @@ class MapViewController: UIViewController {
                 self.mapView.addAnnotations(pins)
             }
         }
-        self.refreshRegionForPins(locations: [LocationManager.currentUserLocation])
+        locationManager.checkIfLocationServicesIsEnabled {
+            self.refreshRegionForPins(locations: [LocationManager.currentUserLocation])
+        }
     }
     
     //MARK: - View
