@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             print("realm error \(error)")
         }
+        
+        Thread.sleep(forTimeInterval: 1.0)
+        
         return true
     }
 }
