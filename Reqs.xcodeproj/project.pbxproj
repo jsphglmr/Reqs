@@ -25,6 +25,7 @@
 		C765A54D28AAA9E100FE72F0 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C765A54C28AAA9E100FE72F0 /* OnboardingViewController.swift */; };
 		C765A54F28AAABEA00FE72F0 /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C765A54E28AAABEA00FE72F0 /* OnboardingPage.swift */; };
 		C765A55328AAAC0000FE72F0 /* OnboardingLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C765A55228AAAC0000FE72F0 /* OnboardingLogin.swift */; };
+		C77ABC8628D22A6500849FF3 /* ConvertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77ABC8528D22A6400849FF3 /* ConvertModel.swift */; };
 		C78573D62899C92C000BB99C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78573D52899C92C000BB99C /* Constant.swift */; };
 		C78573D8289CBEF3000BB99C /* ReqsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78573D7289CBEF3000BB99C /* ReqsViewController.swift */; };
 		C797669D28C130C1007A436B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C797669C28C130C1007A436B /* LocationManager.swift */; };
@@ -75,6 +76,7 @@
 		C765A54C28AAA9E100FE72F0 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		C765A54E28AAABEA00FE72F0 /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
 		C765A55228AAAC0000FE72F0 /* OnboardingLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingLogin.swift; sourceTree = "<group>"; };
+		C77ABC8528D22A6400849FF3 /* ConvertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertModel.swift; sourceTree = "<group>"; };
 		C78573D52899C92C000BB99C /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		C78573D7289CBEF3000BB99C /* ReqsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqsViewController.swift; sourceTree = "<group>"; };
 		C797669C28C130C1007A436B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -283,18 +285,10 @@
 		C797669928C12EA2007A436B /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				C797669A28C12F90007A436B /* Location Manager */,
-				C7DDA7E02852B71C005D67D1 /* Network Manager */,
+				C797669C28C130C1007A436B /* LocationManager.swift */,
+				C7DDA7E12852B743005D67D1 /* JSONManager.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		C797669A28C12F90007A436B /* Location Manager */ = {
-			isa = PBXGroup;
-			children = (
-				C797669C28C130C1007A436B /* LocationManager.swift */,
-			);
-			path = "Location Manager";
 			sourceTree = "<group>";
 		};
 		C7DDA7D528513D66005D67D1 /* Models */ = {
@@ -302,6 +296,7 @@
 			children = (
 				C7DDA7DD28529A7D005D67D1 /* Yelp Models */,
 				C7DDA7D628513D70005D67D1 /* Realm Models */,
+				C77ABC8528D22A6400849FF3 /* ConvertModel.swift */,
 				C78573D52899C92C000BB99C /* Constant.swift */,
 				C74F04D72814EAF900F844CE /* AppDelegate.swift */,
 				C74F04D92814EAF900F844CE /* SceneDelegate.swift */,
@@ -326,14 +321,6 @@
 				C7DDA7DE28529BD4005D67D1 /* YelpResult.swift */,
 			);
 			path = "Yelp Models";
-			sourceTree = "<group>";
-		};
-		C7DDA7E02852B71C005D67D1 /* Network Manager */ = {
-			isa = PBXGroup;
-			children = (
-				C7DDA7E12852B743005D67D1 /* JSONManager.swift */,
-			);
-			path = "Network Manager";
 			sourceTree = "<group>";
 		};
 		C7DDA7E72852D52F005D67D1 /* Map */ = {
@@ -504,6 +491,7 @@
 				C765A54D28AAA9E100FE72F0 /* OnboardingViewController.swift in Sources */,
 				C765A54F28AAABEA00FE72F0 /* OnboardingPage.swift in Sources */,
 				C7DDA86D2873CCC8005D67D1 /* AnnotationViewController.swift in Sources */,
+				C77ABC8628D22A6500849FF3 /* ConvertModel.swift in Sources */,
 				C797669D28C130C1007A436B /* LocationManager.swift in Sources */,
 				C7DB170B28A6C248001A66FD /* SettingsTableViewCell.swift in Sources */,
 				C7DDA7E22852B743005D67D1 /* JSONManager.swift in Sources */,

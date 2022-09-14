@@ -263,7 +263,7 @@ extension MapViewController: MKMapViewDelegate {
                 self.navigationController?.present(annotationVC, animated: true)
             } else {
                 guard let reqs = reqsList else { return }
-                let annotationVC = AnnotationViewController(business: ReqsViewController.convertReqModelToBusinessModel(reqs[safeTag]))
+                let annotationVC = AnnotationViewController(business: ConvertModel.convertReqsToBusiness(reqs[safeTag]))
                 self.navigationController?.present(annotationVC, animated: true)
             }
         }

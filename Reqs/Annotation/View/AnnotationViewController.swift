@@ -168,23 +168,7 @@ class AnnotationViewController: UIViewController {
         config.title = "Save to My Reqs"
         config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(scale: .medium)
         let button = UIButton(type: .custom, primaryAction: UIAction(handler: { _ in
-            let newReq = ReqsModel()
-            newReq.dateCreated = Date.now
-            newReq.name = self.yelpBusiness.name
-            newReq.url = self.yelpBusiness.url
-            newReq.imageUrl = self.yelpBusiness.imageUrl
-            newReq.rating = self.yelpBusiness.rating
-            newReq.price = self.yelpBusiness.price
-            newReq.phone = self.yelpBusiness.phone
-            newReq.city = self.yelpBusiness.location?.city ?? ""
-            newReq.country = self.yelpBusiness.location?.country ?? ""
-            newReq.state = self.yelpBusiness.location?.state ?? ""
-            newReq.address1 = self.yelpBusiness.location?.address1
-            newReq.address2 = self.yelpBusiness.location?.address2
-            newReq.address3 = self.yelpBusiness.location?.address3
-            newReq.zipCode = self.yelpBusiness.location?.zipCode
-            newReq.latitude = self.yelpBusiness.coordinates.latitude
-            newReq.longitude = self.yelpBusiness.coordinates.longitude
+            let newReq = ConvertModel.convertBusinessToReqs(yelp: self.yelpBusiness)
             self.save(profile: newReq)
         }))
         button.tintColor = .systemGray
