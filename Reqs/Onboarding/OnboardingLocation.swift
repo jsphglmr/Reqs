@@ -60,7 +60,10 @@ class OnboardingLocation: UIViewController {
     @objc func locationButtonTapped() {
         locationManager.checkIfLocationServicesIsEnabled {
             if self.locationManager.authorizationStatus == .authorizedAlways || self.locationManager.authorizationStatus == .authorizedWhenInUse {
-                self.locationButton.configuration?.title = "Location Enabled!"
+                self.locationButton.configuration?.title = "Location Enabled! Welcome to Reqs!"
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    self.dismiss(animated: true)
+                }
             }
         }
     }

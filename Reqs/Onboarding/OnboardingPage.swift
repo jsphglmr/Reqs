@@ -71,20 +71,16 @@ class OnboardingPage: UIViewController {
     
     
     func layout() {
-        
+        view.backgroundColor = setBackgroundColor
         view.addSubview(stackView)
         stackView.addArrangedSubview(onboardingImage)
         stackView.addArrangedSubview(mainTitle)
         stackView.addArrangedSubview(mainSubtitle)
-        
-        
-        view.backgroundColor = setBackgroundColor
-        
+
         let stackViewConstraints = [
             stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -150),
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ]
-        
         let onboardingImageConstraints = [
             onboardingImage.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5)
         ]

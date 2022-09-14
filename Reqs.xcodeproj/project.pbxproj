@@ -240,6 +240,11 @@
 			children = (
 				C797669928C12EA2007A436B /* Services */,
 				C7DDA7D528513D66005D67D1 /* Models */,
+				C78573D52899C92C000BB99C /* Constant.swift */,
+				C74F04D72814EAF900F844CE /* AppDelegate.swift */,
+				C74F04D92814EAF900F844CE /* SceneDelegate.swift */,
+				C74F04E22814EAFA00F844CE /* LaunchScreen.storyboard */,
+				C74F04E02814EAFA00F844CE /* Assets.xcassets */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -305,11 +310,6 @@
 				C77ABC8728D2359300849FF3 /* Model Tools */,
 				C7DDA7DD28529A7D005D67D1 /* Yelp Models */,
 				C7DDA7D628513D70005D67D1 /* Realm Models */,
-				C78573D52899C92C000BB99C /* Constant.swift */,
-				C74F04D72814EAF900F844CE /* AppDelegate.swift */,
-				C74F04D92814EAF900F844CE /* SceneDelegate.swift */,
-				C74F04E22814EAFA00F844CE /* LaunchScreen.storyboard */,
-				C74F04E02814EAFA00F844CE /* Assets.xcassets */,
 			);
 			path = Models;
 			sourceTree = "<group>";
