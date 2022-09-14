@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ConvertModel {
+class ConvertModels {
     
     static func convertReqsToBusiness(_ reqModel: ReqsModel) -> Business {
         let location = Business.Location(city: reqModel.city, country: reqModel.country, state: reqModel.state, address1: reqModel.address1, address2: reqModel.address2, address3: reqModel.address3, zipCode: reqModel.zipCode)

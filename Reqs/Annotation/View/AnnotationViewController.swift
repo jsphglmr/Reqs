@@ -168,7 +168,7 @@ class AnnotationViewController: UIViewController {
         config.title = "Save to My Reqs"
         config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(scale: .medium)
         let button = UIButton(type: .custom, primaryAction: UIAction(handler: { _ in
-            let newReq = ConvertModel.convertBusinessToReqs(yelp: self.yelpBusiness)
+            let newReq = ConvertModels.convertBusinessToReqs(yelp: self.yelpBusiness)
             self.save(profile: newReq)
         }))
         button.tintColor = .systemGray

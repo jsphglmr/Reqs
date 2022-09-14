@@ -76,7 +76,7 @@ extension ReqsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let currentRow = reqsList?[indexPath.row] else { return }
         
-        let annotationVC = AnnotationViewController(business: ConvertModel.convertReqsToBusiness(currentRow))
+        let annotationVC = AnnotationViewController(business: ConvertModels.convertReqsToBusiness(currentRow))
         navigationController?.present(annotationVC, animated: true)
     }
     
