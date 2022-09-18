@@ -171,7 +171,7 @@ class AnnotationViewController: UIViewController {
             let newReq = ConvertModels.convertBusinessToReqs(yelp: self.yelpBusiness)
             self.save(profile: newReq)
         }))
-        button.tintColor = .systemGray
+        button.tintColor = .systemBlue
         button.translatesAutoresizingMaskIntoConstraints = false
         button.configuration = config
         return button

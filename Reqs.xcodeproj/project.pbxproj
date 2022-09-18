@@ -20,7 +20,7 @@
 		C74F04E12814EAFA00F844CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C74F04E02814EAFA00F844CE /* Assets.xcassets */; };
 		C74F04E42814EAFA00F844CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C74F04E22814EAFA00F844CE /* LaunchScreen.storyboard */; };
 		C74F04F228163BC900F844CE /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F04F128163BC900F844CE /* MapViewController.swift */; };
-		C74F04F428163C0400F844CE /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F04F328163C0400F844CE /* ExploreViewController.swift */; };
+		C74F04F428163C0400F844CE /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F04F328163C0400F844CE /* DiscoverViewController.swift */; };
 		C74F04F628163CB500F844CE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F04F528163CB500F844CE /* SettingsViewController.swift */; };
 		C765A54D28AAA9E100FE72F0 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C765A54C28AAA9E100FE72F0 /* OnboardingViewController.swift */; };
 		C765A54F28AAABEA00FE72F0 /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C765A54E28AAABEA00FE72F0 /* OnboardingPage.swift */; };
@@ -71,7 +71,7 @@
 		C74F04E32814EAFA00F844CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C74F04E52814EAFA00F844CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C74F04F128163BC900F844CE /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		C74F04F328163C0400F844CE /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		C74F04F328163C0400F844CE /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		C74F04F528163CB500F844CE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C765A54C28AAA9E100FE72F0 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		C765A54E28AAABEA00FE72F0 /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
@@ -186,8 +186,7 @@
 		C763292D28CE6E8F005E8D30 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C7DB170A28A6C248001A66FD /* SettingsTableViewCell.swift */,
-				C7DB170C28A6CDE7001A66FD /* SwitchTableViewCell.swift */,
+				C74F04F528163CB500F844CE /* SettingsViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -195,6 +194,8 @@
 		C763292E28CE6EA4005E8D30 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				C7DB170A28A6C248001A66FD /* SettingsTableViewCell.swift */,
+				C7DB170C28A6CDE7001A66FD /* SwitchTableViewCell.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -202,6 +203,7 @@
 		C763293028CE6F23005E8D30 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				C765A54E28AAABEA00FE72F0 /* OnboardingPage.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -209,6 +211,7 @@
 		C763293128CE6F31005E8D30 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C74F04F128163BC900F844CE /* MapViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -223,7 +226,7 @@
 		C763293328CE6F4E005E8D30 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C7DDA7CE284FBEC1005D67D1 /* DiscoverCollectionViewCell.swift */,
+				C74F04F328163C0400F844CE /* DiscoverViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 		C763293428CE6F55005E8D30 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				C7DDA7CE284FBEC1005D67D1 /* DiscoverCollectionViewCell.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -260,6 +264,9 @@
 		C763293728CECD4A005E8D30 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C765A54C28AAA9E100FE72F0 /* OnboardingViewController.swift */,
+				C73ACED628B46FB6007633E2 /* OnboardingLocation.swift */,
+				C765A55228AAAC0000FE72F0 /* OnboardingLogin.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -287,10 +294,6 @@
 			children = (
 				C763293728CECD4A005E8D30 /* View */,
 				C763293028CE6F23005E8D30 /* View Model */,
-				C765A54C28AAA9E100FE72F0 /* OnboardingViewController.swift */,
-				C765A54E28AAABEA00FE72F0 /* OnboardingPage.swift */,
-				C73ACED628B46FB6007633E2 /* OnboardingLocation.swift */,
-				C765A55228AAAC0000FE72F0 /* OnboardingLogin.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -336,7 +339,6 @@
 			children = (
 				C763293128CE6F31005E8D30 /* View */,
 				C763293228CE6F3C005E8D30 /* View Model */,
-				C74F04F128163BC900F844CE /* MapViewController.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -346,7 +348,6 @@
 			children = (
 				C763293328CE6F4E005E8D30 /* View */,
 				C763293428CE6F55005E8D30 /* View Model */,
-				C74F04F328163C0400F844CE /* ExploreViewController.swift */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -365,7 +366,6 @@
 			children = (
 				C763292D28CE6E8F005E8D30 /* View */,
 				C763292E28CE6EA4005E8D30 /* View Model */,
-				C74F04F528163CB500F844CE /* SettingsViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -507,7 +507,7 @@
 				C7DDA7CF284FBEC1005D67D1 /* DiscoverCollectionViewCell.swift in Sources */,
 				C78573D8289CBEF3000BB99C /* ReqsViewController.swift in Sources */,
 				C765A55328AAAC0000FE72F0 /* OnboardingLogin.swift in Sources */,
-				C74F04F428163C0400F844CE /* ExploreViewController.swift in Sources */,
+				C74F04F428163C0400F844CE /* DiscoverViewController.swift in Sources */,
 				C74F04DA2814EAF900F844CE /* SceneDelegate.swift in Sources */,
 				C7DDA7DF28529BD4005D67D1 /* YelpResult.swift in Sources */,
 				C7DDA86928639399005D67D1 /* YelpResultPins.swift in Sources */,

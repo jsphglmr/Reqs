@@ -15,7 +15,7 @@ import RealmSwift
 import Kingfisher
 import CoreLocation
 
-class ExploreViewController: UIViewController {
+class DiscoverViewController: UIViewController {
     
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
@@ -66,7 +66,7 @@ class ExploreViewController: UIViewController {
 }
 
 //MARK: - UICollectionViewDelegate
-extension ExploreViewController: UICollectionViewDelegate {
+extension DiscoverViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscoverCollectionViewCell.identifier, for: indexPath) as? DiscoverCollectionViewCell
         else {
@@ -90,7 +90,7 @@ extension ExploreViewController: UICollectionViewDelegate {
     }
 }
 //MARK: - UICollectionViewDelegateFlowLayout
-extension ExploreViewController: UICollectionViewDelegateFlowLayout { // allows us to customize look of cells
+extension DiscoverViewController: UICollectionViewDelegateFlowLayout { // allows us to customize look of cells
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (view.frame.width/3)-3, height: (view.frame.width/3)-3)
     }
@@ -108,7 +108,7 @@ extension ExploreViewController: UICollectionViewDelegateFlowLayout { // allows 
     }
 }
 //MARK: - UICollectionViewDataSource
-extension ExploreViewController: UICollectionViewDataSource {
+extension DiscoverViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //always static due to yelp api return
         return 18
