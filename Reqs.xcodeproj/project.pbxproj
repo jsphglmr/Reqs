@@ -22,6 +22,7 @@
 		C74F04F228163BC900F844CE /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F04F128163BC900F844CE /* MapViewController.swift */; };
 		C74F04F428163C0400F844CE /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F04F328163C0400F844CE /* DiscoverViewController.swift */; };
 		C74F04F628163CB500F844CE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F04F528163CB500F844CE /* SettingsViewController.swift */; };
+		C75112F228DCC106008F04BE /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75112F128DCC106008F04BE /* MapViewModel.swift */; };
 		C765A54D28AAA9E100FE72F0 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C765A54C28AAA9E100FE72F0 /* OnboardingViewController.swift */; };
 		C765A54F28AAABEA00FE72F0 /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C765A54E28AAABEA00FE72F0 /* OnboardingPage.swift */; };
 		C765A55328AAAC0000FE72F0 /* OnboardingLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C765A55228AAAC0000FE72F0 /* OnboardingLogin.swift */; };
@@ -73,6 +74,7 @@
 		C74F04F128163BC900F844CE /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		C74F04F328163C0400F844CE /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		C74F04F528163CB500F844CE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		C75112F128DCC106008F04BE /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		C765A54C28AAA9E100FE72F0 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		C765A54E28AAABEA00FE72F0 /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
 		C765A55228AAAC0000FE72F0 /* OnboardingLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingLogin.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 		C763293228CE6F3C005E8D30 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				C75112F128DCC106008F04BE /* MapViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				C7DB168F28A18A60001A66FD /* MyReqsTableViewCell.swift in Sources */,
 				C765A54D28AAA9E100FE72F0 /* OnboardingViewController.swift in Sources */,
 				C765A54F28AAABEA00FE72F0 /* OnboardingPage.swift in Sources */,
+				C75112F228DCC106008F04BE /* MapViewModel.swift in Sources */,
 				C7DDA86D2873CCC8005D67D1 /* AnnotationViewController.swift in Sources */,
 				C77ABC8628D22A6500849FF3 /* ConvertModels.swift in Sources */,
 				C797669D28C130C1007A436B /* LocationManager.swift in Sources */,

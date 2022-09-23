@@ -68,52 +68,6 @@ class MapViewController: UIViewController {
         return button
     }()
     
-    //MARK: - Selector Methods
-    @objc private func searchButtonPressed() {
-        let ac = UIAlertController(title: "Search", message: "What are you looking for?", preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-        let search = UIAlertAction(title: "Search", style: .default) { _ in
-            if let text = ac.textFields?.first?.text {
-                let searchText = text.replacingOccurrences(of: " ", with: "%20")
-                self.getYelpResults(term: searchText, location: LocationManager.currentUserLocation)
-                self.refreshRegionForPins(locations: [LocationManager.currentUserLocation])
-            }
-        }
-        ac.addAction(search)
-        ac.addAction(cancel)
-        ac.addTextField()
-        present(ac, animated: true)
-    }
-    
-    @objc func reCenterButtonPressed() {
-        locationManager.checkIfLocationServicesIsEnabled {
-            self.centerMapOnUserLocation(locations: [LocationManager.currentUserLocation])
-        }
-    }
-    
-    @objc func pinMyReqsPressed() {
-        searchData = []
-        var pins: [YelpResultPins] = []
-        if let data = reqsList {
-            DispatchQueue.main.async {
-                self.mapView.removeAnnotations(self.mapView.annotations)
-            }
-            var pinTag: Int = 0
-            for reqs in data {
-                let coordinate = CLLocationCoordinate2D(latitude: reqs.latitude, longitude: reqs.longitude)
-                let pin = YelpResultPins(title: reqs.name, address: reqs.address1, url: reqs.url, coordinate: coordinate, tag: pinTag)
-                pins.append(pin)
-                pinTag += 1
-            }
-            DispatchQueue.main.async {
-                self.mapView.addAnnotations(pins)
-            }
-        }
-        locationManager.checkIfLocationServicesIsEnabled {
-            self.refreshRegionForPins(locations: [LocationManager.currentUserLocation])
-        }
-    }
-    
     //MARK: - View
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -228,6 +182,53 @@ class MapViewController: UIViewController {
             case let .success(yelpData):
                 self.searchData = yelpData.businesses
             }
+        }
+    }
+}
+//MARK: - Objc Methods
+extension MapViewController {
+    @objc private func searchButtonPressed() {
+        let ac = UIAlertController(title: "Search", message: "What are you looking for?", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        let search = UIAlertAction(title: "Search", style: .default) { _ in
+            if let text = ac.textFields?.first?.text {
+                let searchText = text.replacingOccurrences(of: " ", with: "%20")
+                self.getYelpResults(term: searchText, location: LocationManager.currentUserLocation)
+                self.refreshRegionForPins(locations: [LocationManager.currentUserLocation])
+            }
+        }
+        ac.addAction(search)
+        ac.addAction(cancel)
+        ac.addTextField()
+        present(ac, animated: true)
+    }
+    
+    @objc func reCenterButtonPressed() {
+        locationManager.checkIfLocationServicesIsEnabled {
+            self.centerMapOnUserLocation(locations: [LocationManager.currentUserLocation])
+        }
+    }
+    
+    @objc func pinMyReqsPressed() {
+        searchData = []
+        var pins: [YelpResultPins] = []
+        if let data = reqsList {
+            DispatchQueue.main.async {
+                self.mapView.removeAnnotations(self.mapView.annotations)
+            }
+            var pinTag: Int = 0
+            for reqs in data {
+                let coordinate = CLLocationCoordinate2D(latitude: reqs.latitude, longitude: reqs.longitude)
+                let pin = YelpResultPins(title: reqs.name, address: reqs.address1, url: reqs.url, coordinate: coordinate, tag: pinTag)
+                pins.append(pin)
+                pinTag += 1
+            }
+            DispatchQueue.main.async {
+                self.mapView.addAnnotations(pins)
+            }
+        }
+        locationManager.checkIfLocationServicesIsEnabled {
+            self.refreshRegionForPins(locations: [LocationManager.currentUserLocation])
         }
     }
 }

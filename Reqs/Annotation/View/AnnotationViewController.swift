@@ -259,7 +259,6 @@ class AnnotationViewController: UIViewController {
             businessNameSubtitle.topAnchor.constraint(equalTo: businessName.bottomAnchor, constant: 5),
             businessNameSubtitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ]
-
         
         let saveButtonConstraints = [
             saveButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
