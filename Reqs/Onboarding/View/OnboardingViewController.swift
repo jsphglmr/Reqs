@@ -62,8 +62,8 @@ class OnboardingViewController: UIPageViewController {
     }
     
     func configure() {
-        let page1 = OnboardingPage(imageName: "testimage1", titleText: "Welcome to Reqs!", subtitleText: "", backgroundColor: .systemGray2)
-        let page2 = OnboardingPage(imageName: "testimage2", titleText: "Revisit your favorite places", subtitleText: "", backgroundColor: .systemGray4)
+        let page1 = OnboardingPage(imageName: "testimage1", titleText: "Welcome to Reqs!", subtitleText: "subtitle text", backgroundColor: .systemGray2)
+        let page2 = OnboardingPage(imageName: "testimage2", titleText: "Revisit your favorite places", subtitleText: "subtitle text", backgroundColor: .systemGray4)
         let page3 = OnboardingLocation(backgroundColor: .systemGray6)
 
 ///     onboarding setup once firebase is added
