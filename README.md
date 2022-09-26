@@ -25,7 +25,7 @@ struct Constant {
 
 ### TODOs:
 * [ ] Implement UserDefaults for settings
-* [ ] Build onboarding screen
+* [ ] Build onboarding screen (with animated gifs and tutorial for how to use the app)
 
 #### Future concepts:
 * Use FireBase to create user accounts
