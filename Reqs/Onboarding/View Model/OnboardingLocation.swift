@@ -47,7 +47,6 @@ class OnboardingLocation: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = setBackgroundColor
-        
         view.addSubview(locationButton)
         
         let locationButtonTappedConstraints = [
@@ -61,7 +60,7 @@ class OnboardingLocation: UIViewController {
         locationManager.checkIfLocationServicesIsEnabled {
             if self.locationManager.authorizationStatus == .authorizedAlways || self.locationManager.authorizationStatus == .authorizedWhenInUse {
                 self.locationButton.configuration?.title = "Location Enabled! Welcome to Reqs!"
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     self.dismiss(animated: true)
                 }
             }
