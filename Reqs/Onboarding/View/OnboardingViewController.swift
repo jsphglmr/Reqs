@@ -62,9 +62,12 @@ class OnboardingViewController: UIPageViewController {
     }
     
     func configure() {
-        let page1 = OnboardingPage(imageName: "testimage1", titleText: "Welcome to Reqs!", subtitleText: "subtitle text", backgroundColor: .systemGray2)
-        let page2 = OnboardingPage(imageName: "testimage2", titleText: "Revisit your favorite places", subtitleText: "subtitle text", backgroundColor: .systemGray4)
-        let page3 = OnboardingLocation(backgroundColor: .systemGray6)
+        let page1 = OnboardingPage(imageName: "", titleText: "Welcome to Reqs!", subtitleText: "", backgroundColor: .systemGray4)
+        let page2 = OnboardingPage(imageName: "search", titleText: "Search for new places!", subtitleText: "", backgroundColor: .systemGray4)
+        let page3 = OnboardingPage(imageName: "center", titleText: "Recenter yourself", subtitleText: "", backgroundColor: .systemGray4)
+        let page4 = OnboardingPage(imageName: "favorites", titleText: "View all of your favorites!", subtitleText: "", backgroundColor: .systemGray4)
+        let page5 = OnboardingPage(imageName: "save", titleText: "Save new Reqs!", subtitleText: "", backgroundColor: .systemGray4)
+        let page6 = OnboardingLocation(backgroundColor: .systemGray6)
 
 ///     onboarding setup once firebase is added
 //      let page4 = OnboardingLogin()
@@ -72,6 +75,9 @@ class OnboardingViewController: UIPageViewController {
         pages.append(page1)
         pages.append(page2)
         pages.append(page3)
+        pages.append(page4)
+        pages.append(page5)
+        pages.append(page6)
         
 ///     onboarding setup once firebase is added
 //      pages.append(page4)

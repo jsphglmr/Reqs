@@ -206,6 +206,8 @@
 			isa = PBXGroup;
 			children = (
 				C765A54E28AAABEA00FE72F0 /* OnboardingPage.swift */,
+				C73ACED628B46FB6007633E2 /* OnboardingLocation.swift */,
+				C765A55228AAAC0000FE72F0 /* OnboardingLogin.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -268,8 +270,6 @@
 			isa = PBXGroup;
 			children = (
 				C765A54C28AAA9E100FE72F0 /* OnboardingViewController.swift */,
-				C73ACED628B46FB6007633E2 /* OnboardingLocation.swift */,
-				C765A55228AAAC0000FE72F0 /* OnboardingLogin.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
