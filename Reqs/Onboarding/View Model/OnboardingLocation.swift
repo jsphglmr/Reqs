@@ -46,7 +46,14 @@ class OnboardingLocation: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = setBackgroundColor
+        layout()
+    }
+    
+    func layout() {
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.bounds
+        view.addSubview(blurEffectView)
         view.addSubview(locationButton)
         
         let locationButtonTappedConstraints = [

@@ -69,20 +69,26 @@ class OnboardingPage: UIViewController {
         super.viewDidLoad()
     }
     
-    
     func layout() {
-        view.backgroundColor = setBackgroundColor
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.bounds
+        view.addSubview(blurEffectView)
+        
+        view.addSubview(onboardingImage)
         view.addSubview(stackView)
-        stackView.addArrangedSubview(onboardingImage)
         stackView.addArrangedSubview(mainTitle)
         stackView.addArrangedSubview(mainSubtitle)
 
+        let onboardingImageConstraints = [
+            onboardingImage.heightAnchor.constraint(lessThanOrEqualToConstant: 550),
+            onboardingImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            onboardingImage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100)
+        ]
+        
         let stackViewConstraints = [
             stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -150),
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ]
-        let onboardingImageConstraints = [
-            onboardingImage.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5)
         ]
         
         NSLayoutConstraint.activate(onboardingImageConstraints)
