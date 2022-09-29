@@ -70,7 +70,7 @@ class OnboardingViewController: UIPageViewController {
         let page6 = OnboardingLocation(backgroundColor: .systemGray6)
 
 ///     onboarding setup once firebase is added
-//      let page4 = OnboardingLogin()
+//      let page7 = OnboardingLogin()
         
         pages.append(page1)
         pages.append(page2)
@@ -80,7 +80,7 @@ class OnboardingViewController: UIPageViewController {
         pages.append(page6)
         
 ///     onboarding setup once firebase is added
-//      pages.append(page4)
+//      pages.append(page7)
         
         setViewControllers([pages[initialPage]], direction: .forward, animated: true, completion: nil)
     }
@@ -127,7 +127,7 @@ extension OnboardingViewController {
     }
     
     @objc func continueButtonTapped() {
-        if pageControl.currentPage == 2 {
+        if pageControl.currentPage == 5 {
             self.dismiss(animated: true)
         } else if pageControl.currentPage == 1 {
             pageControl.currentPage += 1

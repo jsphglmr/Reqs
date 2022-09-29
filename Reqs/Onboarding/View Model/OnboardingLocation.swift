@@ -28,7 +28,7 @@ class OnboardingLocation: UIViewController {
         config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(scale: .medium)
         let button = UIButton(type: .system)
         button.addTarget(self, action: #selector(locationButtonTapped), for: .touchUpInside)
-        button.tintColor = .systemGray
+        button.tintColor = .systemBlue
         button.titleLabel?.textColor = .systemBackground
         button.translatesAutoresizingMaskIntoConstraints = false
         button.configuration = config
@@ -66,7 +66,7 @@ class OnboardingLocation: UIViewController {
     @objc func locationButtonTapped() {
         locationManager.checkIfLocationServicesIsEnabled {
             if self.locationManager.authorizationStatus == .authorizedAlways || self.locationManager.authorizationStatus == .authorizedWhenInUse {
-                self.locationButton.configuration?.title = "Location Enabled! Welcome to Reqs!"
+                self.locationButton.configuration?.title = "Location Enabled!"
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     self.dismiss(animated: true)
                 }
