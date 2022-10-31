@@ -9,6 +9,7 @@ Recommendation app to search for, organize, and save the places you love.
 * API calls and JSON parsing (using generic networking)
 * Data persistance using UserDefaults and Realm
 * Fully dark mode compatible
+* Onboarding flow
 
 
 ### Building the app
@@ -25,7 +26,7 @@ struct Constant {
 
 ### TODOs:
 * [ ] Implement UserDefaults for settings
-* [ ] Build onboarding screen (with animated gifs and tutorial for how to use the app)
+* [ ] Refactor to MVVM architecture
 
 #### Future concepts:
 * Use FireBase to create user accounts
