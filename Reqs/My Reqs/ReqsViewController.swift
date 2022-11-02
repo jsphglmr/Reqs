@@ -31,7 +31,7 @@ class ReqsViewController: UIViewController {
         super.viewDidLoad()
         setupNavigation()
         loadReqs()
-        helpNavigationItem()
+        addNavigationHelpItem()
         profileTableView.delegate = self
         profileTableView.dataSource = self
     }
@@ -53,18 +53,6 @@ class ReqsViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = .systemBackground
         navigationItem.rightBarButtonItem?.tintColor = .label
         navigationController?.navigationBar.isTranslucent = false
-    }
-    
-    func helpNavigationItem() {
-        //add nav bar and present alert when pressed
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "info.circle"), primaryAction: UIAction { _ in
-            let alert = UIAlertController(title: "Info", message: "Body Info", preferredStyle: .alert)
-            let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-            let mapButton = UIAlertAction(title: "Go to map!", style: .default)
-            alert.addAction(cancel)
-            alert.addAction(mapButton)
-            self.present(alert, animated: true)
-        })
     }
 }
 

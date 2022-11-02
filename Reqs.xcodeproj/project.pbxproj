@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C70D1EE82911EBD200B50572 /* Navigation + Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D1EE72911EBD200B50572 /* Navigation + Utilities.swift */; };
+		C70D1EE82911EBD200B50572 /* UIViewController + Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D1EE72911EBD200B50572 /* UIViewController + Utilities.swift */; };
 		C725BA3F28AC2DED00DA4D32 /* ReqsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7375F2C28AC292300F123F4 /* ReqsViewControllerTests.swift */; };
 		C725BA4028AC2DED00DA4D32 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7375F2628AC22D800F123F4 /* HomeViewControllerTests.swift */; };
 		C725BA4128AC2DED00DA4D32 /* MockHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7375F2828AC276400F123F4 /* MockHomeViewController.swift */; };
@@ -57,7 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C70D1EE72911EBD200B50572 /* Navigation + Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Navigation + Utilities.swift"; sourceTree = "<group>"; };
+		C70D1EE72911EBD200B50572 /* UIViewController + Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Utilities.swift"; sourceTree = "<group>"; };
 		C725BA3628AC2D9D00DA4D32 /* ReqsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReqsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C725BA4328AC2F1E00DA4D32 /* MockJSONManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockJSONManager.swift; sourceTree = "<group>"; };
 		C725BA4528AC346D00DA4D32 /* testresponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testresponse.json; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 		C70D1EE62911EBB800B50572 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				C70D1EE72911EBD200B50572 /* Navigation + Utilities.swift */,
+				C70D1EE72911EBD200B50572 /* UIViewController + Utilities.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -526,7 +526,7 @@
 				C74F04DA2814EAF900F844CE /* SceneDelegate.swift in Sources */,
 				C7DDA7DF28529BD4005D67D1 /* YelpResult.swift in Sources */,
 				C7DDA86928639399005D67D1 /* YelpResultPins.swift in Sources */,
-				C70D1EE82911EBD200B50572 /* Navigation + Utilities.swift in Sources */,
+				C70D1EE82911EBD200B50572 /* UIViewController + Utilities.swift in Sources */,
 				C74F04F228163BC900F844CE /* MapViewController.swift in Sources */,
 				C74F04F628163CB500F844CE /* SettingsViewController.swift in Sources */,
 				C73ACED728B46FB6007633E2 /* OnboardingLocation.swift in Sources */,

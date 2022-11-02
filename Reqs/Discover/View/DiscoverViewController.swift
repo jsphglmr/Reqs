@@ -30,6 +30,7 @@ class DiscoverViewController: UIViewController {
         collectionView.dataSource = self
         view.addSubview(collectionView)
         configureNavigationBar()
+        addNavigationHelpItem()
         DispatchQueue.main.async {
             self.getYelpResults()
         }
