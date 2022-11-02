@@ -141,7 +141,6 @@ extension OnboardingViewController {
     @objc func pageControlTapped(_ sender: UIPageControl) {
         setViewControllers([pages[sender.currentPage]], direction: .forward, animated: true, completion: nil)
     }
-    
 }
 
 //MARK: - Datasources

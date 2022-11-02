@@ -60,5 +60,4 @@ struct JSONManager {
       let url = "https://api.yelp.com/v3/businesses/search?attributes=hot_and_new&latitude=\(location.coordinate.latitude)&longitude=\(location.coordinate.longitude)"
         performRequest(with: url, completion: completion)
   }
-
 }

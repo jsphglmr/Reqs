@@ -4,11 +4,6 @@
 //
 //  Created by Joseph Gilmore on 4/24/22.
 //
-// todo:
-// add realm support
-// "edit" button in nav bar to move and delete cell
-// swipe to delete folder
-
 
 import UIKit
 import RealmSwift
@@ -19,7 +14,6 @@ class DiscoverViewController: UIViewController {
     
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
-    let homeVC = MapViewController()
     let jsonManager = JSONManager()
     var searchData: [Business]? {
         didSet {

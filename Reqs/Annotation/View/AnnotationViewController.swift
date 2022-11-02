@@ -12,7 +12,6 @@ import Kingfisher
 
 class AnnotationViewController: UIViewController {
     //MARK: - inits & references
-    let homeVC = MapViewController()
     lazy var realm: Realm = {
         return try! Realm()
     }()
@@ -66,7 +65,6 @@ class AnnotationViewController: UIViewController {
             label.text = String("\(city), \(state)")
         } else {
             label.text = nil
-            
         }
         label.font = .systemFont(ofSize: 22, weight: .light)
         label.adjustsFontSizeToFitWidth = true
