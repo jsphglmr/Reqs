@@ -29,15 +29,20 @@ class ReqsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigation()
         loadReqs()
+        setupNavigation()
+        setupView()
         addNavigationHelpItem()
+        setupRefreshControl()
         profileTableView.delegate = self
         profileTableView.dataSource = self
     }
     
     private func loadReqs() {
         reqsList = realm.objects(ReqsModel.self)
+    }
+    
+    private func setupView() {
         view.addSubview(profileTableView)
         profileTableView.frame = view.bounds
         profileTableView.reloadData()
@@ -53,6 +58,11 @@ class ReqsViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = .systemBackground
         navigationItem.rightBarButtonItem?.tintColor = .label
         navigationController?.navigationBar.isTranslucent = false
+    }
+    
+    private func setupRefreshControl() {
+        profileTableView.refreshControl = UIRefreshControl()
+        profileTableView.refreshControl?.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
     }
 }
 
@@ -106,6 +116,16 @@ extension ReqsViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
             tableView.endUpdates()
+        }
+    }
+}
+//MARK: - Objc Methods
+extension ReqsViewController {
+    @objc func refreshTableView() {
+        DispatchQueue.main.async {
+            self.profileTableView.refreshControl?.endRefreshing()
+            self.loadReqs()
+            self.profileTableView.reloadData()
         }
     }
 }
