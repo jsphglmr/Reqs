@@ -35,14 +35,16 @@ class LocationManager: CLLocationManager, CLLocationManagerDelegate {
     }
     
     func checkIfLocationServicesIsEnabled(completed: @escaping ()->()) {
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            checkLocationAuthorization()
-        } else {
-            //add new alert action to open settings app
-            locationPermissionDenied()
+        DispatchQueue.global().async {
+            if CLLocationManager.locationServicesEnabled() {
+                self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+                self.checkLocationAuthorization()
+            } else {
+                //add new alert action to open settings app
+                self.locationPermissionDenied()
+            }
+            completed()
         }
-        completed()
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
