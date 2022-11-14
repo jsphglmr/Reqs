@@ -97,6 +97,31 @@ class AnnotationViewController: UIViewController {
         return label
     }()
     
+    private lazy var callButton: UIButton = {
+        var config = UIButton.Configuration.filled()
+        config.buttonSize = .large
+        config.cornerStyle = .medium
+        config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
+          var outgoing = incoming
+          outgoing.font = UIFont.preferredFont(forTextStyle: .headline)
+          return outgoing
+        }
+        config.image = UIImage(systemName: "phone.fill")
+        config.imagePadding = 5
+        config.imagePlacement = .top
+        config.title = "Call"
+        config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(scale: .medium)
+        let button = UIButton(type: .system, primaryAction: UIAction(handler: { _ in
+            guard let number = self.yelpBusiness.phone else {  print("yelp error"); return }
+            guard var url = URL(string: "tel://\(number)") else { print("url error"); return }
+            UIApplication.shared.open(url)
+        }))
+        button.tintColor = .systemGray
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.configuration = config
+        return button
+    }()
+    
     private lazy var safariButton: UIButton = {
         var config = UIButton.Configuration.filled()
         config.buttonSize = .large
@@ -170,32 +195,6 @@ class AnnotationViewController: UIViewController {
             self.save(profile: newReq)
         }))
         button.tintColor = .systemBlue
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.configuration = config
-        return button
-    }()
-    
-    private lazy var callButton: UIButton = {
-
-        var config = UIButton.Configuration.filled()
-        config.buttonSize = .large
-        config.cornerStyle = .medium
-        config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
-          var outgoing = incoming
-          outgoing.font = UIFont.preferredFont(forTextStyle: .headline)
-          return outgoing
-        }
-        config.image = UIImage(systemName: "phone.fill")
-        config.imagePadding = 5
-        config.imagePlacement = .top
-        config.title = "Call"
-        config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(scale: .medium)
-        let button = UIButton(type: .system, primaryAction: UIAction(handler: { _ in
-            guard let number = self.yelpBusiness.phone else { return }
-            guard var url = URL(string: "telprompt:\(number)") else { return }
-            UIApplication.shared.open(url)
-        }))
-        button.tintColor = .systemGray
         button.translatesAutoresizingMaskIntoConstraints = false
         button.configuration = config
         return button

@@ -30,7 +30,6 @@ class DiscoverViewController: UIViewController {
         collectionView.dataSource = self
         view.addSubview(collectionView)
         configureNavigationBar()
-        addNavigationHelpItem()
         DispatchQueue.main.async {
             self.getYelpResults()
         }
@@ -45,6 +44,7 @@ class DiscoverViewController: UIViewController {
         view.backgroundColor = .white
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Discover"
+        addNavigationHelpItem()
     }
     
     func getYelpResults() {
