@@ -36,34 +36,11 @@ class ReqsViewControllerTests: XCTestCase {
         mocknewReq.zipCode = nil
         mocknewReq.latitude = 0.0
         mocknewReq.longitude = 0.0
-
-        let mockBusinessModel = ReqsViewController.convertReqModelToBusinessModel(mocknewReq)
+        
+        let mockBusinessModel = ConvertModels.convertReqsToBusiness(mocknewReq)
         
         XCTAssert((mockBusinessModel as Any) is Business)        
         
     }
-
-//    @Persisted var name: String
-//    @Persisted var url: String
-//    @Persisted var imageUrl: String
-//    @Persisted var rating: Double?
-//    @Persisted var price: String?
-//    @Persisted var phone: String?
-//
-//    @Persisted var city: String
-//    @Persisted var country: String
-//    @Persisted var state: String
-//    @Persisted var address1: String?
-//    @Persisted var address2: String?
-//    @Persisted var address3: String?
-//    @Persisted var zipCode: String?
-//
-//    @Persisted var latitude: Double
-//    @Persisted var longitude: Double
-//
-//    @Persisted var alias: String?
-//
-//    @Persisted var dateCreated: Date?
-//
     
 }

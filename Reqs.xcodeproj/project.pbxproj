@@ -217,30 +217,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		C763292A28CE6E81005E8D30 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				C7DDA86C2873CCC8005D67D1 /* AnnotationViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		C763292D28CE6E8F005E8D30 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				C74F04F528163CB500F844CE /* SettingsViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		C763293328CE6F4E005E8D30 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				C74F04F328163C0400F844CE /* DiscoverViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		C763293528CE6F7E005E8D30 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,14 +230,6 @@
 				C74F04E02814EAFA00F844CE /* Assets.xcassets */,
 			);
 			path = Shared;
-			sourceTree = "<group>";
-		};
-		C763293628CE7071005E8D30 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				C78573D7289CBEF3000BB99C /* ReqsViewController.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		C763293728CECD4A005E8D30 /* Views */ = {
@@ -285,7 +253,7 @@
 		C77DD93328A96B9700CE9150 /* Annotation */ = {
 			isa = PBXGroup;
 			children = (
-				C763292A28CE6E81005E8D30 /* View */,
+				C7DDA86C2873CCC8005D67D1 /* AnnotationViewController.swift */,
 				C763292928CE6E7C005E8D30 /* Model */,
 			);
 			path = Annotation;
@@ -347,7 +315,7 @@
 		C7DDA7E82852D537005D67D1 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
-				C763293328CE6F4E005E8D30 /* View */,
+				C74F04F328163C0400F844CE /* DiscoverViewController.swift */,
 				C73A3763292176280062458C /* Cells */,
 			);
 			path = Discover;
@@ -356,7 +324,7 @@
 		C7DDA7E92852D550005D67D1 /* My Reqs */ = {
 			isa = PBXGroup;
 			children = (
-				C763293628CE7071005E8D30 /* View */,
+				C78573D7289CBEF3000BB99C /* ReqsViewController.swift */,
 				C73A37682921FDB40062458C /* Cells */,
 			);
 			path = "My Reqs";
@@ -365,7 +333,7 @@
 		C7DDA7EA2852D56B005D67D1 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				C763292D28CE6E8F005E8D30 /* View */,
+				C74F04F528163CB500F844CE /* SettingsViewController.swift */,
 				C73A37642921799F0062458C /* Cells */,
 			);
 			path = Settings;
