@@ -45,6 +45,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         imageView.frame = contentView.bounds
+        imageView.layer.cornerRadius = 15
         
         let labelConstraints = [
             label.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),

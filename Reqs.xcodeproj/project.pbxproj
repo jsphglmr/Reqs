@@ -29,7 +29,6 @@
 		C765A54F28AAABEA00FE72F0 /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C765A54E28AAABEA00FE72F0 /* OnboardingPage.swift */; };
 		C765A55328AAAC0000FE72F0 /* OnboardingLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C765A55228AAAC0000FE72F0 /* OnboardingLogin.swift */; };
 		C77ABC8628D22A6500849FF3 /* ConvertModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77ABC8528D22A6400849FF3 /* ConvertModels.swift */; };
-		C78573D62899C92C000BB99C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78573D52899C92C000BB99C /* Constant.swift */; };
 		C78573D8289CBEF3000BB99C /* ReqsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78573D7289CBEF3000BB99C /* ReqsViewController.swift */; };
 		C797669D28C130C1007A436B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C797669C28C130C1007A436B /* LocationManager.swift */; };
 		C7DB168F28A18A60001A66FD /* MyReqsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB168E28A18A60001A66FD /* MyReqsTableViewCell.swift */; };
@@ -45,6 +44,8 @@
 		C7DDA86928639399005D67D1 /* YelpResultPins.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA86828639399005D67D1 /* YelpResultPins.swift */; };
 		C7DDA86D2873CCC8005D67D1 /* AnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA86C2873CCC8005D67D1 /* AnnotationViewController.swift */; };
 		C7DDA872288378DA005D67D1 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C7DDA871288378DA005D67D1 /* Kingfisher */; };
+		EB77DE092B5295F300D30BEC /* Shared in Resources */ = {isa = PBXBuildFile; fileRef = EB77DE082B5295F300D30BEC /* Shared */; };
+		EB77DE0B2B52960700D30BEC /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB77DE0A2B52960700D30BEC /* Constant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +84,6 @@
 		C765A54E28AAABEA00FE72F0 /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
 		C765A55228AAAC0000FE72F0 /* OnboardingLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingLogin.swift; sourceTree = "<group>"; };
 		C77ABC8528D22A6400849FF3 /* ConvertModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertModels.swift; sourceTree = "<group>"; };
-		C78573D52899C92C000BB99C /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		C78573D7289CBEF3000BB99C /* ReqsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqsViewController.swift; sourceTree = "<group>"; };
 		C797669C28C130C1007A436B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		C7DB168E28A18A60001A66FD /* MyReqsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReqsTableViewCell.swift; sourceTree = "<group>"; };
@@ -96,6 +96,8 @@
 		C7DDA7E12852B743005D67D1 /* JSONManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONManager.swift; sourceTree = "<group>"; };
 		C7DDA86828639399005D67D1 /* YelpResultPins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpResultPins.swift; sourceTree = "<group>"; };
 		C7DDA86C2873CCC8005D67D1 /* AnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationViewController.swift; sourceTree = "<group>"; };
+		EB77DE082B5295F300D30BEC /* Shared */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Shared; sourceTree = "<group>"; };
+		EB77DE0A2B52960700D30BEC /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,7 +225,8 @@
 				C70D1EE62911EBB800B50572 /* Utilities */,
 				C797669928C12EA2007A436B /* Services */,
 				C7DDA7D528513D66005D67D1 /* Models */,
-				C78573D52899C92C000BB99C /* Constant.swift */,
+				EB77DE0A2B52960700D30BEC /* Constant.swift */,
+				EB77DE082B5295F300D30BEC /* Shared */,
 				C74F04D72814EAF900F844CE /* AppDelegate.swift */,
 				C74F04D92814EAF900F844CE /* SceneDelegate.swift */,
 				C74F04E22814EAFA00F844CE /* LaunchScreen.storyboard */,
@@ -390,7 +393,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1330;
+				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					C725BA3528AC2D9D00DA4D32 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -439,6 +442,7 @@
 			files = (
 				C74F04E42814EAFA00F844CE /* LaunchScreen.storyboard in Resources */,
 				C74F04E12814EAFA00F844CE /* Assets.xcassets in Resources */,
+				EB77DE092B5295F300D30BEC /* Shared in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,12 +485,12 @@
 				C73A376C2921FF5E0062458C /* SkeletonDiscoverCollectionViewCell.swift in Sources */,
 				C74F04DA2814EAF900F844CE /* SceneDelegate.swift in Sources */,
 				C7DDA7DF28529BD4005D67D1 /* YelpResult.swift in Sources */,
+				EB77DE0B2B52960700D30BEC /* Constant.swift in Sources */,
 				C7DDA86928639399005D67D1 /* YelpResultPins.swift in Sources */,
 				C70D1EE82911EBD200B50572 /* UIViewController + Utilities.swift in Sources */,
 				C74F04F228163BC900F844CE /* MapViewController.swift in Sources */,
 				C74F04F628163CB500F844CE /* SettingsViewController.swift in Sources */,
 				C73ACED728B46FB6007633E2 /* OnboardingLocation.swift in Sources */,
-				C78573D62899C92C000BB99C /* Constant.swift in Sources */,
 				C7DB170D28A6CDE7001A66FD /* SwitchTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -587,6 +591,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -647,6 +652,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
