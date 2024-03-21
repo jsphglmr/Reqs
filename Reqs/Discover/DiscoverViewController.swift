@@ -12,7 +12,10 @@ import CoreLocation
 
 class DiscoverViewController: UIViewController {
     
-    private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private let collectionView: UICollectionView = {
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        return cv
+    }()
     
     let jsonManager = JSONManager()
     var searchData: [Business]? {
