@@ -148,6 +148,7 @@ class MapViewController: UIViewController {
         }
     }
 }
+
 //MARK: - Objc Methods
 extension MapViewController {
     @objc private func searchButtonPressed() {
@@ -155,9 +156,13 @@ extension MapViewController {
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)
         let search = UIAlertAction(title: "Search", style: .default) { _ in
             if let text = ac.textFields?.first?.text {
-                let searchText = text.replacingOccurrences(of: " ", with: "%20")
-                self.getYelpResults(term: searchText, location: LocationManager.currentUserLocation)
-                self.mapViewModel.refreshRegionForPins(locations: [LocationManager.currentUserLocation], mapView: self.mapView)
+                if text.isEmpty {
+                    return
+                } else {
+                    let searchText = text.replacingOccurrences(of: " ", with: "%20")
+                    self.getYelpResults(term: searchText, location: LocationManager.currentUserLocation)
+                    self.mapViewModel.refreshRegionForPins(locations: [LocationManager.currentUserLocation], mapView: self.mapView)
+                }
             }
         }
         ac.addAction(search)
