@@ -39,6 +39,16 @@ class AnnotationViewController: UIViewController {
         imageView.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
         return imageView
     }()
+    
+    private lazy var ratingStackView: UIStackView = {
+      let stackView = UIStackView()
+      stackView.translatesAutoresizingMaskIntoConstraints = false
+      stackView.axis = .horizontal
+      stackView.alignment = .trailing
+      stackView.spacing = 5
+      return stackView
+    }()
+    
     private lazy var stackView: UIStackView = {
       let stackView = UIStackView()
       stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -97,6 +107,13 @@ class AnnotationViewController: UIViewController {
         label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
         return label
+    }()
+    
+    private lazy var businessSymbol: UIImageView = {
+        let image = UIImage(systemName: "star.fill")
+        let symbol = UIImageView(image: image)
+        symbol.tintColor = .yellow
+        return symbol
     }()
     
     private lazy var callButton: UIButton = {
@@ -222,9 +239,12 @@ class AnnotationViewController: UIViewController {
         view.addSubview(businessName)
         view.addSubview(businessNameSubtitle)
         view.addSubview(businessPrice)
-        view.addSubview(businessRating)
         view.addSubview(saveButton)
 
+        view.addSubview(ratingStackView)
+        ratingStackView.addArrangedSubview(businessRating)
+        ratingStackView.addArrangedSubview(businessSymbol)
+        
         view.addSubview(stackView)
         stackView.addArrangedSubview(callButton)
         stackView.addArrangedSubview(safariButton)
@@ -270,8 +290,8 @@ class AnnotationViewController: UIViewController {
         ]
         
         let businessRatingConstraints = [
-            businessRating.bottomAnchor.constraint(equalTo: businessImage.topAnchor),
-            businessRating.trailingAnchor.constraint(equalTo: businessImage.trailingAnchor, constant: -20),
+            ratingStackView.bottomAnchor.constraint(equalTo: businessImage.topAnchor),
+            ratingStackView.trailingAnchor.constraint(equalTo: businessImage.trailingAnchor, constant: -20),
         ]
         
         NSLayoutConstraint.activate(stackViewConstraints)
