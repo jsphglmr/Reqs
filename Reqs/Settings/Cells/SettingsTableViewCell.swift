@@ -11,7 +11,7 @@ class SettingsTableViewCell: UITableViewCell {
     static let identifier = "SettingsTableViewCell"
     
     private let iconContainer: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.clipsToBounds = true
         view.layer.cornerRadius = 8
         view.layer.masksToBounds = true
