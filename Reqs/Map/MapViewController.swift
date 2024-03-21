@@ -11,13 +11,14 @@ import RealmSwift
 
 class MapViewController: UIViewController {
     
+    let mapViewModel = MapViewModel()
     let jsonManager = JSONManager()
     var reqsList: Results<ReqsModel>?
     let locationManager = LocationManager()
     var searchData: [Business]? {
         didSet {
             guard let data = searchData, data.count > 0 else { return }
-            addPins()
+            mapViewModel.addPins(data: searchData, mapView: mapView)
         }
     }
     
@@ -121,7 +122,7 @@ class MapViewController: UIViewController {
         let launchedBefore = UserDefaults.standard.bool(forKey: "hasLaunched")
         if launchedBefore {
             locationManager.checkIfLocationServicesIsEnabled {
-                self.centerMapOnUserLocation(locations: [LocationManager.currentUserLocation])
+                self.mapViewModel.centerMapOnUserLocation(locations: [LocationManager.currentUserLocation], mapView: self.mapView)
             }
             return
         } else {
@@ -130,50 +131,12 @@ class MapViewController: UIViewController {
         }
     }
     
-    func centerMapOnUserLocation (locations: [CLLocation]) {
-        if let location = locations.last {
-            locationManager.stopUpdatingLocation()
-            let lat = location.coordinate.latitude
-            let lon = location.coordinate.longitude
-            let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: lon), latitudinalMeters: 2500, longitudinalMeters: 2500)
-            mapView.setRegion(region, animated: true)
-        }
-    }
-    
-    func refreshRegionForPins (locations: [CLLocation]) {
-        if let location = locations.last {
-            locationManager.stopUpdatingLocation()
-            let lat = location.coordinate.latitude
-            let lon = location.coordinate.longitude
-            let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: lon), latitudinalMeters: 2500, longitudinalMeters: 2500)
-            mapView.setRegion(region, animated: true)
-        }
-    }
-    
-    func addPins() {
-        var pins: [YelpResultPins] = []
-        if let data = searchData {
-            DispatchQueue.main.async {
-                self.mapView.removeAnnotations(self.mapView.annotations)
-            }
-            var pinTag: Int = 0
-            for business in data {
-                let coordinate = CLLocationCoordinate2D(latitude: business.coordinates.latitude, longitude: business.coordinates.longitude)
-                let pin = YelpResultPins(title: business.name, address: business.location?.address1, url: business.url, coordinate: coordinate, tag: pinTag)
-                pins.append(pin)
-                pinTag += 1
-            }
-            DispatchQueue.main.async {
-                self.mapView.addAnnotations(pins)
-            }
-        }
-    }
-    
+    //MARK: - JSON / Data
+
     func loadReqs() {
         reqsList = realm.objects(ReqsModel.self)
     }
     
-    //MARK: - JSON / Data
     func getYelpResults(term: String, location: CLLocation) {
         jsonManager.fetchYelpResults(term: term, location: location) { result in
             switch result {
@@ -194,7 +157,7 @@ extension MapViewController {
             if let text = ac.textFields?.first?.text {
                 let searchText = text.replacingOccurrences(of: " ", with: "%20")
                 self.getYelpResults(term: searchText, location: LocationManager.currentUserLocation)
-                self.refreshRegionForPins(locations: [LocationManager.currentUserLocation])
+                self.mapViewModel.refreshRegionForPins(locations: [LocationManager.currentUserLocation], mapView: self.mapView)
             }
         }
         ac.addAction(search)
@@ -205,7 +168,7 @@ extension MapViewController {
     
     @objc func reCenterButtonPressed() {
         locationManager.checkIfLocationServicesIsEnabled {
-            self.centerMapOnUserLocation(locations: [LocationManager.currentUserLocation])
+            self.mapViewModel.centerMapOnUserLocation(locations: [LocationManager.currentUserLocation], mapView: self.mapView)
         }
     }
     
@@ -228,7 +191,7 @@ extension MapViewController {
             }
         }
         locationManager.checkIfLocationServicesIsEnabled {
-            self.refreshRegionForPins(locations: [LocationManager.currentUserLocation])
+            self.mapViewModel.refreshRegionForPins(locations: [LocationManager.currentUserLocation], mapView: self.mapView)
         }
     }
 }

@@ -44,7 +44,7 @@
 		C7DDA86928639399005D67D1 /* YelpResultPins.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA86828639399005D67D1 /* YelpResultPins.swift */; };
 		C7DDA86D2873CCC8005D67D1 /* AnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA86C2873CCC8005D67D1 /* AnnotationViewController.swift */; };
 		C7DDA872288378DA005D67D1 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C7DDA871288378DA005D67D1 /* Kingfisher */; };
-		EB77DE092B5295F300D30BEC /* Shared in Resources */ = {isa = PBXBuildFile; fileRef = EB77DE082B5295F300D30BEC /* Shared */; };
+		EB04CFE32BABEF1E008477C7 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB04CFE22BABEF1E008477C7 /* MapViewModel.swift */; };
 		EB77DE0B2B52960700D30BEC /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB77DE0A2B52960700D30BEC /* Constant.swift */; };
 /* End PBXBuildFile section */
 
@@ -96,7 +96,7 @@
 		C7DDA7E12852B743005D67D1 /* JSONManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONManager.swift; sourceTree = "<group>"; };
 		C7DDA86828639399005D67D1 /* YelpResultPins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpResultPins.swift; sourceTree = "<group>"; };
 		C7DDA86C2873CCC8005D67D1 /* AnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationViewController.swift; sourceTree = "<group>"; };
-		EB77DE082B5295F300D30BEC /* Shared */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Shared; sourceTree = "<group>"; };
+		EB04CFE22BABEF1E008477C7 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		EB77DE0A2B52960700D30BEC /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -226,7 +226,6 @@
 				C797669928C12EA2007A436B /* Services */,
 				C7DDA7D528513D66005D67D1 /* Models */,
 				EB77DE0A2B52960700D30BEC /* Constant.swift */,
-				EB77DE082B5295F300D30BEC /* Shared */,
 				C74F04D72814EAF900F844CE /* AppDelegate.swift */,
 				C74F04D92814EAF900F844CE /* SceneDelegate.swift */,
 				C74F04E22814EAFA00F844CE /* LaunchScreen.storyboard */,
@@ -311,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				C74F04F128163BC900F844CE /* MapViewController.swift */,
+				EB04CFE22BABEF1E008477C7 /* MapViewModel.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -442,7 +442,6 @@
 			files = (
 				C74F04E42814EAFA00F844CE /* LaunchScreen.storyboard in Resources */,
 				C74F04E12814EAFA00F844CE /* Assets.xcassets in Resources */,
-				EB77DE092B5295F300D30BEC /* Shared in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +475,7 @@
 				C797669D28C130C1007A436B /* LocationManager.swift in Sources */,
 				C7DB170B28A6C248001A66FD /* SettingsTableViewCell.swift in Sources */,
 				C7DDA7E22852B743005D67D1 /* JSONManager.swift in Sources */,
+				EB04CFE32BABEF1E008477C7 /* MapViewModel.swift in Sources */,
 				C74F04D82814EAF900F844CE /* AppDelegate.swift in Sources */,
 				C7DDA7CF284FBEC1005D67D1 /* DiscoverCollectionViewCell.swift in Sources */,
 				C78573D8289CBEF3000BB99C /* ReqsViewController.swift in Sources */,
